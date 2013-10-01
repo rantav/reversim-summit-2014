@@ -1,6 +1,6 @@
 Router.map ->
   @route 'home', path: '/'
-  @route 'propose', path: '/propose'
+  @route 'propose', controller: 'ProposeController'
 
 Router.configure
   layout: 'layout'
