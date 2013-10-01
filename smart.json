@@ -1,6 +1,7 @@
 {
   "packages": {
     "bootstrap-3": {},
-    "observatory": {}
+    "observatory": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }
