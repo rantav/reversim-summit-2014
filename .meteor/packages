@@ -4,9 +4,7 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-insecure
 preserve-inputs
-bootstrap-3
 observatory
 accounts-google
 accounts-github
@@ -15,3 +13,5 @@ accounts-facebook
 accounts-ui
 less
 coffeescript
+iron-router
+bootstrap3-less
