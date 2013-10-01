@@ -1,6 +1,6 @@
 <template name='nav'>
 <ul class="nav nav-pills pull-right">
-  <li class="active___"><a href="{{pathFor 'home'}}">Home</a></li>
-  <li><a href="{{pathFor 'propose'}}">Propose</a></li>
+  <li class="{{activeClass 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+  <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}">Propose</a></li>
 </ul>
 </template>

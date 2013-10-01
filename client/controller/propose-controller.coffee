@@ -3,13 +3,13 @@ class @ProposeController extends RouteController
   run: ->
     u = Meteor.user()
     if u
-      @render('propose')
+      @render('login', to: 'login')
+      @render('nav', to: 'nav', data: page: 'propose')
+      @render('propose', to: 'main')
     else
-      @render('pleaseLogin')
+      @render('nav', to: 'nav', data: page: 'propose')
+      @render('pleaseLogin', to: 'main')
 
-
-
-  data: ->
-    {}
+  data: -> null
 
 

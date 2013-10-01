@@ -1,5 +1,5 @@
 Router.map ->
-  @route 'home', path: '/'
+  @route 'home', path: '/', controller: 'HomeController'
   @route 'propose', controller: 'ProposeController'
 
 Router.configure
