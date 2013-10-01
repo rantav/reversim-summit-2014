@@ -8,8 +8,8 @@ insecure
 preserve-inputs
 bootstrap-3
 observatory
-accounts-ui-bootstrap-3
 accounts-google
 accounts-github
 accounts-twitter
 accounts-facebook
+accounts-ui
