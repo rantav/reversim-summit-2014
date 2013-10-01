@@ -13,3 +13,5 @@ accounts-github
 accounts-twitter
 accounts-facebook
 accounts-ui
+less
+coffeescript
