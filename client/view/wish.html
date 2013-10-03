@@ -1,5 +1,14 @@
 <template name='wish'>
 <h2>Make a wish: What would you like to see in the conference?</h2>
+<p>
+  Suggest topics for talks, for example
+  <ul>
+    <li>I'd like to see something about twitter's summingbird</li>
+    <li>It would be cool if someone had a talk about 5 whys</li>
+    <li>I'm interested in a panel about developer retention - how do you keep the good folks in?</li>
+  </ul>
+</p>
+<p>We can't promise anything but we hope someone will pick up your topic and do something with it...</p>
 {{#if loggedIn}}
   <form role="form" id='suggest'>
     <div class="form-group">
@@ -16,6 +25,7 @@
   <p class='lead'>Please {{loginButtons}}</p>
 {{/if}}
 
+<h2>Vote here:</h2>
 <table class='table'>
   <thead>
     <th></th>
