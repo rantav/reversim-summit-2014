@@ -24,6 +24,8 @@ root.User = class User
         picture = "http://graph.facebook.com/#{@data.services.facebook.id}/picture/"
         if height
           picture = "#{picture}?height=#{height/2}"
+      else if @data.services.twitter
+        picture = @data.services.twitter.profile_image_url
     if not picture
       if height
         picture = Cdn.cdnify("/img/user-#{height}x#{height}.png")
