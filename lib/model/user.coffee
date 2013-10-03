@@ -20,6 +20,10 @@ root.User = class User
         picture = @data.services.github.picture
         if picture and height
           picture = "#{picture}&s=#{height}"
+      else if @data.services.facebook
+        picture = "http://graph.facebook.com/#{@data.services.facebook.id}/picture/"
+        if height
+          picture = "#{picture}?height=#{height/2}"
     if not picture
       if height
         picture = Cdn.cdnify("/img/user-#{height}x#{height}.png")
