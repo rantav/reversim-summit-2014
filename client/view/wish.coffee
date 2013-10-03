@@ -3,9 +3,11 @@ Template.wish.events
     event.preventDefault()
     title = $('#title').val()
     description = $('#description').val()
-    console.log(title)
-    console.log(description)
-    Wish.makeWish(title: title, description: description)
+    if title or description
+      Wish.makeWish(title: title, description: description)
 
 Template.wish.wishes = ->
   Wishes.find()
+
+Template.wish.photo = (userId) ->
+  User.findOne(userId).photoUrl(40)
