@@ -3,9 +3,17 @@
     {{yield 'login'}}
     <div class="header">
       {{yield 'nav'}}
-      <h3 class="text-muted">Reversim Summit 2014</h3>
+      <a href='{{pathFor "home"}}' class="logo" title='Reversim Summit 2014'></a>
     </div>
-    {{yield 'main'}}
+    <div class="clearfix">
+      <div class='row'>
+        <div class="col-md-offset-2">
+          <div class='col-md-8'>
+            {{yield 'main'}}
+          </div>
+        </div>
+      </div>
+    </div>
     {{> footer}}
   </div>
 </template>
