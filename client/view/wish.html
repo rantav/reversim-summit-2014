@@ -16,18 +16,20 @@
   <p class='lead'>Please {{loginButtons}}</p>
 {{/if}}
 
-{{#each wishes}}
-  <table class='table'>
-    <thead>
-      <th></th>
-      <th>Title</th>
-      <th>Description</th>
-    </thead>
-    <tbody>
-      <td><img src='{{photo owner}}' class='img-thumbnail'/></td>
-      <td>{{title}}</td>
-      <td>{{description}}</td>
-    </tbody>
-  </table>
-{{/each}}
+<table class='table'>
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    {{#each wishes}}
+      <tr>
+        <td><img src='{{photo owner}}' class='img-thumbnail'/></td>
+        <td>{{title}}</td>
+        <td>{{description}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
 </template>
