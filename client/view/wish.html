@@ -1,0 +1,33 @@
+<template name='wish'>
+<h2>Make a wish: What would you like to see in the conference?</h2>
+{{#if loggedIn}}
+  <form role="form" id='suggest'>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" id="title" placeholder="Enter title (optional)">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" rows="3" id='description' placeholder='Enter description (optional)'></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+{{else}}
+  Please {{loginButtons}}
+{{/if}}
+
+{{#each wishes}}
+  <table class='table'>
+    <thead>
+      <th></th>
+      <th>Title</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <td>{{owner}}</td>
+      <td>{{title}}</td>
+      <td>{{description}}</td>
+    </tbody>
+  </table>
+{{/each}}
+</template>
