@@ -7,7 +7,7 @@ Template.wish.events
       Wish.makeWish(title: title, description: description)
 
 Template.wish.wishes = ->
-  Wishes.find()
+  Wishes.find({}, sort: createdAt: -1)
 
 Template.wish.photo = (userId) ->
   User.findOne(userId).photoUrl(40)

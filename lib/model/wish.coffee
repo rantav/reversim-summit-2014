@@ -4,7 +4,7 @@ root.Wish = class Wish
   @makeWish: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, {owner: Meteor.userId()})
+    _.extend(options, owner: Meteor.userId(), createdAt: new Date())
     Wishes.insert(options)
 
 root.Wishes = new Meteor.Collection "wishes"
