@@ -1,6 +1,6 @@
 class @WishController extends RouteController
 
-  waitOn: -> subscriptionHandles['wishes']
+  waitOn: -> [subscriptionHandles['wishes'], subscriptionHandles['users']]
 
   run: ->
     u = Meteor.user()

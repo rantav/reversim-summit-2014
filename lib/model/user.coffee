@@ -7,8 +7,10 @@ root.User = class User
       data = Meteor.users.findOne({'profile.name': new RegExp('^' + idOrName + '$', 'i')})
     new User(data)
 
-  constructor: (@data) ->
+  @current: ->
+    Meteor.userId() and new User(Meteor.user())
 
+  constructor: (@data) ->
 
   photoUrl: (height) ->
     if @data.services
