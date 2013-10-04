@@ -71,10 +71,13 @@
               <button class='btn edit btn-warning'>Edit</button>
             {{/if}}
           {{else}}
-            <a href='javascript:void(0)' title='Vote up' class='vote-up' data-voted='{{userVotedWishStr .}}'>
-              <i class='icon-thumbs-up'></i>
+            <a href='javascript:void(0)' class='vote-up' data-voted='{{userVotedWishStr .}}'>
+              <i class='icon-thumbs-up icon-2x'></i>
             </a>
           {{/if}}
+          <a class='share-twitter' href="{{twitterShareWishUrl .}}" target="_blank">
+            <i class='icon-twitter icon-2x'></i>
+          </a>
         </td>
       </tr>
     {{/each}}
