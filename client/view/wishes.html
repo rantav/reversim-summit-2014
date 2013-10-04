@@ -13,7 +13,7 @@
   <form role="form" id='suggest'>
     <div class="form-group">
       <label for="title">Title</label>
-      <input class="form-control" id="title" placeholder="Enter title (optional)">
+      <input class="form-control" id="title" placeholder="Enter title">
     </div>
     <div class="form-group">
       <label for="description">Description</label>
@@ -44,7 +44,7 @@
           {{#if editMode}}
             <input value='{{title}}' class="edit-inline form-control" id='title-{{_id}}'/>
           {{else}}
-            {{title}}
+            <a href='{{pathFor "wish" id=_id}}'>{{title}}</a>
           {{/if}}
         </td>
         <td>

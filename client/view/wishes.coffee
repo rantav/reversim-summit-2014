@@ -3,7 +3,7 @@ Template.wishes.events
     event.preventDefault()
     title = $('#title').val()
     description = $('#description').val()
-    if title or description
+    if title
       Wish.makeWish(title: title, description: description)
 
   'click .delete':  ->

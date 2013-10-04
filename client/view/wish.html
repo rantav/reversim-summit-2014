@@ -1,0 +1,10 @@
+<template name='wish'>
+<h2><span style='color: #99aaaa'>Title:</span> {{wish.title}}</h2>
+<h2 style='color: #99aaaa'>Description</h2>
+<p class='lead'>{{wish.description}}</p>
+<img src='{{photo wish.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName wish.owner}} created"/>
+{{#each positiveVotes}}
+  <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
+{{/each}}
+
+</template>
