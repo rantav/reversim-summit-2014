@@ -32,6 +32,7 @@
     <th>Title</th>
     <th>Description</th>
     <th></th>
+    <th></th>
   </thead>
   <tbody>
     {{#each wishes}}
@@ -51,6 +52,11 @@
             {{description}}
           {{/if}}
         </td>
+        <td>
+          {{#each positiveVotes .}}
+          <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20'/>
+          {{/each}}
+        </td>
         <td class='actions'>
           {{#if owns .}}
             {{#if editMode}}
@@ -60,8 +66,12 @@
             {{#if editMode}}
               <button class='btn edit btn-warning'>Undo Edits</button>
             {{else}}
-              <button class='btn edit'>Edit</button>
+              <button class='btn edit btn-warning'>Edit</button>
             {{/if}}
+          {{else}}
+            <a href='javascript:void(0)' title='Vote up' class='vote-up'>
+              <i class='icon-thumbs-up'></i>
+            </a>
           {{/if}}
         </td>
       </tr>

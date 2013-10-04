@@ -4,7 +4,7 @@ root.Wish = class Wish
   @makeWish: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, owner: Meteor.userId(), createdAt: new Date())
+    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {})
     Wishes.insert(options)
 
 root.Wishes = new Meteor.Collection "wishes"
@@ -16,10 +16,25 @@ Wishes.allow
 
   update: (userId, doc, fields, modifier) ->
     # can only change your own documents
-    doc.owner == userId
+    if doc.owner == userId then return true
+
+    # can also vote
+    if (userId and
+        fields.length == 1 and
+        fields[0] == 'votes' and
+        modifier.$set and
+        modifier.$set.hasOwnProperty("votes.#{userId}"))
+      return true
 
   remove: (userId, doc) ->
     # can only remove your own documents
     doc.owner == userId
+
+  fetch: ['owner']
+
+Wishes.deny
+  update: (userId, doc, fields, modifier) ->
+    # owner can't vote for himself
+    doc.owner == userId and 'votes' in fields
 
   fetch: ['owner']
