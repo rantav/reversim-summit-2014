@@ -1,10 +1,40 @@
 <template name='wish'>
-<h2><span style='color: #99aaaa'>Title:</span> {{wish.title}}</h2>
-<h2 style='color: #99aaaa'>Description</h2>
-<p class='lead'>{{wish.description}}</p>
+<h2>
+  <span style='color: #99aaaa'>Title:</span>
+  {{#if editMode}}
+    <input value='{{wish.title}}' class="edit-inline form-control" id='title-{{wish._id}}'/>
+  {{else}}
+    {{wish.title}}
+  {{/if}}
+</h2>
+<h2 style='color: #99aaaa'>Description:</h2>
+{{#if editMode}}
+  <textarea class="edit-inline form-control" rows="3" id='description-{{wish._id}}'>{{wish.description}}</textarea>
+{{else}}
+  <p class='lead'>{{wish.description}}</p>
+{{/if}}
+
+
 <img src='{{photo wish.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName wish.owner}} created"/>
 {{#each positiveVotes}}
   <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
 {{/each}}
-
+<hr/>
+<div>
+{{#if owns wish}}
+  {{#if editMode}}
+    <button class='btn btn-primary update'>Update</button>
+  {{/if}}
+  <button class='btn btn-danger delete'>Delete</button>
+  {{#if editMode}}
+    <button class='btn edit btn-warning'>Undo Edits</button>
+  {{else}}
+    <button class='btn edit btn-warning'>Edit</button>
+  {{/if}}
+{{else}}
+  <a href='javascript:void(0)' title='Vote up' class='vote-up'>
+    <i class='icon-thumbs-up'></i>
+  </a>
+{{/if}}
+</div>
 </template>
