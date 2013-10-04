@@ -37,11 +37,31 @@
     {{#each wishes}}
       <tr>
         <td><img src='{{photo owner}}' class='img-thumbnail img-thumbnail-40'/></td>
-        <td>{{title}}</td>
-        <td>{{description}}</td>
+        <td>
+          {{#if editMode}}
+            <input value='{{title}}' class="edit-inline form-control" id='title-{{_id}}'/>
+          {{else}}
+            {{title}}
+          {{/if}}
+        </td>
+        <td>
+          {{#if editMode}}
+            <textarea class="edit-inline form-control" rows="3" id='description-{{_id}}'>{{description}}</textarea>
+          {{else}}
+            {{description}}
+          {{/if}}
+        </td>
         <td class='actions'>
           {{#if owns .}}
+            {{#if editMode}}
+              <button class='btn btn-primary update'>Update</button>
+            {{/if}}
             <button class='btn btn-danger delete'>Delete</button>
+            {{#if editMode}}
+              <button class='btn edit btn-warning'>Undo Edits</button>
+            {{else}}
+              <button class='btn edit'>Edit</button>
+            {{/if}}
           {{/if}}
         </td>
       </tr>

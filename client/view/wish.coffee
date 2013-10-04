@@ -1,3 +1,5 @@
+editing = new Deps.Dependency()
+
 Template.wish.events
   'submit form#suggest': (event) ->
     event.preventDefault()
@@ -9,7 +11,16 @@ Template.wish.events
   'click .delete':  ->
     Wishes.remove(@_id)
 
+  'click .edit':  ->
+    Wishes.update(@_id, $set: editing: (not @editing))
+
+  'click .update': (event, context) ->
+    title = context.find("#title-#{@_id}").value
+    description = context.find("#description-#{@_id}").value
+    Wishes.update(@_id, $set: {editing: false, title: title, description: description})
+
 Template.wish.wishes = ->
+  editing.depend()
   Wishes.find({}, sort: createdAt: -1)
 
 Template.wish.photo = (userId) ->
@@ -18,3 +29,6 @@ Template.wish.photo = (userId) ->
 Template.wish.owns = (wish) ->
   u = Meteor.userId()
   wish and u and wish.owner == u
+
+Template.wish.editMode = ->
+  Template.wish.owns(@) and @editing
