@@ -5,10 +5,11 @@ class @WishController extends RouteController
   run: ->
     u = Meteor.user()
     if u
-      @render('login', to: 'login')
-      @render('nav', to: 'nav', data: page: 'wish')
+      @render('nav', to: 'nav')
       @render('wish', to: 'main')
     else
-      @render('nav', to: 'nav', data: page: 'propose')
+      @render('nav', to: 'nav')
       @render('wish', to: 'main')
 
+  data: ->
+    page: 'wish'
