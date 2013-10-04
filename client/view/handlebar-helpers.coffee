@@ -11,6 +11,6 @@ Handlebars.registerHelper 'userVotedWishStr', (wish)->
 
 Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
   if wish
-    shareText = "I wish there was a talk about \"#{wish.title}\" at #reversim summit. Vote me up!"
-    url = Router.path('wish', {id: wish._id})
+    url = "#{document.location.protocol}//#{document.location.host}#{Router.path('wish', {id: wish._id})}"
+    shareText = "I wish there was a talk about \"#{wish.title}\" at #reversim summit. Help by voting! #{url}"
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
