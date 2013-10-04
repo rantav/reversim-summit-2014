@@ -1,6 +1,4 @@
-editing = new Deps.Dependency()
-
-Template.wish.events
+Template.wishes.events
   'submit form#suggest': (event) ->
     event.preventDefault()
     title = $('#title').val()
@@ -31,29 +29,28 @@ Template.wish.events
 
     Wishes.update(@_id, $set: updateObj)
 
-Template.wish.wishes = ->
-  editing.depend()
+Template.wishes.wishes = ->
   Wishes.find({}, sort: createdAt: -1)
 
-Template.wish.photo = (userId) ->
+Template.wishes.photo = (userId) ->
   userId and User.findOne(userId).photoUrl(40)
 
-Template.wish.photoSmall = (userId) ->
+Template.wishes.photoSmall = (userId) ->
   userId and User.findOne(userId).photoUrl(20)
 
-Template.wish.owns = (wish) ->
+Template.wishes.owns = (wish) ->
   u = Meteor.userId()
   wish and u and wish.owner == u
 
-Template.wish.editMode = ->
-  Template.wish.owns(@) and @editing
+Template.wishes.editMode = ->
+  Template.wishes.owns(@) and @editing
 
-Template.wish.positiveVotes = (wish) ->
+Template.wishes.positiveVotes = (wish) ->
   user for user, vote of wish.votes when vote
 
-Template.wish.rendered = ->
+Template.wishes.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()
 
-Template.wish.destroyed = ->
+Template.wishes.destroyed = ->
   $('[data-toggle="tooltip"]').tooltip('destroy')
 
