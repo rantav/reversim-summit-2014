@@ -50,3 +50,10 @@ Template.wish.editMode = ->
 
 Template.wish.positiveVotes = (wish) ->
   user for user, vote of wish.votes when vote
+
+Template.wish.rendered = ->
+  $('[data-toggle="tooltip"]').tooltip()
+
+Template.wish.destroyed = ->
+  $('[data-toggle="tooltip"]').tooltip('destroy')
+

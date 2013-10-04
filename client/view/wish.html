@@ -37,7 +37,9 @@
   <tbody>
     {{#each wishes}}
       <tr>
-        <td><img src='{{photo owner}}' class='img-thumbnail img-thumbnail-40'/></td>
+        <td>
+          <img src='{{photo owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName owner}}"/>
+        </td>
         <td>
           {{#if editMode}}
             <input value='{{title}}' class="edit-inline form-control" id='title-{{_id}}'/>
@@ -54,7 +56,7 @@
         </td>
         <td>
           {{#each positiveVotes .}}
-          <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20'/>
+            <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}}"/>
           {{/each}}
         </td>
         <td class='actions'>
@@ -66,7 +68,8 @@
             {{#if editMode}}
               <button class='btn edit btn-warning'>Undo Edits</button>
             {{else}}
-              <button class='btn edit btn-warning'>Edit</button>
+              <button class='btn edit btn-warning
+              '>Edit</button>
             {{/if}}
           {{else}}
             <a href='javascript:void(0)' title='Vote up' class='vote-up'>

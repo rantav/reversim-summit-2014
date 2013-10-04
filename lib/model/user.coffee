@@ -12,6 +12,8 @@ root.User = class User
 
   constructor: (@data) ->
 
+  name: -> @data.profile.name
+
   photoUrl: (height) ->
     if @data.services
       if @data.services.google
