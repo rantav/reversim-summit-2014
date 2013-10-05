@@ -1,7 +1,7 @@
 class @ProposeController extends RouteController
+  template: 'propose'
   renderTemplates:
     'nav': to: 'nav'
-    'propose': to: 'main'
 
   data: ->
     page: 'propose'

@@ -1,7 +1,7 @@
 class @HomeController extends RouteController
+  tempalte: 'home'
   renderTemplates:
     'nav': to: 'nav'
-    'home': to: 'main'
 
   data: ->
     page: 'home'

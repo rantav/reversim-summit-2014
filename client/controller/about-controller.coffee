@@ -1,7 +1,7 @@
 class @AboutController extends RouteController
+  tempalte: 'about'
   renderTemplates:
     'nav': to: 'nav'
-    'about': to: 'main'
 
   data: ->
     page: 'about'

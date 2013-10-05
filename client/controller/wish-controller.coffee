@@ -2,9 +2,10 @@ class @WishController extends RouteController
 
   waitOn: -> [subscriptionHandles['wishes'], subscriptionHandles['users']]
 
+  tempalte: 'wish'
+
   renderTemplates:
     'nav': to: 'nav'
-    'wish': to: 'main'
 
   notFoundTemplate: 'notFound'
 
