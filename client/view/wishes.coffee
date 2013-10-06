@@ -4,7 +4,9 @@ Template.wishes.events
     title = $('#title').val()
     description = $('#description').val()
     if title
-      Wish.makeWish(title: title, description: description)
+      w = Wish.makeWish(title: title, description: description)
+      Router.go('wish', {id: w})
+      alertify.success('Great, now you can promote it on Twitter')
 
   'click .delete':  ->
     Wishes.remove(@_id)
