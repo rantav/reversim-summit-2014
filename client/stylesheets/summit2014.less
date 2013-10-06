@@ -5,13 +5,23 @@
 
 
 body {
-  background-image: url(http://d2m67og26u1b6a.cloudfront.net/img/bg.jpg);
+  background-image: url(http://d2m67og26u1b6a.cloudfront.net/img/bg2.jpg);
   background-attachment:fixed;
   background-position:center center;
   background-repeat:no-repeat
 }
 .footer {
   margin: 2em;
+}
+
+@container-border-radius: 10px;
+.container {
+  background: rgba(554, 255, 255, .6);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  -webkit-border-radius: @container-border-radius;
+  -moz-border-radius: @container-border-radius;
+  border-radius: @container-border-radius;
 }
 a.logo {
   background: url('http://d2m67og26u1b6a.cloudfront.net/img/logo-white.png');
