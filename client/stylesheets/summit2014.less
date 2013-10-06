@@ -76,13 +76,23 @@ img.about-img {
 
 .vote-up, a.vote-up:hover {
   color: #5CB85C;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  display: inline-block;
 }
 a.vote-up:hover {
   color: #4ba74b;
 }
 a[data-voted='true'].vote-up:hover {
   color: #D9534F;
+  -webkit-transform:rotate(180deg);
+  -moz-transform:rotate(180deg);
+  -o-transform:rotate(180deg);
+  transform: rotate(180deg);
 }
+
 .actions {
   text-align: right;
 }
