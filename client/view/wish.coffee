@@ -23,7 +23,6 @@ Template.wish.events
     updateObj[schemaPath] = not @wish.votes[u]
 
     Wishes.update(@wish._id, $set: updateObj)
-    alertify.success('Thanks for voting!')
 
 Template.wish.wish = ->
   @wish

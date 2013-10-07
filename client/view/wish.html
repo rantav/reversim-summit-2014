@@ -40,7 +40,7 @@
     </a>
   {{/if}}
 {{else}}
-  <a href='javascript:void(0)' data-voted='{{userVotedWishStr wish}}' title='Vote up' class='vote-up no-underline'>
+  <a href='javascript:void(0)' data-voted='{{userVotedWishStr wish}}' data-toggle="tooltip" title='{{wishVoteTooltip wish}}' class='vote-up no-underline'>
     <i class='icon-thumbs-up icon-2x'></i>
   </a>
 {{/if}}
