@@ -1,9 +1,11 @@
+
 BUG: Tooltip gets cut b/c of the #wrap
-BUG: Fix buttons on the wish page (replace with icons)
+
 BUG: Fix avatars for mobile.
 will fix this...
 BUG: When already voted, change the tooltip to Unvote. Both on /wishes and /wish/:id
 
+When deleting a wish: Don't actually delete it just mark it as deleted, to fix accidental deletions
 Change BG image
 Better layout for mobile
 

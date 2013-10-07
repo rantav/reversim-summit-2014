@@ -2,11 +2,12 @@ Template.wish.events
   'click .delete':  ->
     Wishes.remove(@wish._id)
     Router.go 'wishes'
+    alertify.success('OK, Deleted')
 
   'click .edit':  ->
     Wishes.update(@wish._id, $set: editing: (not @wish.editing))
 
-  'click .update': (event, context) ->
+  'click .save': (event, context) ->
     title = context.find("#title-#{@wish._id}").value
     description = context.find("#description-#{@wish._id}").value
     Wishes.update(@wish._id, $set: {editing: false, title: title, description: description})
@@ -22,6 +23,7 @@ Template.wish.events
     updateObj[schemaPath] = not @wish.votes[u]
 
     Wishes.update(@wish._id, $set: updateObj)
+    alertify.success('Thanks for voting!')
 
 Template.wish.wish = ->
   @wish
