@@ -1,16 +1,24 @@
-/* CSS declarations go here */
-// @import "scheme.lessimport";
 @import "packages/bootstrap3-less/bootstrap.lessimport";
-// @import "1pxdeep.lessimport";
 
-
-body {
-  background-image: url(http://d2m67og26u1b6a.cloudfront.net/img/bg3.jpg);
-  background-attachment:fixed;
-  background-position:center center;
-  background-repeat:no-repeat;
-  background-color: #D0D0D0;
+@media (min-width: @screen-sm) {
+  // Background image - not for phones, only larger devices
+  body {
+    background-image: url(http://d2m67og26u1b6a.cloudfront.net/img/bg3.jpg);
+    background-attachment:fixed;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-color: #D0D0D0;
+  }
+  @bg-border-radius: 10px;
+  .bg {
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid #fff;
+    -webkit-border-radius: @bg-border-radius;
+    -moz-border-radius: @bg-border-radius;
+    border-radius: @bg-border-radius;
+  }
 }
+
 h1, h2, h3{
   font-family: 'Chivo','Helvetica Neue',Helvetica,Arial,serif;
 }
@@ -39,14 +47,6 @@ html, body {
   padding-top:20px;
 }
 
-@bg-border-radius: 10px;
-.bg {
-  background: rgba(255, 255, 255, .8);
-  border: 1px solid #fff;
-  -webkit-border-radius: @bg-border-radius;
-  -moz-border-radius: @bg-border-radius;
-  border-radius: @bg-border-radius;
-}
 a.logo {
   background: url('http://d2m67og26u1b6a.cloudfront.net/img/logo-white.png');
   display: block;

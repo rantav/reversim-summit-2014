@@ -1,6 +1,5 @@
 When deleting a wish: Don't actually delete it just mark it as deleted, to fix accidental deletions
 Change BG image
-Better layout for mobile
 
 Spidarable (SEO) http://www.meteor.com/faq/can-meteor-serve-static-html
 
