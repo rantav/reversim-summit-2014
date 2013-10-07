@@ -2,11 +2,13 @@
 <div id="wrap">
   <div id='main' class="container clear-top bg">
     <div class="header">
-      <a href='{{pathFor "home"}}' class="logo pull-left" title='Reversim Summit 2014'></a>
-      <h3 class='text-muted pull-left no-underline'><a href='{{pathFor "home"}}'>Reversim Summit 2014</a></h3>
+      <div class=row>
+        <a href='{{pathFor "home"}}' class="logo pull-left" title='Reversim Summit 2014'></a>
+        <h3 class='text-muted pull-left no-underline'><a href='{{pathFor "home"}}'>Reversim Summit 2014</a></h3>
+      </div>
+      <div class='row'>{{yield 'nav'}}</div>
     </div>
     <div class='clearfix'></div>
-    {{yield 'nav'}}
     <div class='row'>
       <div class='col-md-12'>
         {{yield}}
