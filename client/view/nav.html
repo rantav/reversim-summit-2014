@@ -1,9 +1,9 @@
 <template name='nav'>
-<ul class="nav nav-tabs pull-right">
+<ul class="nav nav-tabs pull-left">
   <li class="{{activeClass 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
   <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}">Propose</a></li>
   <li class="{{activeClass 'wishes'}}"><a href="{{pathFor 'wishes'}}">Wish List ({{wishes}})</a></li>
   <li class="{{activeClass 'about'}}"><a href="{{pathFor 'about'}}">About</a></li>
-  <li>{{loginButtons}}</li>
+  <li class="dropdown">{{loginButtons}}</li>
 </ul>
 </template>
