@@ -1,0 +1,20 @@
+BUG: 2 login boxes
+BUG: Tooltip gets cut b/c of the #wrap
+BUG: Fix buttons on the wish page (replace with icons)
+BUG: Fix avatars for mobile.
+Merge PR from Tor
+BUG: the tabs don't behave right. Not on mobile and even on desktop the hover effect isn't right... Maybe the PR will fix this...
+BUG: When already voted, change the tooltip to Unvote. Both on /wishes and /wish/:id
+
+Change BG image
+Better layour for mobile
+Spidarable (SEO) http://www.meteor.com/faq/can-meteor-serve-static-html
+Add a section for 2013. Link to the website, to the videos and to photos
+
+Add comments to wishes
+
+Add Location tab (venue etc)
+
+Propose
+
+Registration...
