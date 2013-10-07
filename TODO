@@ -1,4 +1,3 @@
-BUG: Tooltip gets cut b/c of the #wrap
 
 BUG: Fix avatars for mobile.
 
@@ -7,6 +6,7 @@ Change BG image
 Better layout for mobile
 
 Spidarable (SEO) http://www.meteor.com/faq/can-meteor-serve-static-html
+
 Add a section for 2013. Link to the website, to the videos and to photos
 
 Add comments to wishes
