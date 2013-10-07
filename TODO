@@ -1,6 +1,3 @@
-
-BUG: Fix avatars for mobile.
-
 When deleting a wish: Don't actually delete it just mark it as deleted, to fix accidental deletions
 Change BG image
 Better layout for mobile
