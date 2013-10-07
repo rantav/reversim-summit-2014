@@ -4,7 +4,7 @@ Router.map ->
   @route 'propose', controller: 'ProposeController'
   @route 'wishes', controller: 'WishesController'
   @route 'wish', path: '/wish/:id', controller: 'WishController'
-  @route 'loading'
+  @route 's2013', path: '/s2013', controller: 'S2013Controller'
 
 Router.configure
   layout: 'layout'
