@@ -21,32 +21,32 @@
 {{/each}}
 <hr/>
 <div class='actions-single'>
-{{#if owns wish}}
-  {{#if editMode}}
-    <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
-      <i class='icon-save icon-2x'></i>
+  {{#if owns wish}}
+    {{#if editMode}}
+      <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
+        <i class='icon-save icon-2x'></i>
+      </a>
+    {{/if}}
+    <a href='javascript:void(0)' class='delete no-underline' data-toggle="tooltip" title='Delete'>
+      <i class='icon-trash icon-2x'></i>
     </a>
-  {{/if}}
-  <a href='javascript:void(0)' class='delete no-underline' data-toggle="tooltip" title='Delete'>
-    <i class='icon-trash icon-2x'></i>
-  </a>
-  {{#if editMode}}
-    <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
-      <i class='icon-undo icon-2x'></i>
-    </a>
+    {{#if editMode}}
+      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
+        <i class='icon-undo icon-2x'></i>
+      </a>
+    {{else}}
+      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
+        <i class='icon-edit icon-2x'></i>
+      </a>
+    {{/if}}
   {{else}}
-    <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
-      <i class='icon-edit icon-2x'></i>
+    <a href='javascript:void(0)' data-voted='{{userVotedWishStr wish}}' data-toggle="tooltip" title='{{wishVoteTooltip wish}}' class='vote-up no-underline'>
+      <i class='icon-thumbs-up icon-2x'></i>
     </a>
   {{/if}}
-{{else}}
-  <a href='javascript:void(0)' data-voted='{{userVotedWishStr wish}}' data-toggle="tooltip" title='{{wishVoteTooltip wish}}' class='vote-up no-underline'>
-    <i class='icon-thumbs-up icon-2x'></i>
+  <a class='share-twitter no-underline' href="{{twitterShareWishUrl wish}}" target="_blank">
+    <i class='icon-twitter icon-2x'></i>
   </a>
-{{/if}}
-<a class='share-twitter no-underline' href="{{twitterShareWishUrl wish}}" target="_blank">
-  <i class='icon-twitter icon-2x'></i>
-</a>
-
 </div>
+{{> disqus}}
 </template>
