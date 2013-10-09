@@ -1,6 +1,6 @@
 Template.wish.events
   'click .delete':  ->
-    Wishes.remove(@wish._id)
+    Wish.delete(@wish)
     Router.go 'wishes'
     alertify.success('OK, Deleted')
 

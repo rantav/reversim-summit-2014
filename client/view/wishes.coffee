@@ -9,7 +9,7 @@ Template.wishes.events
       alertify.success('Great, now you can promote it on Twitter')
 
   'click .delete':  ->
-    Wishes.remove(@_id)
+    Wish.delete(@)
 
   'click .edit':  ->
     Wishes.update(@_id, $set: editing: (not @editing))

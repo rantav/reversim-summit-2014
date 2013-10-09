@@ -7,6 +7,9 @@ root.Wish = class Wish
     _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {})
     Wishes.insert(options)
 
+  @delete: (wishData) ->
+    Wishes.update(wishData._id, $set: deleted: true)
+
 root.Wishes = new Meteor.Collection "wishes"
 
 Wishes.allow
