@@ -2,13 +2,9 @@ When deleting a wish: Don't actually delete it just mark it as deleted, to fix a
 
 Change BG image
 
-Spidarable (SEO) http://www.meteor.com/faq/can-meteor-serve-static-html
-
 Support links in wishes. Or actual markdown
 
 Add comments to wishes
-
-Add analytics
 
 Add Location tab (venue etc)
 
