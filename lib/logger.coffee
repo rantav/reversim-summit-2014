@@ -1,3 +1,3 @@
-root = exports ? this
+# root = exports ? this
 
-root.log = Observatory.getToolbox()
+# root.log = Observatory.getToolbox()
