@@ -14,10 +14,11 @@ Template.wishes.events
   'click .edit':  ->
     Wishes.update(@_id, $set: editing: (not @editing))
 
-  'click .update': (event, context) ->
+  'click .save': (event, context) ->
     title = context.find("#title-#{@_id}").value
     description = context.find("#description-#{@_id}").value
-    Wishes.update(@_id, $set: {editing: false, title: title, description: description})
+    if title
+      Wishes.update(@_id, $set: {editing: false, title: title, description: description})
 
   'click .vote-up': ->
     u = Meteor.userId()
