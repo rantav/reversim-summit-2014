@@ -4,6 +4,6 @@ success = 0
 for s in subscriptions
   ((s) ->
     subscriptionHandles[s] = Meteor.subscribe s,
-      onReady: -> log.info('ready: ' + s)
-      onError: -> log.error('ERROR: ' + s)
+      onReady: -> console.log('ready: ' + s)
+      onError: -> console.log('ERROR: ' + s)
   )(s)
