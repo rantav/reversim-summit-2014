@@ -11,7 +11,7 @@
 {{#if editMode}}
   <textarea class="edit-inline form-control" rows="3" id='description-{{wish._id}}'>{{wish.description}}</textarea>
 {{else}}
-  <p class='lead'>{{wish.description}}</p>
+  <p class='lead'>{{{marked wish.description}}}</p>
 {{/if}}
 
 

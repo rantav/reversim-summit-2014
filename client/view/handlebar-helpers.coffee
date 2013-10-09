@@ -22,3 +22,6 @@ Handlebars.registerHelper 'wishVoteTooltip', (wish) ->
   u = Meteor.userId()
   if not u then return "Login to vote"
   if wish.votes[u] then 'Unvote' else 'Vote'
+
+Handlebars.registerHelper 'marked', (text)->
+  marked(text)

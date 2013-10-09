@@ -5,7 +5,11 @@
       "observatory": {},
       "iron-router": {},
       "bootstrap3-less": {},
-      "spin": {}
+      "spin": {},
+      "marked": {
+        "git": "https://github.com/rantav/meteor-marked",
+        "branch": "master"
+      }
     },
     "packages": {
       "observatory": {
@@ -27,6 +31,11 @@
         "git": "https://github.com/SachaG/meteor-spin.git",
         "tag": "v0.2.0",
         "commit": "fd3a2871a69442848b4b4e74f5e1ae28fa4a95a4"
+      },
+      "marked": {
+        "git": "https://github.com/rantav/meteor-marked",
+        "branch": "master",
+        "commit": "34f07881dd902ad8e24fcd5672da8245b8d0889e"
       },
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",

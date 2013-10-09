@@ -19,3 +19,13 @@ setupGa = ->
   ga('send', 'pageview',
     'page': document.location.pathname,
     'location': document.location.href)
+
+Meteor.startup ->
+  marked.setOptions
+    gfm: true,
+    tables: true,
+    breaks: true,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false,
