@@ -5,6 +5,7 @@ Router.map ->
   @route 'wishes', controller: 'WishesController'
   @route 'wish', path: '/wish/:id', controller: 'WishController'
   @route 's2013', path: '/s2013', controller: 'S2013Controller'
+  @route 'venue', path: '/venue', controller: 'VenueController'
 
 Router.configure
   layout: 'layout'
