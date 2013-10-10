@@ -9,3 +9,9 @@ Router.map ->
 Router.configure
   layout: 'layout'
   loadingTemplate: 'loading'
+
+
+Deps.autorun ->
+  Router.current()
+  Deps.afterFlush ->
+    $(window).scrollTop(0)
