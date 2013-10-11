@@ -27,7 +27,7 @@ root.User = class User
       else if @data.services.facebook
         picture = "http://graph.facebook.com/#{@data.services.facebook.id}/picture/"
         if height
-          picture = "#{picture}?height=#{height/2}"
+          picture = "#{picture}?height=#{height/2}&width=#{height/2}"
       else if @data.services.twitter
         picture = @data.services.twitter.profile_image_url
     if not picture
