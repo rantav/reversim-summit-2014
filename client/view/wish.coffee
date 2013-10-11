@@ -24,7 +24,9 @@ Template.wish.events
 
     Wishes.update(@wish._id, $set: updateObj)
 
+wish = null
 Template.wish.wish = ->
+  wish = @wish
   @wish
 
 Template.wish.positiveVotes = ->
@@ -44,6 +46,7 @@ Template.wish.editMode = ->
   Template.wish.owns(@wish) and @wish.editing
 
 Template.wish.rendered = ->
+  window.disqus_url = Meteor.absoluteUrl().slice(0, -1) + Router.path('wish', id: wish._id)
   $('[data-toggle="tooltip"]').tooltip()
 
 Template.wish.destroyed = ->
