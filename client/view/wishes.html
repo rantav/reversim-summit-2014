@@ -44,7 +44,7 @@
           {{#if editMode}}
             <input value='{{title}}' class="edit-inline form-control" id='title-{{_id}}'/>
           {{else}}
-            <a href='{{pathFor "wish" id=_id}}'>{{title}}</a>
+            <a href='{{pathFor "wish" id=_id title=title}}'>{{title}}</a>
           {{/if}}
         </td>
         <td>
