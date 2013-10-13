@@ -55,9 +55,14 @@
           {{/if}}
         </td>
         <td>
-          {{#each positiveVotes .}}
+          {{#each positiveVotesShort .}}
             <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
           {{/each}}
+          {{#if positiveVotesHasMore .}}
+            <span class='no-break'>
+              And <a href='{{pathFor "wish" id=_id title=title}}'>{{positiveVotesMore .}} more</a>
+            </span>
+          {{/if}}
         </td>
         <td class='actions'>
           {{#if owns .}}

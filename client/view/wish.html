@@ -14,11 +14,12 @@
   <p class='lead'>{{{marked wish.description}}}</p>
 {{/if}}
 
-
-<img src='{{photo wish.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName wish.owner}} created"/>
-{{#each positiveVotes}}
-  <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
-{{/each}}
+<div id='votes'>
+  <img src='{{photo wish.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName wish.owner}} created"/>
+  {{#each positiveVotes}}
+    <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
+  {{/each}}
+</div>
 <hr/>
 <div class='actions-single'>
   {{#if owns wish}}

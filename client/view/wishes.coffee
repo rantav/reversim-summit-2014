@@ -51,8 +51,18 @@ Template.wishes.owns = (wish) ->
 Template.wishes.editMode = ->
   Template.wishes.owns(@) and @editing
 
-Template.wishes.positiveVotes = (wish) ->
+votes = (wish) ->
   user for user, vote of wish.votes when vote
+votesMoreThreshold = 6
+
+Template.wishes.positiveVotesShort = (wish) ->
+  votes(wish).slice(0, votesMoreThreshold)
+
+Template.wishes.positiveVotesHasMore = (wish) ->
+  votes(wish).length > votesMoreThreshold
+
+Template.wishes.positiveVotesMore = (wish) ->
+  votes(wish).length - votesMoreThreshold
 
 Template.wishes.disqusPath = (wish)->
   url = Meteor.absoluteUrl().slice(0, -1) + Router.path('wish', id: wish._id)
@@ -74,7 +84,6 @@ Template.wishes.rendered = ->
   # Add <a href='{{disqusPath .}}'></a> somewhere in the template
   $('[data-toggle="tooltip"]').tooltip()
 
-Template.wishes.created = ->
 
 Template.wishes.destroyed = ->
   $('[data-toggle="tooltip"]').tooltip('destroy')
