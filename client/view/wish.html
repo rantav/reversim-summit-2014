@@ -1,13 +1,13 @@
 <template name='wish'>
 <h2>
-  <span style='color: #99aaaa'>Title:</span>
+  <span class='pre-header'>Title:</span>
   {{#if editMode}}
     <input value='{{wish.title}}' class="edit-inline form-control" id='title-{{wish._id}}'/>
   {{else}}
     {{wish.title}}
   {{/if}}
 </h2>
-<h2 style='color: #99aaaa'>Description:</h2>
+<h2><span class='pre-header'>Description:</span></h2>
 {{#if editMode}}
   <textarea class="edit-inline form-control" rows="3" id='description-{{wish._id}}'>{{wish.description}}</textarea>
 {{else}}

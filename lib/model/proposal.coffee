@@ -1,18 +1,18 @@
 root = exports ? this
 
-root.Wish = class Wish
-  @makeWish: (options) ->
+root.Proposal = class Proposal
+  @propose: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {})
-    Wishes.insert(options)
+    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {}, comments: [])
+    Proposals.insert(options)
 
-  @delete: (wishData) ->
-    Wishes.update(wishData._id, $set: deleted: true)
+  @delete: (proposalData) ->
+    Proposals.update(proposalData._id, $set: deleted: true)
 
-root.Wishes = new Meteor.Collection "wishes"
+root.Proposals = new Meteor.Collection "proposals"
 
-Wishes.allow
+Proposals.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
     userId and doc.owner == userId
@@ -31,7 +31,7 @@ Wishes.allow
 
   fetch: ['owner']
 
-Wishes.deny
+Proposals.deny
   update: (userId, doc, fields, modifier) ->
     # owner can't vote for himself
     doc.owner == userId and 'votes' in fields
