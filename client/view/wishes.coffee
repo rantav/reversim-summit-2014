@@ -50,6 +50,11 @@ Template.wishes.commentsCount = (wish) ->
 Template.wishes.hasComments = (wish) ->
   wish.comments.length > 0
 
+Template.wishes.commentsText = (wish) ->
+  n = wish.comments.length
+  if n == 1 then return '1 comment'
+  if n > 1 then return "#{n} comments"
+
 Template.wishes.owns = (wish) ->
   u = Meteor.userId()
   wish and u and wish.owner == u
