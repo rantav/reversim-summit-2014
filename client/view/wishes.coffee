@@ -54,8 +54,27 @@ Template.wishes.editMode = ->
 Template.wishes.positiveVotes = (wish) ->
   user for user, vote of wish.votes when vote
 
+Template.wishes.disqusPath = (wish)->
+  url = Meteor.absoluteUrl().slice(0, -1) + Router.path('wish', id: wish._id)
+  url += '#disqus_thread'
+  url
+
 Template.wishes.rendered = ->
+  `
+  var disqus_shortname = 'summit2014';
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+  var s = document.createElement('script'); s.async = true;
+  s.type = 'text/javascript';
+  s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+  `
+  # Add <a href='{{disqusPath .}}'></a> somewhere in the template
   $('[data-toggle="tooltip"]').tooltip()
+
+Template.wishes.created = ->
 
 Template.wishes.destroyed = ->
   $('[data-toggle="tooltip"]').tooltip('destroy')
