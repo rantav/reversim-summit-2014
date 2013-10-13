@@ -29,6 +29,9 @@ Template.wish.wish = ->
   wish = @wish
   @wish
 
+Template.wish.wishObj = ->
+  new Wish(@wish)
+
 Template.wish.positiveVotes = ->
   user for user, vote of @wish.votes when vote
 

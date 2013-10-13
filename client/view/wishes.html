@@ -52,6 +52,11 @@
             <textarea class="edit-inline form-control" rows="3" id='description-{{_id}}'>{{description}}</textarea>
           {{else}}
             {{{marked description}}}
+            {{#if hasComments .}}
+              <div class='pull-right'>
+                <a href='{{{pathFor "wish" id=_id title=title}}#comments'>{{commentsCount .}} comments</a>
+              </div>
+            {{/if}}
           {{/if}}
         </td>
         <td>

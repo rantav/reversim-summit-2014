@@ -49,5 +49,7 @@
     <i class='icon-twitter icon-2x'></i>
   </a>
 </div>
-{{> disqus}}
+{{#with wishObj}}
+  {{> comments}}
+{{/with}}
 </template>
