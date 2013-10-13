@@ -1,3 +1,68 @@
 <template name='proposals'>
-  <h1>Proposals</h1>
+<h1>Proposals</h1>
+<table class='table'>
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Description</th>
+    <th style='width:120px'></th>
+    <th></th>
+  </thead>
+  <tbody>
+    {{#each proposals}}
+      <tr>
+        <td>
+          <img src='{{photo owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName owner}} created"/>
+        </td>
+        <td>
+          {{#if editMode}}
+            <input value='{{title}}' class="edit-inline form-control" id='title-{{_id}}'/>
+          {{else}}
+            <a href='{{pathFor "proposal" id=_id title=title}}'>{{title}}</a>
+          {{/if}}
+        </td>
+        <td>
+          {{#if editMode}}
+            <textarea class="edit-inline form-control" rows="3" id='description-{{_id}}'>{{description}}</textarea>
+          {{else}}
+            {{{marked description}}}
+          {{/if}}
+        </td>
+        <td>
+          {{#each positiveVotes .}}
+            <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
+          {{/each}}
+        </td>
+        <td class='actions'>
+          {{#if owns .}}
+            {{#if editMode}}
+              <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
+                <i class='icon-save icon-1x'></i>
+              </a>
+            {{/if}}
+            <a href='javascript:void(0)' class='delete no-underline' data-toggle="tooltip" title='Delete'>
+              <i class='icon-trash icon-1x'></i>
+            </a>
+            {{#if editMode}}
+              <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
+                <i class='icon-undo icon-1x'></i>
+              </a>
+            {{else}}
+              <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
+                <i class='icon-edit icon-1x'></i>
+              </a>
+            {{/if}}
+          {{else}}
+            <a href='javascript:void(0)' class='vote-up no-underline' data-voted='{{userVotedWishStr .}}' data-toggle="tooltip" title='{{wishVoteTooltip .}}'>
+              <i class='icon-thumbs-up icon-1x'></i>
+            </a>
+          {{/if}}
+          <a class='share-twitter no-underline' href="{{twitterShareWishUrl .}}" target="_blank" data-toggle="tooltip" title='Share'>
+            <i class='icon-twitter icon-1x'></i>
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
 </template>

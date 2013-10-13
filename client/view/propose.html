@@ -1,15 +1,44 @@
 <template name='propose'>
-  <h1>Call for Proposals</h1>
-  <p class='lead'>
-    The call for proposals isn't open yet.
-    Please
-    <a class="btn btn-success" href="https://twitter.com/reversim">
-      <i class='icon-twitter icon-1x'></i> Follow us on Twitter
-    </a>
-    or
-    <a class="btn btn-success" href="https://groups.google.com/forum/#!forum/reversim-summit">
-      <i class='icon-group icon-1x'></i> Join our Group
-    </a>
-    to get notified.
-  </p>
+<h1>Propose</h1>
+<h2>Timeline</h2>
+<p>
+  TODO
+</p>
+<h2>What are the Toics?</h2>
+<p>
+  To get a good idea of topics we're interested in you can check out the talks from
+  <a href='http://summit2013.reversim.com/'>last year's conference</a>
+  (or <a href='http://www.youtube.com/playlist?list=PLp33GadmS4eWYy52JKAvuaiovQA9i_qzU'>videos</a>).
+</p>
+<p>
+  This year we are especially interested in <strong>Made in Israel</strong>, which means
+  projects written by israli folks, products by israelis, products for israelis etc.
+  Anything that smells from Falafel.
+</p>
+<p>
+  Unlike last year, this time we've decided that we will not define a list of tracks upfront,
+  rather open up the submission to any topic.
+  Laten on we will choose the best talks and sort them by topic relevancy,
+  so that attendees would be able to focus on tracks and room.
+</p>
+<p>
+  This means that we want submission on any topic that may interest developers, product folks, UX etc, including startups, mobile, web, devops, data processing, scaling, programming languages, api design, data science,
+  gaming, computer vision and more....
+  This is not a closed list, it's just to give ideas, if your topic doesn't seem to fit here and is of general interest, we want it!
+</p>
+{{#if loggedIn}}
+  <form role="form" id='propose'>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" id="title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" rows="3" id='description' placeholder='Enter description'></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{{else}}
+  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>sign in</a></p>
+{{/if}}
 </template>

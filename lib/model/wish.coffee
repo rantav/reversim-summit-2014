@@ -10,6 +10,9 @@ root.Wish = class Wish
   @delete: (wishData) ->
     Wishes.update(wishData._id, $set: deleted: true)
 
+  @count: ->
+    Wishes.find($or: [{deleted: $exists: false}, {deleted: false}]).count()
+
 root.Wishes = new Meteor.Collection "wishes"
 
 Wishes.allow

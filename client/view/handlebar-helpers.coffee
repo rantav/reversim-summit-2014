@@ -15,6 +15,13 @@ Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
     shareText = "I wish there was a talk about \"#{wish.title}\" at #reversim summit. Help by voting!"
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
 
+Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
+  if proposal
+    url = "#{document.location.protocol}//#{document.location.host}#{Router.path('proposal', {id: proposal._id})}"
+    shareText = "Submitted to reversim conf: \"#{proposal.title}\""
+    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
+
+
 Handlebars.registerHelper 'staticImg', (path)->
   Cdn.cdnify(path)
 

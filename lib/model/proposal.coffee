@@ -4,11 +4,14 @@ root.Proposal = class Proposal
   @propose: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {}, comments: [])
+    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {}, comments: [], status: 'submitted')
     Proposals.insert(options)
 
   @delete: (proposalData) ->
     Proposals.update(proposalData._id, $set: deleted: true)
+
+  @count: ->
+    Proposals.find($or: [{deleted: $exists: false}, {deleted: false}]).count()
 
 root.Proposals = new Meteor.Collection "proposals"
 
