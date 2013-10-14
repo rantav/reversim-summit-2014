@@ -75,6 +75,9 @@ Template.wishes.positiveVotesHasMore = (wish) ->
 Template.wishes.positiveVotesMore = (wish) ->
   votes(wish).length - votesMoreThreshold
 
+Template.wishes.rendered = ->
+  $('[data-toggle="tooltip"]').tooltip()
+
 Template.wishes.destroyed = ->
   $('[data-toggle="tooltip"]').tooltip('destroy')
 
