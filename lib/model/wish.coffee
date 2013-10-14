@@ -5,7 +5,7 @@ root.Wish = class Wish
   @makeWish: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {})
+    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {}, comments: [])
     Wishes.insert(options)
 
   @delete: (wishData) ->
@@ -41,7 +41,6 @@ Wishes.allow
       return true
 
     # Allowed to add comments
-    console.log(modifier)
     if (userId and
         fields.length == 1 and
         fields[0] == 'comments' and
