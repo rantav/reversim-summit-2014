@@ -14,8 +14,8 @@ Template.proposal.events
 
 Template.proposal.proposal = -> @proposal
 
-Template.proposal.photo = (userId) ->
-  userId and User.findOne(userId).photoUrl(40)
+Template.proposal.photo = (user) ->
+  user.photoUrl(40)
 
 Template.proposal.editMode = ->
   @proposal.editing and @proposal.mine()

@@ -24,7 +24,7 @@
   <p class='lead'>{{{marked proposal.abstract}}}</p>
 {{/if}}
 
-<img src='{{photo proposal.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName proposal.owner}} created"/>
+<img src='{{photo proposal.user}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{proposal.user.name}}"/>
 <hr/>
 <div class='actions-single'>
   {{#if proposal.mine}}

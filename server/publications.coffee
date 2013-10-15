@@ -2,7 +2,7 @@ Meteor.publish "wishes", ->
   Wishes.find($or: [{deleted: $exists: false}, {deleted: false}])
 
 Meteor.publish "users", ->
-  Meteor.users.find {},
+  User.find {},
     fields:
       profile: 1
       'services.google.picture': 1

@@ -11,7 +11,7 @@
     {{#each proposals}}
       <tr>
         <td>
-          <img src='{{photo owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName owner}} created"/>
+          <img src='{{photo user}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{user.name}}"/>
         </td>
         <td>
           <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>

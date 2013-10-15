@@ -1,7 +1,12 @@
 class @Proposal extends Minimongoid
 
   notDeleted = $or: [{deleted: $exists: false}, {deleted: false}]
+
   @_collection: new Meteor.Collection "proposals"
+
+  @belongs_to: [
+    {name: 'user'}
+  ]
 
   @propose: (options) ->
     if not Meteor.userId()
@@ -9,7 +14,7 @@ class @Proposal extends Minimongoid
     Proposal.create(options)
 
   @before_create: (attr) ->
-    _.extend(attr, owner: Meteor.userId(), votes: {}, comments: [], status: 'submitted')
+    _.extend(attr, user_id: Meteor.userId(), votes: {}, comments: [], status: 'submitted')
     attr
 
   @count: ->
@@ -31,7 +36,7 @@ class @Proposal extends Minimongoid
 
   # Does this proposal belong to the current user?
   mine: ->
-    @owner == Meteor.userId()
+    @user_id == Meteor.userId()
 
   typeName: ->
     Proposal.types()[@type]
@@ -39,11 +44,11 @@ class @Proposal extends Minimongoid
 @Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
-    userId and doc.owner == userId
+    userId and doc.user_id == userId
 
   update: (userId, doc, fields, modifier) ->
     # can only change your own documents
-    if doc.owner == userId then return true
+    if doc.user_id == userId then return true
 
     # can also vote
     if (userId and
@@ -53,11 +58,11 @@ class @Proposal extends Minimongoid
         modifier.$set.hasOwnProperty("votes.#{userId}"))
       return true
 
-  fetch: ['owner']
+  fetch: ['user_id']
 
 @Proposal._collection.deny
   update: (userId, doc, fields, modifier) ->
     # owner can't vote for himself
-    doc.owner == userId and 'votes' in fields
+    doc.user_id == userId and 'votes' in fields
 
-  fetch: ['owner']
+  fetch: ['user_id']
