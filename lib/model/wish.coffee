@@ -1,10 +1,11 @@
 root = exports ? this
 
 root.Wish = class Wish
+
   @makeWish: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {})
+    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {}, comments: [])
     Wishes.insert(options)
 
   @delete: (wishData) ->
@@ -12,6 +13,15 @@ root.Wish = class Wish
 
   @count: ->
     Wishes.find($or: [{deleted: $exists: false}, {deleted: false}]).count()
+
+  constructor: (@data) ->
+
+  comments: ->
+    @data.comments
+
+  addComment: (content) ->
+    comment = {commenter: Meteor.userId(), content: content}
+    Wishes.update(@data._id, $push: comments: comment)
 
 root.Wishes = new Meteor.Collection "wishes"
 
@@ -24,13 +34,26 @@ Wishes.allow
     # can only change your own documents
     if doc.owner == userId then return true
 
-    # can also vote
+
+    # Allow voting
     if (userId and
         fields.length == 1 and
         fields[0] == 'votes' and
         modifier.$set and
         modifier.$set.hasOwnProperty("votes.#{userId}"))
       return true
+
+    # Allowed to add comments
+    if (userId and
+        fields.length == 1 and
+        fields[0] == 'comments' and
+        modifier.$push and
+        modifier.$push.comments.commenter == userId)
+      return true
+
+  remove: (userId, doc) ->
+    # can only remove your own documents
+    doc.owner == userId
 
   fetch: ['owner']
 

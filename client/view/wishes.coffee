@@ -44,6 +44,17 @@ Template.wishes.photo = (userId) ->
 Template.wishes.photoSmall = (userId) ->
   userId and User.findOne(userId).photoUrl(20)
 
+Template.wishes.commentsCount = (wish) ->
+  wish.comments.length
+
+Template.wishes.hasComments = (wish) ->
+  wish.comments.length > 0
+
+Template.wishes.commentsText = (wish) ->
+  n = wish.comments.length
+  if n == 1 then return '1 comment'
+  if n > 1 then return "#{n} comments"
+
 Template.wishes.owns = (wish) ->
   u = Meteor.userId()
   wish and u and wish.owner == u
@@ -51,30 +62,21 @@ Template.wishes.owns = (wish) ->
 Template.wishes.editMode = ->
   Template.wishes.owns(@) and @editing
 
-Template.wishes.positiveVotes = (wish) ->
+votes = (wish) ->
   user for user, vote of wish.votes when vote
+votesMoreThreshold = 6
 
-Template.wishes.disqusPath = (wish)->
-  url = Meteor.absoluteUrl().slice(0, -1) + Router.path('wish', id: wish._id)
-  url += '#disqus_thread'
-  url
+Template.wishes.positiveVotesShort = (wish) ->
+  votes(wish).slice(0, votesMoreThreshold)
+
+Template.wishes.positiveVotesHasMore = (wish) ->
+  votes(wish).length > votesMoreThreshold
+
+Template.wishes.positiveVotesMore = (wish) ->
+  votes(wish).length - votesMoreThreshold
 
 Template.wishes.rendered = ->
-  `
-  var disqus_shortname = 'summit2014';
-
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function () {
-  var s = document.createElement('script'); s.async = true;
-  s.type = 'text/javascript';
-  s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-  }());
-  `
-  # Add <a href='{{disqusPath .}}'></a> somewhere in the template
   $('[data-toggle="tooltip"]').tooltip()
-
-Template.wishes.created = ->
 
 Template.wishes.destroyed = ->
   $('[data-toggle="tooltip"]').tooltip('destroy')

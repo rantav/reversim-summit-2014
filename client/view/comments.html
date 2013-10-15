@@ -1,0 +1,22 @@
+<template name='comments'>
+<div id='comments-wrap'>
+  <h3 id='comments'>Comments</h3>
+  {{#if loggedIn}}
+    <form class="form-inline" role="form">
+      <input class="form-control" id="add-comment" placeholder="Add comment...">
+      <button type="submit" class="btn btn-default">Comment</button>
+    </form>
+  {{else}}
+    <p><a href='javascript:void(0)' class='sign-in'>Sign in</a> to comment</p>
+  {{/if}}
+
+
+
+  {{#each comments}}
+    <div class='comment'>
+      <img src='{{photoSmall commenter}}' class='img-thumbnail img-thumbnail-20 pull-left' data-toggle="tooltip" title="{{userName commenter}}"/>
+      {{{marked content}}}
+    </div>
+  {{/each}}
+</div>
+</template>
