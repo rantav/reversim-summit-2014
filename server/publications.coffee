@@ -12,4 +12,4 @@ Meteor.publish "users", ->
 
 
 Meteor.publish "proposals", ->
-  Proposals.find($or: [{deleted: $exists: false}, {deleted: false}])
+  Proposal.find($or: [{deleted: $exists: false}, {deleted: false}])

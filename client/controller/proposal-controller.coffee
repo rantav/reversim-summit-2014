@@ -10,6 +10,6 @@ class @ProposalController extends RouteController
   notFoundTemplate: 'notFound'
 
   data: ->
-    proposal = Proposals.findOne({_id: @params.id})
+    proposal = Proposal.find(@params.id)
     if not proposal then return null
     {page: 'proposal', proposal: proposal}

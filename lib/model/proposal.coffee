@@ -1,21 +1,30 @@
-root = exports ? this
+class @Proposal extends Minimongoid
 
-root.Proposal = class Proposal
+  notDeleted = $or: [{deleted: $exists: false}, {deleted: false}]
+  @_collection: new Meteor.Collection "proposals"
+
   @propose: (options) ->
     if not Meteor.userId()
       throw new Meteor.Error 401, "Please log in"
-    _.extend(options, owner: Meteor.userId(), createdAt: new Date(), votes: {}, comments: [], status: 'submitted')
-    Proposals.insert(options)
+    Proposal.create(options)
 
-  @delete: (proposalData) ->
-    Proposals.update(proposalData._id, $set: deleted: true)
+  @before_create: (attr) ->
+    _.extend(attr, owner: Meteor.userId(), votes: {}, comments: [], status: 'submitted')
+    attr
 
   @count: ->
-    Proposals.find($or: [{deleted: $exists: false}, {deleted: false}]).count()
+    @find(notDeleted).count()
 
-root.Proposals = new Meteor.Collection "proposals"
+  @all: (options)->
+    @where(notDeleted, options)
 
-Proposals.allow
+  delete: ->
+    @update(deleted: true)
+
+  toggleEdit: ->
+    @update(editing: (not @editing))
+
+@Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
     userId and doc.owner == userId
@@ -34,7 +43,7 @@ Proposals.allow
 
   fetch: ['owner']
 
-Proposals.deny
+@Proposal._collection.deny
   update: (userId, doc, fields, modifier) ->
     # owner can't vote for himself
     doc.owner == userId and 'votes' in fields

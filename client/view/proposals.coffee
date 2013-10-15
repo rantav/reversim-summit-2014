@@ -1,18 +1,16 @@
 Template.proposals.events
-  'click .delete':  ->
-    Proposal.delete(@)
+  'click .delete':  -> @delete()
 
-  'click .edit':  ->
-    Proposals.update(@_id, $set: editing: (not @editing))
+  'click .edit':  -> @toggleEdit()
 
   'click .save': (event, context) ->
-    title = context.find("#title-#{@_id}").value
-    abstract = context.find("#abstract-#{@_id}").value
-    if title
-      Proposals.update(@_id, $set: {editing: false, title: title, abstract: abstract})
+    title = context.find("#title-#{@id}").value
+    abstract = context.find("#abstract-#{@id}").value
+    if title and abstract
+      @update(editing: false, title: title, abstract: abstract)
 
 Template.proposals.proposals = ->
-  Proposals.find({}, sort: createdAt: -1)
+  Proposal.all(sort: createdAt: -1)
 
 Template.proposals.photo = (userId) ->
   userId and User.findOne(userId).photoUrl(40)

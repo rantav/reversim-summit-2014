@@ -15,14 +15,14 @@
         </td>
         <td>
           {{#if editMode}}
-            <input value='{{title}}' class="edit-inline form-control" id='title-{{_id}}'/>
+            <input value='{{title}}' class="edit-inline form-control" id='title-{{id}}'/>
           {{else}}
-            <a href='{{pathFor "proposal" id=_id title=title}}'>{{title}}</a>
+            <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>
           {{/if}}
         </td>
         <td>
           {{#if editMode}}
-            <textarea class="edit-inline form-control" rows="3" id='abstract-{{_id}}'>{{abstract}}</textarea>
+            <textarea class="edit-inline form-control" rows="3" id='abstract-{{id}}'>{{abstract}}</textarea>
           {{else}}
             {{{marked abstract}}}
           {{/if}}
@@ -46,13 +46,9 @@
                 <i class='icon-edit icon-1x'></i>
               </a>
             {{/if}}
-          {{else}}
-            <a href='javascript:void(0)' class='vote-up no-underline' data-voted='{{userVotedWishStr .}}' data-toggle="tooltip" title='{{wishVoteTooltip .}}'>
-              <i class='icon-thumbs-up icon-1x'></i>
-            </a>
           {{/if}}
-          <a class='share-twitter no-underline' href="{{twitterShareWishUrl .}}" target="_blank" data-toggle="tooltip" title='Share'>
-            <i class='icon-twitter icon-1x'></i>
+          <a class='share-twitter no-underline' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share'>
+            <i class='icon-twitter'></i>
           </a>
         </td>
       </tr>

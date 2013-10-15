@@ -1,16 +1,15 @@
 Template.proposal.events
   'click .delete':  ->
-    Proposal.delete(@proposal)
+    @proposal.delete()
     Router.go 'proposals'
     alertify.success('OK, Deleted')
 
-  'click .edit':  ->
-    Proposals.update(@proposal._id, $set: editing: (not @proposal.editing))
+  'click .edit':  -> @proposal.toggleEdit()
 
   'click .save': (event, context) ->
-    title = context.find("#title-#{@proposal._id}").value
-    abstract = context.find("#abstract-#{@proposal._id}").value
-    Proposals.update(@proposal._id, $set: {editing: false, title: title, abstract: abstract})
+    title = context.find("#title-#{@proposal.id}").value
+    abstract = context.find("#abstract-#{@proposal.id}").value
+    @proposal.update(editing: false, title: title, abstract: abstract)
 
 Template.proposal.photo = (userId) ->
   userId and User.findOne(userId).photoUrl(40)

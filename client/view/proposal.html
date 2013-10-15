@@ -2,14 +2,14 @@
 <h2>
   <span class='pre-header'>Title:</span>
   {{#if editMode}}
-    <input value='{{proposal.title}}' class="edit-inline form-control" id='title-{{proposal._id}}'/>
+    <input value='{{proposal.title}}' class="edit-inline form-control" id='title-{{proposal.id}}'/>
   {{else}}
     {{proposal.title}}
   {{/if}}
 </h2>
 <h2><span class='pre-header'>Abstract:</span></h2>
 {{#if editMode}}
-  <textarea class="edit-inline form-control" rows="3" id='abstract-{{proposal._id}}'>{{proposal.abstract}}</textarea>
+  <textarea class="edit-inline form-control" rows="3" id='abstract-{{proposal.id}}'>{{proposal.abstract}}</textarea>
 {{else}}
   <div class='pull-right'><span class='label label-info'>Status: {{proposal.status}}</span></div>
   <p class='lead'>{{{marked proposal.abstract}}}</p>
