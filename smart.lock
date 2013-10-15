@@ -9,7 +9,8 @@
       "marked": {
         "git": "https://github.com/rantav/meteor-marked",
         "branch": "master"
-      }
+      },
+      "minimongoid": {}
     },
     "packages": {
       "observatory": {
@@ -24,8 +25,8 @@
       },
       "bootstrap3-less": {
         "git": "https://github.com/eprochasson/bootstrap3-less",
-        "tag": "v0.1.1",
-        "commit": "82d3e32b6a44bad7bd439b9e02ce33161e58996d"
+        "tag": "v0.1.3",
+        "commit": "14f38afc74557dce2b577afdfdaaed4e3e147611"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
@@ -37,10 +38,20 @@
         "branch": "master",
         "commit": "34f07881dd902ad8e24fcd5672da8245b8d0889e"
       },
+      "minimongoid": {
+        "git": "https://github.com/Exygy/minimongoid.git",
+        "tag": "v0.8.0",
+        "commit": "4f62f61ad5a34688e2b547dc843d76de4a254f7d"
+      },
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",
         "tag": "v0.3.2",
         "commit": "f704848187a4da2bd179864ae80a1f73a3fd22a6"
+      },
+      "underscore-string-latest": {
+        "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
+        "tag": "v2.3.3",
+        "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
       },
       "observatory-galileo": {
         "git": "https://github.com/superstringsoftware/observatory-galileo.git",
