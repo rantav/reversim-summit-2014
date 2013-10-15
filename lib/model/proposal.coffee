@@ -18,11 +18,23 @@ class @Proposal extends Minimongoid
   @all: (options)->
     @where(notDeleted, options)
 
+  @types: ->
+    full: 'Full Talk'
+    ignite: 'Ignite Talk'
+    workshop: 'Workshop'
+
   delete: ->
     @update(deleted: true)
 
   toggleEdit: ->
     @update(editing: (not @editing))
+
+  # Does this proposal belong to the current user?
+  mine: ->
+    @owner == Meteor.userId()
+
+  typeName: ->
+    Proposal.types()[@type]
 
 @Proposal._collection.allow
   insert: (userId, doc) ->

@@ -9,17 +9,16 @@ Template.proposal.events
   'click .save': (event, context) ->
     title = context.find("#title-#{@proposal.id}").value
     abstract = context.find("#abstract-#{@proposal.id}").value
-    @proposal.update(editing: false, title: title, abstract: abstract)
+    type = context.find("#type-#{@proposal.id}").value
+    @proposal.update(editing: false, title: title, abstract: abstract, type: type)
+
+Template.proposal.proposal = -> @proposal
 
 Template.proposal.photo = (userId) ->
   userId and User.findOne(userId).photoUrl(40)
 
-Template.proposal.owns = (proposal) ->
-  u = Meteor.userId()
-  proposal and u and proposal.owner == u
-
 Template.proposal.editMode = ->
-  Template.proposal.owns(@proposal) and @proposal.editing
+  @proposal.editing and @proposal.mine()
 
 Template.proposal.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

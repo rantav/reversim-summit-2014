@@ -7,6 +7,15 @@
     {{proposal.title}}
   {{/if}}
 </h2>
+
+{{#if editMode}}
+  <select class="form-control" id='type-{{proposal.id}}'>
+    {{> proposalTypes}}
+  </select>
+{{else}}
+  <h2><span class='pre-header'>Type:</span> <span class='label label-info'>{{proposal.typeName}}</span></h2>
+{{/if}}
+
 <h2><span class='pre-header'>Abstract:</span></h2>
 {{#if editMode}}
   <textarea class="edit-inline form-control" rows="3" id='abstract-{{proposal.id}}'>{{proposal.abstract}}</textarea>
@@ -18,7 +27,7 @@
 <img src='{{photo proposal.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName proposal.owner}} created"/>
 <hr/>
 <div class='actions-single'>
-  {{#if owns proposal}}
+  {{#if proposal.mine}}
     {{#if editMode}}
       <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
         <i class='icon-save icon-2x'></i>

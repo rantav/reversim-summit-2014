@@ -14,39 +14,12 @@
           <img src='{{photo owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName owner}} created"/>
         </td>
         <td>
-          {{#if editMode}}
-            <input value='{{title}}' class="edit-inline form-control" id='title-{{id}}'/>
-          {{else}}
-            <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>
-          {{/if}}
+          <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>
         </td>
         <td>
-          {{#if editMode}}
-            <textarea class="edit-inline form-control" rows="3" id='abstract-{{id}}'>{{abstract}}</textarea>
-          {{else}}
-            {{{marked abstract}}}
-          {{/if}}
+          {{{marked abstract}}}
         </td>
         <td class='actions'>
-          {{#if owns .}}
-            {{#if editMode}}
-              <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
-                <i class='icon-save icon-1x'></i>
-              </a>
-            {{/if}}
-            <a href='javascript:void(0)' class='delete no-underline' data-toggle="tooltip" title='Delete'>
-              <i class='icon-trash icon-1x'></i>
-            </a>
-            {{#if editMode}}
-              <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
-                <i class='icon-undo icon-1x'></i>
-              </a>
-            {{else}}
-              <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
-                <i class='icon-edit icon-1x'></i>
-              </a>
-            {{/if}}
-          {{/if}}
           <a class='share-twitter no-underline' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share'>
             <i class='icon-twitter'></i>
           </a>

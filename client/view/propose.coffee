@@ -3,8 +3,9 @@ Template.propose.events
     event.preventDefault()
     title = c.find('#title').value
     abstract = c.find('#abstract').value
-    if title and abstract
-      p = Proposal.propose(title: title, abstract: abstract)
+    type = c.find('#type').value
+    if title and abstract and type
+      p = Proposal.propose(title: title, abstract: abstract, type: type)
       Router.go('proposal', {id: p.id})
       alertify.success('Thank you!')
 
