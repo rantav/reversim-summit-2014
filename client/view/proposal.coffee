@@ -9,8 +9,8 @@ Template.proposal.events
 
   'click .save': (event, context) ->
     title = context.find("#title-#{@proposal._id}").value
-    description = context.find("#description-#{@proposal._id}").value
-    Proposals.update(@proposal._id, $set: {editing: false, title: title, description: description})
+    abstract = context.find("#abstract-#{@proposal._id}").value
+    Proposals.update(@proposal._id, $set: {editing: false, title: title, abstract: abstract})
 
 Template.proposal.photo = (userId) ->
   userId and User.findOne(userId).photoUrl(40)

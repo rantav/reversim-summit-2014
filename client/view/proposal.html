@@ -7,12 +7,12 @@
     {{proposal.title}}
   {{/if}}
 </h2>
-<h2><span class='pre-header'>Description:</span></h2>
+<h2><span class='pre-header'>Abstract:</span></h2>
 {{#if editMode}}
-  <textarea class="edit-inline form-control" rows="3" id='description-{{proposal._id}}'>{{proposal.description}}</textarea>
+  <textarea class="edit-inline form-control" rows="3" id='abstract-{{proposal._id}}'>{{proposal.abstract}}</textarea>
 {{else}}
   <div class='pull-right'><span class='label label-info'>Status: {{proposal.status}}</span></div>
-  <p class='lead'>{{{marked proposal.description}}}</p>
+  <p class='lead'>{{{marked proposal.abstract}}}</p>
 {{/if}}
 
 <img src='{{photo proposal.owner}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{userName proposal.owner}} created"/>

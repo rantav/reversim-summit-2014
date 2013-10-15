@@ -4,8 +4,7 @@
   <thead>
     <th></th>
     <th>Title</th>
-    <th>Description</th>
-    <th style='width:120px'></th>
+    <th>Abstract</th>
     <th></th>
   </thead>
   <tbody>
@@ -23,15 +22,10 @@
         </td>
         <td>
           {{#if editMode}}
-            <textarea class="edit-inline form-control" rows="3" id='description-{{_id}}'>{{description}}</textarea>
+            <textarea class="edit-inline form-control" rows="3" id='abstract-{{_id}}'>{{abstract}}</textarea>
           {{else}}
-            {{{marked description}}}
+            {{{marked abstract}}}
           {{/if}}
-        </td>
-        <td>
-          {{#each positiveVotes .}}
-            <img src='{{photoSmall .}}' class='img-thumbnail img-thumbnail-20' data-toggle="tooltip" title="{{userName .}} voted"/>
-          {{/each}}
         </td>
         <td class='actions'>
           {{#if owns .}}

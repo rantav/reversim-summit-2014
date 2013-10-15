@@ -2,9 +2,9 @@ Template.propose.events
   'submit form': (event) ->
     event.preventDefault()
     title = $('#title').val()
-    description = $('#description').val()
-    if title and description
-      p = Proposal.propose(title: title, description: description)
+    abstract = $('#abstract').val()
+    if title and abstract
+      p = Proposal.propose(title: title, abstract: abstract)
       Router.go('proposal', {id: p})
       alertify.success('Thank you!')
 

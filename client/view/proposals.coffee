@@ -7,9 +7,9 @@ Template.proposals.events
 
   'click .save': (event, context) ->
     title = context.find("#title-#{@_id}").value
-    description = context.find("#description-#{@_id}").value
+    abstract = context.find("#abstract-#{@_id}").value
     if title
-      Proposals.update(@_id, $set: {editing: false, title: title, description: description})
+      Proposals.update(@_id, $set: {editing: false, title: title, abstract: abstract})
 
 Template.proposals.proposals = ->
   Proposals.find({}, sort: createdAt: -1)
