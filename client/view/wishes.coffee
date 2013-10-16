@@ -8,18 +8,6 @@ Template.wishes.events
       Router.go('wish', {id: w})
       alertify.success('Great, now you can promote it on Twitter')
 
-  'click .delete':  ->
-    Wish.delete(@)
-
-  'click .edit':  ->
-    Wishes.update(@_id, $set: editing: (not @editing))
-
-  'click .save': (event, context) ->
-    title = context.find("#title-#{@_id}").value
-    description = context.find("#description-#{@_id}").value
-    if title
-      Wishes.update(@_id, $set: {editing: false, title: title, description: description})
-
   'click .vote-up': ->
     u = Meteor.userId()
     if not u
@@ -39,10 +27,10 @@ Template.wishes.wishes = ->
   Wishes.find({}, sort: createdAt: -1)
 
 Template.wishes.photo = (userId) ->
-  userId and User.findOne(userId).photoUrl(40)
+  userId and User.find(userId).photoUrl(40)
 
 Template.wishes.photoSmall = (userId) ->
-  userId and User.findOne(userId).photoUrl(20)
+  userId and User.find(userId).photoUrl(20)
 
 Template.wishes.commentsCount = (wish) ->
   wish.comments.length

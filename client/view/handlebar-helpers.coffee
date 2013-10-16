@@ -2,7 +2,7 @@ Handlebars.registerHelper 'loggedIn', ->
   !!Meteor.userId()
 
 Handlebars.registerHelper 'userName', (userId)->
-  u = User.findOne(userId)
+  u = User.find(userId)
   u and u.name()
 
 Handlebars.registerHelper 'userVotedWishStr', (wish)->
