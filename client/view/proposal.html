@@ -13,14 +13,14 @@
     {{> proposalTypes}}
   </select>
 {{else}}
-  <h2><span class='pre-header'>Type:</span> <span class='label label-info'>{{proposal.typeName}}</span></h2>
+  <h2><span class='pre-header'>Type:</span> {{proposal.typeName}}</h2>
 {{/if}}
 
 <h2><span class='pre-header'>Abstract:</span></h2>
 {{#if editMode}}
   <textarea class="edit-inline form-control" rows="3" id='abstract-{{proposal.id}}'>{{proposal.abstract}}</textarea>
 {{else}}
-  <div class='pull-right'><span class='label label-info'>Status: {{proposal.status}}</span></div>
+  <div class='pull-right'><span class='label label-primary'>Status: {{proposal.status}}</span></div>
   <p class='lead'>{{{marked proposal.abstract}}}</p>
 {{/if}}
 
