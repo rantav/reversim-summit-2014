@@ -31,4 +31,4 @@ Handlebars.registerHelper 'wishVoteTooltip', (wish) ->
   if wish.votes[u] then 'Unvote' else 'Vote'
 
 Handlebars.registerHelper 'marked', (text)->
-  marked(text)
+  if text then marked(text)

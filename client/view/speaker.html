@@ -1,0 +1,35 @@
+<template name='speaker'>
+<div class='about-speaker'>
+  <img src='{{photo speaker}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' title="{{speaker.name}}"/>
+
+  {{#if editMode}}
+    <input value='{{speaker.name}}' class="form-control" id='name'/>
+  {{else}}
+    <h4 class='no-break'>{{speaker.name}}</h4>
+  {{/if}}
+
+  {{#if editMode}}
+    <label for='bio'>Bio: </label>
+    <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. Markdown enabled'>{{speaker.bio}}</textarea>
+  {{else}}
+    <p class='lead'>{{{marked speaker.bio}}}</p>
+  {{/if}}
+</div>
+<hr/>
+<div class='actions-single'>
+  {{#if speaker.me}}
+    {{#if editMode}}
+      <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
+        <i class='icon-save icon-2x'></i>
+      </a>
+      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
+        <i class='icon-undo icon-2x'></i>
+      </a>
+    {{else}}
+      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
+        <i class='icon-edit icon-2x'></i>
+      </a>
+    {{/if}}
+  {{/if}}
+</div>
+</template>

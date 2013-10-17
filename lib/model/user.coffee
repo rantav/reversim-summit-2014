@@ -2,12 +2,6 @@ class @User extends Minimongoid
 
   @_collection: Meteor.users
 
-  # @findOne: (idOrName) ->
-  #   data = Meteor.users.findOne(idOrName)
-  #   if not data
-  #     data = Meteor.users.findOne({'profile.name': new RegExp('^' + idOrName + '$', 'i')})
-  #   new User(data)
-
   @has_many: [
     {name: 'proposals'}
   ]
@@ -16,6 +10,12 @@ class @User extends Minimongoid
     User.init(Meteor.user()) if Meteor.userId()
 
   name: -> @profile.name
+  bio: -> @profile.bio
+  me: -> @id == Meteor.userId()
+
+  editing: -> @profile.editing
+  toggleEdit: -> @update('profile.editing': not @editing())
+  unedit: -> @update('profile.editing': false)
 
   photoUrl: (height) ->
     if @services
@@ -40,3 +40,9 @@ class @User extends Minimongoid
         picture = Cdn.cdnify('/img/user.png')
     picture
 
+@User._collection.allow
+  update: (userId, doc, fields, modifier) ->
+    # can only change your own profile
+    doc._id == userId
+
+  fetch: ['_id']
