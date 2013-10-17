@@ -14,7 +14,7 @@ Template.speaker.photo = ->
   @speaker.photoUrl(120)
 
 Template.speaker.editMode = ->
-  @speaker.editing() and @speaker.me()
+  @speaker.me() and ((not @speaker.hasBio()) or @speaker.editing())
 
 Template.speaker.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

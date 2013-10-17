@@ -9,8 +9,7 @@
   {{/if}}
 
   {{#if editMode}}
-    <label for='bio'>Bio: </label>
-    <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. Markdown enabled'>{{speaker.bio}}</textarea>
+    <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. (Markdown ok)'>{{speaker.bio}}</textarea>
   {{else}}
     <p class='lead'>{{{marked speaker.bio}}}</p>
   {{/if}}

@@ -11,6 +11,7 @@ class @User extends Minimongoid
 
   name: -> @profile.name
   bio: -> @profile.bio
+  hasBio: -> !!@profile.bio
   me: -> @id == Meteor.userId()
 
   editing: -> @profile.editing
