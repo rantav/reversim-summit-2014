@@ -10,7 +10,9 @@ Template.proposal.events
     title = context.find("#title-#{@proposal.id}").value
     abstract = context.find("#abstract-#{@proposal.id}").value
     abstract = Markdown.removeHeadings(abstract)
-    type = context.find("#type-#{@proposal.id}").value
+    typeArr = $('input[name=type]:checked')
+    if typeArr.length == 1
+      type = typeArr[0].id
     @proposal.update(editing: false, title: title, abstract: abstract, type: type)
 
 Template.proposal.proposal = -> @proposal

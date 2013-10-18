@@ -3,7 +3,9 @@ Template.propose.events
     event.preventDefault()
     title = c.find('#title').value
     abstract = c.find('#abstract').value
-    type = c.find('#type').value
+    typeArr = $('input[name=type]:checked')
+    if typeArr.length == 1
+      type = typeArr[0].id
     if title and abstract and type
       abstract = Markdown.removeHeadings(abstract)
       p = Proposal.propose(title: title, abstract: abstract, type: type)

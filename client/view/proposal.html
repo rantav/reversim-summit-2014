@@ -9,9 +9,9 @@
 </h2>
 
 {{#if editMode}}
-  <select class="form-control" id='type-{{proposal.id}}'>
+  {{#with proposal}}
     {{> proposalTypes}}
-  </select>
+  {{/with}}
 {{else}}
   <h2><span class='pre-header'>Type:</span> {{proposal.typeName}}</h2>
 {{/if}}
