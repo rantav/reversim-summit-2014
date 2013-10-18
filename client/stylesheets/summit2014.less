@@ -161,3 +161,19 @@ p a.btn {
   .clearfix();
   margin-top: 20px;
 }
+
+@proposal-item-border-radius: 5px;
+.proposal-item {
+  padding: 1em;
+  border: 1px solid #eee;
+  -webkit-border-radius: @proposal-item-border-radius;
+  -moz-border-radius: @proposal-item-border-radius;
+  border-radius: @proposal-item-border-radius;
+}
+@media (min-width: @screen-sm) {
+  .proposal-item {
+    background: rgba(255, 255, 255, .5);
+    border-color: #fff;
+    margin: 1em;
+  }
+}
