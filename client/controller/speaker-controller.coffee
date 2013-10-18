@@ -1,6 +1,6 @@
 class @SpeakerController extends RouteController
 
-  waitOn: -> [subscriptionHandles['proposals'], subscriptionHandles['users']]
+  waitOn: -> [subscriptionHandles['proposals'], subscriptionHandles['speakers']]
 
   tempalte: 'speaker'
 

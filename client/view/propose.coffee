@@ -6,6 +6,7 @@ Template.propose.events
     type = c.find('#type').value
     if title and abstract and type
       p = Proposal.propose(title: title, abstract: abstract, type: type)
+      User.current().update('profile.submitted': true)
       Router.go('proposal', {id: p.id})
       alertify.success('Thank you!')
 

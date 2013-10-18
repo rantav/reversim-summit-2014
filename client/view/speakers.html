@@ -1,3 +1,17 @@
 <template name='speakers'>
-  speakers
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Our awesome speakers are (pending):</h2>
+    {{#each speakers}}
+      {{#if hasProposalInStatus 'submitted'}}
+        <div class="col-lg-6 about-person">
+          <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' data-toggle="tooltip" title="{{name}}"/>
+          <h4 class='no-break'>{{name}}</h4>
+          <p>{{{marked bio}}}</p>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
+
 </template>
