@@ -6,3 +6,6 @@ Template.nav.wishes = ->
 
 Template.nav.proposals = ->
   Proposal.count()
+
+Template.nav.speakers = ->
+  User.allSpeakers().length
