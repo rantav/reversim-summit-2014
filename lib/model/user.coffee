@@ -9,6 +9,9 @@ class @User extends Minimongoid
   @current: ->
     User.init(Meteor.user()) if Meteor.userId()
 
+  @allSpeakers: ->
+    User.where('profile.submitted': true)
+
   name: -> @profile.name
   bio: -> @profile.bio
   hasBio: -> !!@profile.bio
@@ -17,6 +20,15 @@ class @User extends Minimongoid
   editing: -> @profile.editing
   toggleEdit: -> @update('profile.editing': not @editing())
   unedit: -> @update('profile.editing': false)
+
+  hasProposalInStatus: (statuses) ->
+    for p in @proposals()
+      if p.status in statuses
+        return true
+    return false
+
+  proposalsInStatus: (statuses) ->
+    p for p in @proposals() when p.status in statuses
 
   photoUrl: (height) ->
     if @services

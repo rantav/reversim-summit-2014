@@ -20,3 +20,6 @@ Deps.autorun ->
   Router.current()
   Deps.afterFlush ->
     $(window).scrollTop(0)
+
+Router.fullPath = (routeName, params) ->
+  Meteor.absoluteUrl().slice(0, -1) + Router.path(routeName, params)

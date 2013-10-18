@@ -29,6 +29,27 @@
         <i class='icon-edit icon-2x'></i>
       </a>
     {{/if}}
+    <!--
+    Wait until accepted
+    <a class='share-twitter no-underline' href="{{twitterShareMeUrl wish}}" target="_blank">
+      <i class='icon-twitter icon-2x'></i>
+    </a>
+    -->
+  {{else}}
+    <!-- Wait until accepted
+    <a class='share-twitter no-underline' href="{{twitterShareNotMeUrl wish}}" target="_blank">
+      <i class='icon-twitter icon-2x'></i>
+    </a>
+    -->
   {{/if}}
+</div>
+<div>
+  <h2>Proposals:</h2>
+  {{#each speaker.proposals}}
+    <dl>
+      <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a></dt>
+      <dl>{{{marked abstract}}}</dl>
+    </dl>
+  {{/each}}
 </div>
 </template>

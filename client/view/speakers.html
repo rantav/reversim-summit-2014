@@ -1,3 +1,25 @@
 <template name='speakers'>
-  speakers
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Our awesome speakers are (pending):</h2>
+    {{#each speakers}}
+      {{#if shouldDisplay .}}
+        <div class="col-lg-6 about-person">
+          <div class='clearfix'>
+            <a href='{{pathFor "speaker" id=id name=name}}'>
+              <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' data-toggle="tooltip" title="{{name}}"/>
+            </a>
+            <h4 class='no-break'>
+              <a href='{{pathFor "speaker" id=id name=name}}'>{{name}}</a>
+            </h4>
+            <p>{{{marked bio}}}</p>
+          </div>
+          <p>
+            <a href='{{pathFor "speaker" id=id name=name}}'>{{proposalCountStr .}}</a>
+          </p>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
 </template>

@@ -11,13 +11,13 @@ Handlebars.registerHelper 'userVotedWishStr', (wish)->
 
 Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
   if wish
-    url = "#{document.location.protocol}//#{document.location.host}#{Router.path('wish', {id: wish._id})}"
+    url = Router.fullPath('wish', id: wish._id)
     shareText = "I wish there was a talk about \"#{wish.title}\" at #reversim summit. Help by voting!"
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
 
 Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
   if proposal
-    url = "#{document.location.protocol}//#{document.location.host}#{Router.path('proposal', {id: proposal.id})}"
+    url = Router.fullPath('proposal', id: proposal.id)
     shareText = "Submitted to reversim conf: \"#{proposal.title}\""
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
 

@@ -9,6 +9,7 @@ Template.proposal.events
   'click .save': (event, context) ->
     title = context.find("#title-#{@proposal.id}").value
     abstract = context.find("#abstract-#{@proposal.id}").value
+    abstract = Markdown.removeHeadings(abstract)
     type = context.find("#type-#{@proposal.id}").value
     @proposal.update(editing: false, title: title, abstract: abstract, type: type)
 

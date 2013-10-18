@@ -49,7 +49,7 @@ Template.wish.editMode = ->
   Template.wish.owns(@wish) and @wish.editing
 
 Template.wish.rendered = ->
-  window.disqus_url = Meteor.absoluteUrl().slice(0, -1) + Router.path('wish', id: wish._id)
+  window.disqus_url = Router.fullPath('wish', id: wish._id)
   $('[data-toggle="tooltip"]').tooltip()
 
 Template.wish.destroyed = ->
