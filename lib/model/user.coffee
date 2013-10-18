@@ -21,9 +21,9 @@ class @User extends Minimongoid
   toggleEdit: -> @update('profile.editing': not @editing())
   unedit: -> @update('profile.editing': false)
 
-  hasProposalInStatus: (status) ->
+  hasProposalInStatus: (statuses) ->
     for p in @proposals()
-      if p.status == status
+      if p.status in statuses
         return true
     return false
 
