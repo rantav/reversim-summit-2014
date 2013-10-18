@@ -4,5 +4,13 @@ Template.speakers.speakers = ->
 Template.speakers.photo = (speaker) ->
   speaker.photoUrl(120)
 
+statuses = ['submitted']
 Template.speakers.shouldDisplay = (speaker) ->
-  speaker.hasProposalInStatus(['submitted'])
+  speaker.hasProposalInStatus(statuses)
+
+Template.speakers.proposalCountStr = (speaker) ->
+  count = speaker.proposalsInStatus(statuses).length
+  if count == 1
+    "One proposal"
+  else
+    "#{count} proposals"

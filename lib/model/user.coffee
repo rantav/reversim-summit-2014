@@ -27,6 +27,9 @@ class @User extends Minimongoid
         return true
     return false
 
+  proposalsInStatus: (statuses) ->
+    p for p in @proposals() when p.status in statuses
+
   photoUrl: (height) ->
     if @services
       if @services.google
