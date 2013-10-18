@@ -15,6 +15,8 @@ class @User extends Minimongoid
   name: -> @profile.name
   bio: -> @profile.bio
   hasBio: -> !!@profile.bio
+  trackRecord: -> @profile.trackRecord
+
   me: -> @id == Meteor.userId()
 
   editing: -> @profile.editing
@@ -26,6 +28,8 @@ class @User extends Minimongoid
       if p.status in statuses
         return true
     return false
+
+  admin: -> false
 
   proposalsInStatus: (statuses) ->
     p for p in @proposals() when p.status in statuses

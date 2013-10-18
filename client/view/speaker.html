@@ -9,9 +9,20 @@
   {{/if}}
 
   {{#if editMode}}
-    <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. (Markdown ok)'>{{speaker.bio}}</textarea>
+    <label for='bio'>Bio:</label>
+    <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. (Markdown ok, no headings)'>{{speaker.bio}}</textarea>
   {{else}}
     <p class='lead'>{{{marked speaker.bio}}}</p>
+  {{/if}}
+  {{#if editMode}}
+    <label for='trackRecord'>Track Record:</label>
+    <small>Your speaker track record will vastly improve your chances of getting accepted. The track record should include links to your presentations, most preferable videos of them (plus slides)</small>
+    <textarea class="form-control" rows="3" id='trackRecord' placeholder='Enter your track record as a speaker (Markdown ok)'>{{speaker.trackRecord}}</textarea>
+  {{else}}
+    {{#if canSeeTrackRecord}}
+      <h5>Track Record (only visible to you and moderators)</h5>
+      <p class='lead'>{{{marked speaker.trackRecord}}}</p>
+    {{/if}}
   {{/if}}
 </div>
 <hr/>
