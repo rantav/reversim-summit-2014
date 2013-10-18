@@ -65,6 +65,13 @@
 <p>You may submit multiple proposals</p>
 
 {{#if loggedIn}}
+  {{#with speaker}}
+    {{#if hasBio .}}
+      <div class="alert alert-success">Good your bio is ok (but you can still <a href='{{pathFor "speaker" id=id}}'>edit it</a>)</div>
+    {{else}}
+      <div class="alert alert-danger">Please also <a href='{{pathFor "speaker" id=id}}'>add a bio</a></div>
+    {{/if}}
+  {{/with}}
   <form role="form" id='propose'>
     <div class="form-group">
       <label for="title">Title</label>
@@ -80,22 +87,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-
-  <div class='container clearfix' style='margin-top: 20px;'>
-    <div class='row'>
-      <div class='col-md-6'>
-        {{#if hasBio}}
-          <div class="alert alert-success">Good your bio is ok (but you can still edit it below)</div>
-        {{else}}
-          <div class="alert alert-danger">Please also add a bio right here</div>
-        {{/if}}
-        {{#with speaker}}
-          {{> speaker}}
-        {{/with}}
-      </div>
-    </div>
-  </div>
-
 {{else}}
   <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>sign in</a></p>
 {{/if}}
