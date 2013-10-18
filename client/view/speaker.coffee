@@ -16,6 +16,16 @@ Template.speaker.photo = ->
 Template.speaker.editMode = ->
   @speaker.me() and ((not @speaker.hasBio()) or @speaker.editing())
 
+Template.speaker.twitterShareNotMeUrl = ->
+    url = Router.fullPath('speaker', id: @speaker.id)
+    shareText = "#{@speaker.name()} will be speaking at reversim conf!"
+    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
+
+Template.speaker.twitterShareMeUrl = ->
+    url = Router.fullPath('speaker', id: @speaker.id)
+    shareText = "I'll be speaking at reversim conf!"
+    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
+
 Template.speaker.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()
 
