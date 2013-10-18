@@ -5,6 +5,7 @@ Template.propose.events
     abstract = c.find('#abstract').value
     type = c.find('#type').value
     if title and abstract and type
+      abstract = Markdown.removeHeadings(abstract)
       p = Proposal.propose(title: title, abstract: abstract, type: type)
       User.current().update('profile.submitted': true)
       Router.go('proposal', {id: p.id})

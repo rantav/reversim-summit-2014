@@ -43,4 +43,13 @@
     -->
   {{/if}}
 </div>
+<div>
+  <h2>Proposals:</h2>
+  {{#each speaker.proposals}}
+    <dl>
+      <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a></dt>
+      <dl>{{{marked abstract}}}</dl>
+    </dl>
+  {{/each}}
+</div>
 </template>
