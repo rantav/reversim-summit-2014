@@ -1,6 +1,10 @@
 Handlebars.registerHelper 'loggedIn', ->
   !!Meteor.userId()
 
+Handlebars.registerHelper 'isAdmin', ->
+  cur = User.current()
+  cur and cur.admin()
+
 Handlebars.registerHelper 'userName', (userId)->
   u = User.find(userId)
   u and u.name()

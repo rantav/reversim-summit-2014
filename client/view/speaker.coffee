@@ -29,7 +29,7 @@ Template.speaker.twitterShareMeUrl = ->
 
 Template.speaker.canSeeTrackRecord = ->
   cur = User.current()
-  @speaker.me() or (cur and cur.admin())
+  @speaker.me() or (cur and cur.moderator() or cur.admin())
 
 Template.speaker.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

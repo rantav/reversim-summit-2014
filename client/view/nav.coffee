@@ -9,3 +9,10 @@ Template.nav.proposals = ->
 
 Template.nav.speakers = ->
   User.allSpeakers().length
+
+Template.nav.users = ->
+  User.count()
+
+Template.nav.canSeeHidden = ->
+  user = User.current()
+  user and (user.admin() or user.moderator())

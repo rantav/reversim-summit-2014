@@ -1,0 +1,40 @@
+<template name='users'>
+{{#if allowed}}
+  <h2>Registred Users</h2>
+  <table class='table'>
+    <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      {{#each users}}
+        <tr>
+          <td>
+            <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40'/>
+          </td>
+          <td>
+            <a href='{{pathFor "user" id=id}}'>
+              {{name}}
+            </a>
+          </td>
+          <td>
+            <fieldset {{disabledStr}}>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" {{adminCheckedStr .}} name='admin'> Admin
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" {{moderatorCheckedStr .}} name='moderator'> Moderator
+                </label>
+              </div>
+            </fieldset>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/if}}
+</template>

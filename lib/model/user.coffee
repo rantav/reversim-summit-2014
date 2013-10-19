@@ -29,7 +29,10 @@ class @User extends Minimongoid
         return true
     return false
 
-  admin: -> false
+  admin: -> @hasRole('admin') or @name() == 'Ran Tavory'
+  moderator: -> @hasRole('moderator')
+
+  hasRole: (role) -> @roles and @roles[role]
 
   proposalsInStatus: (statuses) ->
     p for p in @proposals() when p.status in statuses
@@ -59,7 +62,14 @@ class @User extends Minimongoid
 
 @User._collection.allow
   update: (userId, doc, fields, modifier) ->
+    user = User.find(userId)
+    admin = user and user.admin()
+    if 'roles' in fields
+      return if admin then true else false
     # can only change your own profile
-    doc._id == userId
+    if doc._id == userId then return true
+    if admin then return true
+    false
 
-  fetch: ['_id']
+  fetch: ['_id', 'roles']
+

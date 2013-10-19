@@ -2,6 +2,7 @@ Meteor.publish "wishes", ->
   Wishes.find($or: [{deleted: $exists: false}, {deleted: false}])
 
 userFields =
+  roles: 1
   profile: 1
   'services.google.picture': 1
   'services.facebook.id': 1
