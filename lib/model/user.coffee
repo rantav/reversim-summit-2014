@@ -37,7 +37,16 @@ class @User extends Minimongoid
   proposalsInStatus: (statuses) ->
     p for p in @proposals() when p.status in statuses
 
+  uploadedImage: -> @profile.uploadedImage
+
   photoUrl: (height) ->
+    uploaded = @uploadedImage()
+    if uploaded
+      Cdn.cdnify("#{uploaded}/convert?w=#{height}&h=#{height}")
+    else
+      @photoUrlFromService(height)
+
+  photoUrlFromService: (height) ->
     if @services
       if @services.google
         picture = @services.google.picture
