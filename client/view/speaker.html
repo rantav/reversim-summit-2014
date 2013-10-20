@@ -1,6 +1,30 @@
 <template name='speaker'>
 <div class='about-speaker'>
-  <img src='{{photo speaker}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' title="{{speaker.name}}"/>
+  {{#if editMode}}
+    <ul class='pick-image'>
+      <li>
+        <img src='{{photoFromService speaker}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' title="{{speaker.name}}"/>
+        {{#unless uploadedImage}}
+          <div>Use this image</div>
+        {{/unless}}
+      </li>
+      <li>
+        <div class='upload-image'>
+          {{#if uploadedImage}}
+            <button class='btn btn-danger btn-xs' id='remove-image'>Remove</button>
+            <img src='{{uploadedImage}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' title="{{speaker.name}}"/>
+            <div>Use this image</div>
+          {{else}}
+            <div>Or upload another image</div>
+            <div><strong>For best resolution: 120x120px</strong></div>
+            <button class='btn btn-primary' id='upload-image'>Upload Image</button>
+          {{/if}}
+        </div>
+      </li>
+    </ul>
+  {{else}}
+    <img src='{{photo speaker}}' class='about-img img-thumbnail img-thumbnail-120 pull-left' title="{{speaker.name}}"/>
+  {{/if}}
 
   {{#if editMode}}
     <input value='{{speaker.name}}' class="form-control" id='name'/>
@@ -65,4 +89,5 @@
     {{/each}}
   </div>
 {{/if}}
+{{> filepicker}}
 </template>

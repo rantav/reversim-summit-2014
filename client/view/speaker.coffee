@@ -1,5 +1,7 @@
-Template.speaker.events
 
+uploadedImage = null
+uploadedImageDep = new Deps.Dependency()
+Template.speaker.events
   'click .edit': ->
     @speaker.toggleEdit()
 
@@ -7,12 +9,44 @@ Template.speaker.events
     name = context.find("#name").value
     bio = context.find("#bio").value
     trackRecord = context.find("#trackRecord").value
-    @speaker.update('profile.editing': false, 'profile.name': name, 'profile.bio': bio, 'profile.trackRecord': trackRecord)
+    updates =
+      'profile.editing': false
+      'profile.name': name
+      'profile.bio': bio
+      'profile.trackRecord': trackRecord
+    if uploadedImage then updates['profile.uploadedImage'] = uploadedImage
+    uploadedImage = null
+    @speaker.update(updates)
+
+  'click #upload-image': ->
+    filepicker.setKey('AdBaAI7evS5yvsIsRlKPRz')
+    filepicker.pick
+      mimetype: 'image/*'
+      service: 'COMPUTER'
+      ,(inkBlob) ->
+        uploadedImage = inkBlob.url
+        uploadedImageDep.changed()
+
+  'click #remove-image': ->
+    uploadedImage = null
+    uploadedImageDep.changed()
+    @speaker.update('profile.uploadedImage': null)
 
 Template.speaker.speaker = -> @speaker
 
+Template.speaker.uploadedImage = ->
+  uploadedImageDep.depend()
+  if uploadedImage
+    uploadedImage
+  else
+    @speaker.uploadedImage()
+
+
 Template.speaker.photo = ->
   @speaker.photoUrl(120)
+
+Template.speaker.photoFromService = ->
+  @speaker.photoUrlFromService(120)
 
 Template.speaker.editMode = ->
   @speaker.me() and ((not @speaker.hasBio()) or @speaker.editing())
