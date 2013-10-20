@@ -1,5 +1,49 @@
 <template name='propose'>
 <h1>Propose</h1>
+
+<h2>Submit Here</h2>
+<p>You may submit multiple proposals</p>
+<p>And please read the instuctions below</p>
+
+{{#if loggedIn}}
+  {{#with speaker}}
+    <form role="form" id='propose'>
+      {{#if hasBio .}}
+        <div class="alert alert-success">Good your bio is ok (but you can still <a href='{{pathFor "speaker" id=id}}'>edit it</a>)</div>
+      {{else}}
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input class="form-control" id="name" placeholder="Your name here..." value='{{name}}'>
+        </div>
+        <div class="form-group">
+          <label for="bio">Your Bio:</label>
+          <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. (Markdown ok, no headings)'>{{bio}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for='trackRecord'>Your Track Record:</label>
+          <small>Your speaker track record will vastly improve your chances of getting accepted. The track record should include links to your presentations, most preferable videos of them (plus slides)</small>
+          <textarea class="form-control" rows="3" id='trackRecord' placeholder='Enter your track record as a speaker (Markdown ok)'>{{trackRecord}}</textarea>
+        </div>
+      {{/if}}
+      <div class="form-group">
+        <label for="title">Proposal Title</label>
+        <input class="form-control" id="title" placeholder="Enter title">
+      </div>
+      <div class='form-group'>
+        <label>Proposal Type:</label>
+        {{> proposalTypes}}
+      </div>
+      <div class="form-group">
+        <label for="abstract">Proposal Abstract</label>
+        <textarea class="form-control" rows="3" id='abstract' placeholder='Enter abstract (markdown ok, no headings)'></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/with}}
+{{else}}
+  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>sign in</a></p>
+{{/if}}
+
 <h2>Timeline</h2>
 <p>
   Call for paper ends: <strong>Jan 1</strong>. No kidding.
@@ -60,34 +104,4 @@
   <em>relavancy</em>, <em>populatity</em>, <em>interest</em>, <em>originality</em>,
    presenters <em>track record</em>, <em>diversity</em> etc.
 </p>
-
-<h2>Submit Here</h2>
-<p>You may submit multiple proposals</p>
-
-{{#if loggedIn}}
-  {{#with speaker}}
-    {{#if hasBio .}}
-      <div class="alert alert-success">Good your bio is ok (but you can still <a href='{{pathFor "speaker" id=id}}'>edit it</a>)</div>
-    {{else}}
-      <div class="alert alert-danger">Please also <a href='{{pathFor "speaker" id=id}}'>add a bio</a></div>
-    {{/if}}
-  {{/with}}
-  <form role="form" id='propose'>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input class="form-control" id="title" placeholder="Enter title">
-    </div>
-    <div class='form-group'>
-      <label>Type:</label>
-      {{> proposalTypes}}
-    </div>
-    <div class="form-group">
-      <label for="abstract">Abstract</label>
-      <textarea class="form-control" rows="3" id='abstract' placeholder='Enter abstract (markdown ok, no headings)'></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-{{else}}
-  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>sign in</a></p>
-{{/if}}
 </template>

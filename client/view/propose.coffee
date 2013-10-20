@@ -6,6 +6,12 @@ Template.propose.events
     typeArr = $('input[name=type]:checked')
     if typeArr.length == 1
       type = typeArr[0].id
+    name = c.find('#name').value
+    bio = c.find('#bio').value
+    trackRecord = c.find('#trackRecord').value
+    if name then @update('profile.name': name)
+    if bio then @update('profile.bio': bio)
+    if trackRecord then @update('profile.trackRecord': trackRecord)
     if title and abstract and type
       abstract = Markdown.removeHeadings(abstract)
       p = Proposal.propose(title: title, abstract: abstract, type: type)
