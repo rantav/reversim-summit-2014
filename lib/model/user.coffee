@@ -29,7 +29,7 @@ class @User extends Minimongoid
         return true
     return false
 
-  admin: -> @hasRole('admin') or @name() == 'Ran Tavory'
+  admin: -> @hasRole('admin')
   moderator: -> @hasRole('moderator')
 
   hasRole: (role) -> @roles and @roles[role]
