@@ -71,5 +71,10 @@ class @User extends Minimongoid
     if admin then return true
     false
 
+  remove: (userId, doc) ->
+    user = User.find(userId)
+    admin = user and user.admin()
+    admin # only admins can remove
+
   fetch: ['_id', 'roles']
 
