@@ -2,7 +2,7 @@
 <ul class="nav nav-tabs pull-left">
   <li class="{{activeClass 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
   {{#if canSeeHidden}}
-    <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}">Propose</a></li>
+    <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
     <li class="{{activeClass 'proposals'}}">
       <a href="{{pathFor 'proposals'}}">Proposals <small>({{proposals}})</small></a>
     </li>
