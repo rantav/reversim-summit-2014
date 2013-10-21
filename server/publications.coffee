@@ -17,5 +17,9 @@ Meteor.publish "speakers", ->
   User.find {'profile.submitted': true},
     fields: userFields
 
+Meteor.publish "moderators", ->
+  User.find {'roles.moderator': true},
+    fields: userFields
+
 Meteor.publish "proposals", ->
   Proposal.find($or: [{deleted: $exists: false}, {deleted: false}])

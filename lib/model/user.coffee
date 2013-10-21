@@ -12,6 +12,9 @@ class @User extends Minimongoid
   @allSpeakers: ->
     User.where('profile.submitted': true)
 
+  @allModerators: ->
+    User.where('roles.moderator': true)
+
   name: -> @profile.name
   bio: -> @profile.bio
   hasBio: -> !!@profile.bio
