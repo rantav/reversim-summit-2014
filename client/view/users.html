@@ -6,6 +6,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </thead>
     <tbody>
       {{#each users}}
@@ -17,6 +18,11 @@
             <a href='{{pathFor "user" id=id}}'>
               {{name}}
             </a>
+            <div>
+              {{#if me .}}
+                That's me!
+              {{/if}}
+            </div>
           </td>
           <td>
             <fieldset {{disabledStr}}>
@@ -31,6 +37,13 @@
                 </label>
               </div>
             </fieldset>
+          </td>
+          <td>
+            {{#if isAdmin}}
+              <a href='javascript:void(0)' class='delete no-underline' data-toggle="tooltip" title='Delete'>
+                <i class='icon-trash'></i>
+              </a>
+            {{/if}}
           </td>
         </tr>
       {{/each}}

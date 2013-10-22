@@ -12,6 +12,9 @@ class @User extends Minimongoid
   @allSpeakers: ->
     User.where('profile.submitted': true)
 
+  @allModerators: ->
+    User.where('roles.moderator': true)
+
   name: -> @profile.name
   bio: -> @profile.bio
   hasBio: -> !!@profile.bio
@@ -29,7 +32,7 @@ class @User extends Minimongoid
         return true
     return false
 
-  admin: -> @hasRole('admin') or @name() == 'Ran Tavory'
+  admin: -> @hasRole('admin')
   moderator: -> @hasRole('moderator')
 
   hasRole: (role) -> @roles and @roles[role]
@@ -37,7 +40,16 @@ class @User extends Minimongoid
   proposalsInStatus: (statuses) ->
     p for p in @proposals() when p.status in statuses
 
+  uploadedImage: -> @profile.uploadedImage
+
   photoUrl: (height) ->
+    uploaded = @uploadedImage()
+    if uploaded
+      Cdn.cdnify("#{uploaded}/convert?w=#{height}&h=#{height}")
+    else
+      @photoUrlFromService(height)
+
+  photoUrlFromService: (height) ->
     if @services
       if @services.google
         picture = @services.google.picture
@@ -70,6 +82,11 @@ class @User extends Minimongoid
     if doc._id == userId then return true
     if admin then return true
     false
+
+  remove: (userId, doc) ->
+    user = User.find(userId)
+    admin = user and user.admin()
+    admin # only admins can remove
 
   fetch: ['_id', 'roles']
 

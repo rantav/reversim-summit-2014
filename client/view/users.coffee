@@ -7,6 +7,10 @@ Template.users.events
     val = event.srcElement.checked
     @update('roles.moderator': val)
 
+  'click .delete':  ->
+    @destroy()
+    alertify.success('OK, Deleted')
+
 Template.users.allowed = ->
   user = User.current()
   user and (user.admin() or user.moderator())

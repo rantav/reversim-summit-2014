@@ -5,6 +5,10 @@ Handlebars.registerHelper 'isAdmin', ->
   cur = User.current()
   cur and cur.admin()
 
+# Is this user me?
+Handlebars.registerHelper 'me', (user)->
+  user.id == Meteor.userId()
+
 Handlebars.registerHelper 'userName', (userId)->
   u = User.find(userId)
   u and u.name()

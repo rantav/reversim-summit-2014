@@ -1,5 +1,47 @@
 <template name='propose'>
-<h1>Propose</h1>
+<h2>Welcome! Submit Here</h2>
+<p>You may submit multiple proposals.</p>
+<p>Please read the instuctions below.</p>
+
+{{#if loggedIn}}
+  {{#with speaker}}
+    <form role="form" id='propose'>
+      {{#if hasBio .}}
+        <div class="alert alert-success">Good your bio is ok (but you can still <a href='{{pathFor "speaker" id=id}}'>edit it</a>)</div>
+      {{else}}
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input class="form-control" id="name" placeholder="Your name here..." value='{{name}}'>
+        </div>
+        <div class="form-group">
+          <label for="bio">Your Bio:</label>
+          <textarea class="form-control" rows="3" id='bio' placeholder='Enter a short bio. (Markdown ok, no headings)'>{{bio}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for='trackRecord'>Your Track Record:</label>
+          <small>Your speaker track record will vastly improve your chances of getting accepted. The track record should include links to your presentations, most preferable videos of them (plus slides)</small>
+          <textarea class="form-control" rows="3" id='trackRecord' placeholder='Enter your track record as a speaker (Markdown ok)'>{{trackRecord}}</textarea>
+        </div>
+      {{/if}}
+      <div class="form-group">
+        <label for="title">Proposal Title</label>
+        <input class="form-control" id="title" placeholder="Enter title">
+      </div>
+      <div class='form-group'>
+        <label>Proposal Type:</label>
+        {{> proposalTypes}}
+      </div>
+      <div class="form-group">
+        <label for="abstract">Proposal Abstract</label>
+        <textarea class="form-control" rows="3" id='abstract' placeholder='Enter abstract (markdown ok, no headings)'></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/with}}
+{{else}}
+  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>sign in</a></p>
+{{/if}}
+
 <h2>Timeline</h2>
 <p>
   Call for paper ends: <strong>Jan 1</strong>. No kidding.
@@ -40,7 +82,7 @@
   <li>Lightning talk. <strong>5m</strong> talk with 20 slides that get auto advanced. 15s per slide. This is fun!</li>
   <li>Workshop. Hands-on workshops for smaller audience. Up to about 20 or 30 participants. The length depends on you , but it's usually around 2h</li>
 </ul>
-<p>When you submit your proposal please specify the type</p>
+<p>When you submit your proposal please specify the type.</p>
 <h2>What Language?</h2>
 <p>
   The default language is <strong>Hebrew</strong>. This is not an international event, it's a local event
@@ -49,7 +91,7 @@
   If you are a non Israeli speaker and would like to present in this conference, you are
   most welcome, that's perfectly fine, you may do so in English,
   but just be aware that you'll find yourself bored to death in all other non-english sessions,
-  so bare that in mind of you plan to travel specifically for this event
+  so bare that in mind of you plan to travel specifically for this event.
 </p>
 <h2>Selection Process</h2>
 <p>
@@ -61,33 +103,20 @@
    presenters <em>track record</em>, <em>diversity</em> etc.
 </p>
 
-<h2>Submit Here</h2>
-<p>You may submit multiple proposals</p>
-
-{{#if loggedIn}}
-  {{#with speaker}}
-    {{#if hasBio .}}
-      <div class="alert alert-success">Good your bio is ok (but you can still <a href='{{pathFor "speaker" id=id}}'>edit it</a>)</div>
-    {{else}}
-      <div class="alert alert-danger">Please also <a href='{{pathFor "speaker" id=id}}'>add a bio</a></div>
-    {{/if}}
-  {{/with}}
-  <form role="form" id='propose'>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input class="form-control" id="title" placeholder="Enter title">
-    </div>
-    <div class='form-group'>
-      <label>Type:</label>
-      {{> proposalTypes}}
-    </div>
-    <div class="form-group">
-      <label for="abstract">Abstract</label>
-      <textarea class="form-control" rows="3" id='abstract' placeholder='Enter abstract (markdown ok, no headings)'></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-{{else}}
-  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>sign in</a></p>
-{{/if}}
+<h2>You should submit your talk!</h2>
+<p>
+  Reversim Summit is a community event and as such, we are looking for speakers of all levels and experience.
+  There are endless reasons why you might think to yourself you shouldn't submit a talk. However, if these reasons are that you think you can't prepare a decent presentation, if you are unsure whether what you have to share is interesting or if maybe you don't know if you have the skills to get on the stage - please consider the following:
+  <ul>
+    <li>We are happy to brainstorm ideas and transform these into something worth presenting</li>
+    <li>We are happy to review and advise on how to produce a great looking slide deck</li>
+    <li>If you need practice giving talks, get in touch, we can set up a stage for you with some audience in advance, so you can practice in front of a friendly crowd</li>
+    <li>If you come up with any other help needed, we will gladly help in whatever way possible. </li>
+  </ul>
+</p>
+<h2>What do you get for X?</h2>
+<p>
+  Registration will open about a month before the event. If you've registered on time, all is well.
+  If not, <em>submitters get a personal ticket</em>, regrdless of whether your session got accepted or not (assuming quality submission). <em>Accepter speakers get a personal ticket +1</em> (so you can do a friend a favor)
+</p>
 </template>

@@ -1,4 +1,4 @@
-subscriptions = ['wishes', 'proposals', 'users', 'speakers']
+subscriptions = ['wishes', 'proposals', 'users', 'speakers', 'moderators']
 window.subscriptionHandles = {}
 success = 0
 for s in subscriptions

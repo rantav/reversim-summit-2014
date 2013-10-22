@@ -1,14 +1,14 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
   <li class="{{activeClass 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+  <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
+  <li class="{{activeClass 'proposals'}}">
+    <a href="{{pathFor 'proposals'}}">Proposals <small>({{proposals}})</small></a>
+  </li>
+  <li class="{{activeClass 'speakers'}}">
+    <a href="{{pathFor 'speakers'}}">Speakers <small>({{speakers}})</small></a>
+  </li>
   {{#if canSeeHidden}}
-    <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}">Propose</a></li>
-    <li class="{{activeClass 'proposals'}}">
-      <a href="{{pathFor 'proposals'}}">Proposals <small>({{proposals}})</small></a>
-    </li>
-    <li class="{{activeClass 'speakers'}}">
-      <a href="{{pathFor 'speakers'}}">Speakers <small>({{speakers}})</small></a>
-    </li>
     <li class="{{activeClass 'users'}}">
       <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
     </li>
@@ -17,7 +17,7 @@
     Wish List <small>({{wishes}})</small>
   </a></li>
   <li class="{{activeClass 'about'}}"><a href="{{pathFor 'about'}}">About</a></li>
-  <li class="{{activeClass 'venue'}}"><a href="{{pathFor 'venue'}}">Venue</a></li>
+  <li class="{{activeClass 'info'}}"><a href="{{pathFor 'info'}}">Info</a></li>
   <li class="{{activeClass 's2013'}}"><a href="{{pathFor 's2013'}}">2013</a></li>
   <li class="dropdown">{{loginButtons}}</li>
 </ul>
