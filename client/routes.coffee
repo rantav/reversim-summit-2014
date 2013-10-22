@@ -11,7 +11,7 @@ Router.map ->
   @route 'user', template: 'speaker', path: '/user/:id/:name?', controller: 'SpeakerController'
   @route 'wish', path: '/wish/:id/:title?', controller: 'WishController'
   @route 's2013', path: '/s2013', controller: 'S2013Controller'
-  @route 'venue', path: '/venue', controller: 'VenueController'
+  @route 'info', path: '/info', controller: 'InfoController'
 
 Router.configure
   layout: 'layout'
