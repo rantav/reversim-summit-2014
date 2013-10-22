@@ -6,9 +6,12 @@ Template.propose.events
     typeArr = $('input[name=type]:checked')
     if typeArr.length == 1
       type = typeArr[0].id
-    name = c.find('#name').value
-    bio = c.find('#bio').value
-    trackRecord = c.find('#trackRecord').value
+    name = c.find('#name')
+    if name then name = name.value
+    bio = c.find('#bio')
+    if bio then bio = bio.value
+    trackRecord = c.find('#trackRecord')
+    if trackRecord then trackRecord = trackRecord.value
     if name then @update('profile.name': name)
     if bio then @update('profile.bio': bio)
     if trackRecord then @update('profile.trackRecord': trackRecord)
