@@ -1,14 +1,14 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
   <li class="{{activeClass 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+  <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
+  <li class="{{activeClass 'proposals'}}">
+    <a href="{{pathFor 'proposals'}}">Proposals <small>({{proposals}})</small></a>
+  </li>
+  <li class="{{activeClass 'speakers'}}">
+    <a href="{{pathFor 'speakers'}}">Speakers <small>({{speakers}})</small></a>
+  </li>
   {{#if canSeeHidden}}
-    <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
-    <li class="{{activeClass 'proposals'}}">
-      <a href="{{pathFor 'proposals'}}">Proposals <small>({{proposals}})</small></a>
-    </li>
-    <li class="{{activeClass 'speakers'}}">
-      <a href="{{pathFor 'speakers'}}">Speakers <small>({{speakers}})</small></a>
-    </li>
     <li class="{{activeClass 'users'}}">
       <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
     </li>
