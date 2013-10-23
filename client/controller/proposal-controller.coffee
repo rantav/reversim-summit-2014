@@ -1,7 +1,12 @@
 class @ProposalController extends RouteController
 
   waitOn: ->
-    [Meteor.subscribe('proposal', @params.id), subscriptionHandles['users']]
+    subs = [subscriptionHandles.users]
+    if not Proposal.find(@params.id)
+      s = Meteor.subscribe('proposal', @params.id)
+      s.stop = ->
+      subs.push(s)
+    subs
 
 
   tempalte: 'proposal'
