@@ -1,14 +1,15 @@
 Template.nav.activeClass = (name) ->
   if @page == name then 'active' else ''
 
-Template.nav.wishes = ->
-  Counts.findOne('wishes').count
+count = (col) ->
+  data = Counts.findOne(col)
+  if data then return data.count
 
-Template.nav.proposals = ->
-  Counts.findOne('proposals').count
+Template.nav.wishes = -> count('wishes')
 
-Template.nav.speakers = ->
-  Counts.findOne('speakers').count
+Template.nav.proposals = -> count('proposals')
+
+Template.nav.speakers = -> count('speakers')
 
 Template.nav.users = ->
   User.count()
