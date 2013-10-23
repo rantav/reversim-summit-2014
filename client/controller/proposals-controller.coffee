@@ -8,6 +8,9 @@ class @ProposalsController extends RouteController
       subs.push(subscriptionHandles.proposals)
     subs
 
+  onAfterRun: ->
+    document.title = "Proposals | Reversim Summit 2014"
+
   tempalte: 'proposals'
   renderTemplates:
     'nav': to: 'nav'

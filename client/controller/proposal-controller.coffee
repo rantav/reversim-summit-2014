@@ -8,7 +8,6 @@ class @ProposalController extends RouteController
       subs.push(s)
     subs
 
-
   tempalte: 'proposal'
 
   renderTemplates:
@@ -19,4 +18,5 @@ class @ProposalController extends RouteController
   data: ->
     proposal = Proposal.find(@params.id)
     if not proposal then return null
+    document.title = "#{proposal.title} | Reversim Summit 2014"
     {page: 'proposal', proposal: proposal}

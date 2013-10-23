@@ -12,6 +12,9 @@ class @SpeakersController extends RouteController
       subs.push(subscriptionHandles.speakers)
     subs
 
+  onAfterRun: ->
+    document.title = "Speakers | Reversim Summit 2014"
+
   tempalte: 'speakers'
   renderTemplates:
     'nav': to: 'nav'

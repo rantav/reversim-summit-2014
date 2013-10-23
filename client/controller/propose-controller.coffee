@@ -4,6 +4,9 @@ class @ProposeController extends RouteController
   renderTemplates:
     'nav': to: 'nav'
 
+  onAfterRun: ->
+    document.title = "Propose | Reversim Summit 2014"
+
   data: ->
     page: 'propose'
 

@@ -23,4 +23,5 @@ class @SpeakerController extends RouteController
   data: ->
     speaker = User.find(@params.id)
     if not speaker then return null
+    document.title = "#{speaker.name()} | Reversim Summit 2014"
     {page: 'speaker', speaker: speaker}

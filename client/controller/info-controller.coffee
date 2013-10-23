@@ -3,5 +3,8 @@ class @InfoController extends RouteController
   renderTemplates:
     'nav': to: 'nav'
 
+  onAfterRun: ->
+    document.title = "Info | Reversim Summit 2014"
+
   data: ->
     page: 'info'

@@ -5,6 +5,9 @@ class @AboutController extends RouteController
       subscriptionHandles.moderators = Meteor.subscribe('moderators')
       subscriptionHandles.moderators.stop = ->
 
+  onAfterRun: ->
+    document.title = "About Reversim Summit 2014"
+
   waitOn: ->
     subscriptionHandles.moderators
 

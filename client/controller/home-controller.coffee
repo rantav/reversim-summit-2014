@@ -3,5 +3,8 @@ class @HomeController extends RouteController
   renderTemplates:
     'nav': to: 'nav'
 
-  data: ->
+  onAfterRun: ->
+    document.title = "Reversim Summit 2014"
+
+ data: ->
     page: 'home'

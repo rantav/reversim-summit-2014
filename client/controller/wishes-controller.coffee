@@ -8,6 +8,9 @@ class @WishesController extends RouteController
   waitOn: ->
     [subscriptionHandles.wishes, subscriptionHandles.users]
 
+  onAfterRun: ->
+    document.title = "Wishes | Reversim Summit 2014"
+
   tempalte: 'wishes'
   renderTemplates:
     'nav': to: 'nav'
