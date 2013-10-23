@@ -1,8 +1,9 @@
 class @ProposalsController extends RouteController
 
   onBeforeRun: ->
-    subscriptionHandles.proposals = Meteor.subscribe('proposals')
-    subscriptionHandles.proposals.stop = ->
+    if not subscriptionHandles.proposals
+      subscriptionHandles.proposals = Meteor.subscribe('proposals')
+      subscriptionHandles.proposals.stop = ->
 
   waitOn: ->
     [subscriptionHandles.proposals, subscriptionHandles['users']]

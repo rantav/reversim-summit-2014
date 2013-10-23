@@ -1,8 +1,9 @@
 class @WishesController extends RouteController
 
   onBeforeRun: ->
-    subscriptionHandles.wishes = Meteor.subscribe('wishes')
-    subscriptionHandles.wishes.stop = ->
+    if not subscriptionHandles.wishes
+      subscriptionHandles.wishes = Meteor.subscribe('wishes')
+      subscriptionHandles.wishes.stop = ->
 
   waitOn: ->
     [subscriptionHandles.wishes, subscriptionHandles.users]
