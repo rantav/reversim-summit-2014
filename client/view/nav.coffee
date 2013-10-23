@@ -2,13 +2,13 @@ Template.nav.activeClass = (name) ->
   if @page == name then 'active' else ''
 
 Template.nav.wishes = ->
-  Wish.count()
+  Counts.findOne('wishes').count
 
 Template.nav.proposals = ->
-  Proposal.count()
+  Counts.findOne('proposals').count
 
 Template.nav.speakers = ->
-  User.allSpeakers().length
+  Counts.findOne('speakers').count
 
 Template.nav.users = ->
   User.count()
