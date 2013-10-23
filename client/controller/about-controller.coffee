@@ -1,6 +1,8 @@
 class @AboutController extends RouteController
 
-  waitOn: -> [subscriptionHandles['moderators']]
+  waitOn: ->
+    Meteor.subscribe('moderators')
+
 
   tempalte: 'about'
   renderTemplates:

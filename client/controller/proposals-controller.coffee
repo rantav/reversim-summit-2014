@@ -1,6 +1,7 @@
 class @ProposalsController extends RouteController
 
-  waitOn: -> [subscriptionHandles['proposals'], subscriptionHandles['users']]
+  waitOn: ->
+    [Meteor.subscribe('proposals'), subscriptionHandles['users']]
 
   tempalte: 'proposals'
   renderTemplates:

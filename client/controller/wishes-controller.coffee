@@ -1,6 +1,7 @@
 class @WishesController extends RouteController
 
-  waitOn: -> [subscriptionHandles['wishes'], subscriptionHandles['users']]
+  waitOn: ->
+    [Meteor.subscribe('wishes'), subscriptionHandles['users']]
 
   tempalte: 'wishes'
   renderTemplates:

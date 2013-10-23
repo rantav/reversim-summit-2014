@@ -1,6 +1,7 @@
 class @SpeakersController extends RouteController
 
-  waitOn: -> [subscriptionHandles['proposals'], subscriptionHandles['speakers']]
+  waitOn: ->
+    [Meteor.subscribe('proposals'), Meteor.subscribe('speakers')]
 
   tempalte: 'speakers'
   renderTemplates:
