@@ -5,6 +5,9 @@ class @AboutController extends RouteController
       subscriptionHandles.moderators = Meteor.subscribe('moderators')
       subscriptionHandles.moderators.stop = ->
 
+  waitOn: ->
+    subscriptionHandles.moderators
+
   tempalte: 'about'
   renderTemplates:
     'nav': to: 'nav'
