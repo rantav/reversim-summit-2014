@@ -1,7 +1,11 @@
 class @AboutController extends RouteController
 
+  onBeforeRun: ->
+    subscriptionHandles.moderators = Meteor.subscribe('moderators')
+    subscriptionHandles.moderators.stop = ->
+
   waitOn: ->
-    Meteor.subscribe('moderators')
+    subscriptionHandles.moderators
 
 
   tempalte: 'about'

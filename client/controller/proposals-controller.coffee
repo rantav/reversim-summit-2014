@@ -1,7 +1,11 @@
 class @ProposalsController extends RouteController
 
+  onBeforeRun: ->
+    subscriptionHandles.proposals = Meteor.subscribe('proposals')
+    subscriptionHandles.proposals.stop = ->
+
   waitOn: ->
-    [Meteor.subscribe('proposals'), subscriptionHandles['users']]
+    [subscriptionHandles.proposals, subscriptionHandles['users']]
 
   tempalte: 'proposals'
   renderTemplates:

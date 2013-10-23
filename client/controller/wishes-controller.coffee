@@ -1,7 +1,11 @@
 class @WishesController extends RouteController
 
+  onBeforeRun: ->
+    subscriptionHandles.wishes = Meteor.subscribe('wishes')
+    subscriptionHandles.wishes.stop = ->
+
   waitOn: ->
-    [Meteor.subscribe('wishes'), subscriptionHandles['users']]
+    [subscriptionHandles.wishes, subscriptionHandles.users]
 
   tempalte: 'wishes'
   renderTemplates:
