@@ -3,10 +3,18 @@
   <li class="{{activeClass 'home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
   <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
   <li class="{{activeClass 'proposals'}}">
-    <a href="{{pathFor 'proposals'}}">Proposals <small>({{proposals}})</small></a>
+    <a href="{{pathFor 'proposals'}}">Proposals
+      {{#if hasCount 'proposals'}}
+        <small>({{proposals}})</small>
+      {{/if}}
+    </a>
   </li>
   <li class="{{activeClass 'speakers'}}">
-    <a href="{{pathFor 'speakers'}}">Speakers <small>({{speakers}})</small></a>
+    <a href="{{pathFor 'speakers'}}">Speakers
+      {{#if hasCount 'speakers'}}
+        <small>({{speakers}})</small>
+      {{/if}}
+    </a>
   </li>
   {{#if canSeeHidden}}
     <li class="{{activeClass 'users'}}">
@@ -14,7 +22,10 @@
     </li>
   {{/if}}
   <li class="{{activeClass 'wishes'}}"><a href="{{pathFor 'wishes'}}">
-    Wish List <small>({{wishes}})</small>
+    Wish List
+    {{#if hasCount 'wishes'}}
+      <small>({{wishes}})</small>
+    {{/if}}
   </a></li>
   <li class="{{activeClass 'about'}}"><a href="{{pathFor 'about'}}">About</a></li>
   <li class="{{activeClass 'info'}}"><a href="{{pathFor 'info'}}">Info</a></li>

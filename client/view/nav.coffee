@@ -17,3 +17,6 @@ Template.nav.users = ->
 Template.nav.canSeeHidden = ->
   user = User.current()
   user and (user.admin() or user.moderator())
+
+Template.nav.hasCount = (col) ->
+  Counts.findOne(col)
