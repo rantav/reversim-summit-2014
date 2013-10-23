@@ -1,7 +1,12 @@
 class @WishController extends RouteController
 
   waitOn: ->
-    [Meteor.subscribe('wish', @params.id), subscriptionHandles['users']]
+    subs = [subscriptionHandles.users]
+    if not Wishes.findOne({_id: @params.id})
+      s = Meteor.subscribe('wish', @params.id)
+      s.stop = ->
+      subs.push(s)
+    subs
 
   tempalte: 'wish'
 
