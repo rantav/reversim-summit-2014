@@ -1,6 +1,5 @@
 <template name='weCanHelp'>
-{{#if canSee}}
-  <button type="button" data-toggle="modal" data-target="#we-can-help" class='btn btn-default tooltiped' title="Go on, click me! You won't be sorry!">We Can Help!</button>
+  <button type="button" data-toggle="modal" data-target="#we-can-help" class='btn btn-default tooltiped' title="Go on, click me!">We Can Help!</button>
   {{#with speaker}}
     <div class="modal fade" id="we-can-help" tabindex="-1" role="dialog" aria-labelledby="we-can-help-label" aria-hidden="true">
       <div class="modal-dialog">
@@ -11,8 +10,12 @@
           </div>
           <div class="modal-body">
             <p>
-              Please send us a few lines obout what you'd like to speak about and we will
-              get back to you and work on this together. Hebrew or english are fine.
+              If you feel you're not yet ready to propose and would like us to help you put
+              together a good proposal, please send us a few lines about what you'd like to speak about and we will
+              get back to you and work on this together. Hebrew or English.
+            </p>
+            <p>
+              This form will be not published. It will be sent to the moderators team to help you propose your talk.
             </p>
             <div class="form-group">
               <label for="name">Name:</label>
@@ -35,5 +38,4 @@
       </div>
     </div>
   {{/with}}
-{{/if}}
 </template>

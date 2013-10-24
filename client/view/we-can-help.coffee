@@ -12,10 +12,6 @@ Template.weCanHelp.speaker = ->
   u = User.current()
   return if u then u else name: ''
 
-Template.weCanHelp.canSee = ->
-  u = User.current()
-  u and (u.moderator() or u.admin())
-
 Template.weCanHelp.rendered = ->
   $('.tooltiped').tooltip()
 
