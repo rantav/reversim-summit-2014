@@ -4,7 +4,7 @@
     <h1>Proposals (pending)</h1>
     {{#each proposals}}
     <div class="media col-lg-5 proposal-item">
-      <a class="pull-left" href="{{pathFor "speaker" id=user.id name=user.name}}">
+      <a class="pull-left" href="{{pathFor 'speaker' id=user.id name=user.name}}">
         <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo user}}" alt="{{user.name}}" title="{{user.name}}" data-toggle='tooltip' data-placement='right'>
       </a>
       <div class="media-body">
