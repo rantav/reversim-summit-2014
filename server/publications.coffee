@@ -25,7 +25,9 @@ Meteor.publish "speakers", ->
 
 Meteor.publish "speaker", (id)->
   check(id, String)
-  User.find($and: [_id: id, speakerPred], fields: userFields)
+  u = User.find($and: [_id: id, speakerPred], fields: userFields)
+  p = Proposal.find($and: [user_id: id, proposalPred])
+  [u, p]
 
 Meteor.publish "moderators", ->
   User.find {'roles.moderator': true},
@@ -47,26 +49,28 @@ Meteor.publish 'counts', ->
     proposals: collection: Proposal._collection, pred: proposalPred
     speakers: collection: User._collection, pred: speakerPred
   for name, data of collections
-    count = 0
-    initializing = true
-    handle = data.collection.find(data.pred).observeChanges
-      added: (id) =>
-        count++
-        if not initializing
+    ((name, data) =>
+      count = 0
+      initializing = true
+      handle = data.collection.find(data.pred).observeChanges
+        added: (id) =>
+          count++
+          if not initializing
+            @changed("counts", name, {count: count})
+        removed: (id) =>
+          count--
           @changed("counts", name, {count: count})
-      removed: (id) =>
-        count--
-        @changed("counts", name, {count: count})
 
-    # Observe only returns after the initial added callbacks have run.
-    # Now return an initial value and mark the subscription as ready.
-    initializing = false;
-    @added("counts", name, {count: count})
+      # Observe only returns after the initial added callbacks have run.
+      # Now return an initial value and mark the subscription as ready.
+      initializing = false;
+      @added("counts", name, {count: count})
 
-    # Stop observing the cursor when client unsubs.
-    # Stopping a subscription automatically takes
-    # care of sending the client any removed messages.
-    @onStop ->
-      handle.stop()
+      # Stop observing the cursor when client unsubs.
+      # Stopping a subscription automatically takes
+      # care of sending the client any removed messages.
+      @onStop ->
+        handle.stop()
+    )(name, data)
   @ready()
 

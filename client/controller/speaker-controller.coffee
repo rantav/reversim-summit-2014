@@ -5,7 +5,7 @@ class @SpeakerController extends RouteController
     if not subscriptionHandles.proposals
       subscriptionHandles.proposals = Meteor.subscribe('proposals')
       subscriptionHandles.proposals.stop = ->
-      subs.push(subscriptionHandles.proposals)
+      # subs.push(subscriptionHandles.proposals)
 
     if not User.find(@params.id)
       s = Meteor.subscribe('speaker', @params.id)
