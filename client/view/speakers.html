@@ -11,9 +11,12 @@
           <a href='{{pathFor "speaker" id=id name=name}}'>{{name}}</a>
         </h4>
         {{{marked bio}}}
-        <p>
-          <a href='{{pathFor "speaker" id=id name=name}}'>{{proposalCountStr .}}</a>
-        </p>
+        <h5>{{proposalCountStr .}}</h5>
+        <dl>
+          {{#each proposals}}
+            <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a></dt>
+          {{/each}}
+        </dl>
       </div>
     </div>
   {{/if}}
