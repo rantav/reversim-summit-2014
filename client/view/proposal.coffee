@@ -17,11 +17,17 @@ Template.proposal.events
 
 Template.proposal.proposal = -> @proposal
 
+canEdit = (proposal) ->
+  Meteor.userId() and (proposal.mine() or User.current().admin())
+
+Template.proposal.canEdit = -> canEdit(@proposal)
+
+
 Template.proposal.photo = (user) ->
   user.photoUrl(40)
 
 Template.proposal.editMode = ->
-  @proposal.editing and @proposal.mine()
+  @proposal.editing and canEdit(@proposal)
 
 Template.proposal.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

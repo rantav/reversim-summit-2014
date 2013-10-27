@@ -50,6 +50,9 @@ class @Proposal extends Minimongoid
     # can only change your own documents
     if doc.user_id == userId then return true
 
+    # Admins can also modify documents
+    if User.current().admin() then return true
+
     # can also vote
     if (userId and
         fields.length == 1 and
