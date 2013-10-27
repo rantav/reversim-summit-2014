@@ -1,9 +1,10 @@
 <template name='propose'>
 <h2>Welcome! Submit Here</h2>
-<button type="button" data-toggle="modal" data-target="#we-can-help" class='btn btn-lg btn-default tooltiped pull-right' title="Go on, click me!">We Can Help!</button>
 <p>You may submit multiple proposals.</p>
 <p>Please read the instuctions below.</p>
 
+<button type="button" data-toggle="modal" data-target="#we-can-help" class='btn btn-lg btn-default tooltiped' title="Go on, click me!">We Can Help!</button>
+<hr/>
 {{#if loggedIn}}
   {{#with speaker}}
     <form role="form" id='propose'>
