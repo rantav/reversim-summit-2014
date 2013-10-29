@@ -7,13 +7,17 @@
       <a class="pull-left" href="{{pathFor 'speaker' id=user.id name=user.name}}">
         <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo user}}" alt="{{user.name}}" title="{{user.name}}" data-toggle='tooltip' data-placement='right'>
       </a>
+
       <div class="media-body">
         <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
           <i class='icon-twitter'></i>
         </a>
-        <h4 class="media-heading">
-          <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>
-        </h4>
+        <div class="media-heading">
+          <h4>
+            <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>
+          </h4>
+          <span class='label label-{{type}}'>{{typeName}}</span>
+        </div>
         {{{marked abstract}}}
       </div>
     </div>
