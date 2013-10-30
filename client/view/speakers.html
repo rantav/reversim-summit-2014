@@ -14,7 +14,7 @@
         <h5>{{proposalCountStr .}}</h5>
         <dl>
           {{#each proposals}}
-            <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a></dt>
+            <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a> <span class='label label-{{type}}'>{{typeName}}</span></dt>
           {{/each}}
         </dl>
       </div>
