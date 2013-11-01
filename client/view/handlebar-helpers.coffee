@@ -38,5 +38,13 @@ Handlebars.registerHelper 'wishVoteTooltip', (wish) ->
   if not u then return "Login to vote"
   if wish.votes[u] then 'Unvote' else 'Vote'
 
-Handlebars.registerHelper 'marked', (text)->
+Handlebars.registerHelper 'marked', (text) ->
   if text then marked(text)
+
+# Help handelbars iterate over objects by turning them into arrays
+Handlebars.registerHelper 'arrayify', (obj) ->
+  ({key: key, value: value} for key, value of obj)
+
+Handlebars.registerHelper 'proposalTypes', ->
+  Proposal.types()
+

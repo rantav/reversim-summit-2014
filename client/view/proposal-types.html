@@ -1,13 +1,9 @@
 <template name='proposalTypes'>
 <div class="btn-group btn-group-sm" data-toggle="buttons">
-  <label class="btn btn-success {{selectedStr 'full'}}">
-    <input type="radio" name="type" id="full"/> Full Talk
-  </label>
-  <label class="btn btn-success {{selectedStr 'ignite'}}">
-    <input type="radio" name="type" id="ignite"/> Ignite Talk
-  </label>
-  <label class="btn btn-success {{selectedStr 'workshop'}}">
-    <input type="radio" name="type" id="workshop"/> Workshop
-  </label>
+  {{#each arrayify proposalTypes}}
+    <label class="btn btn-success {{selectedStr key ../type}}">
+      <input type="radio" name="type" id="{{key}}"/> {{value}}
+    </label>
+  {{/each}}
 </div>
 </template>

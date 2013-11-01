@@ -26,6 +26,7 @@ class @Proposal extends Minimongoid
   @types: ->
     full: 'Full Talk'
     ignite: 'Ignite Talk'
+    ossil: 'Open Source in Israel'
     workshop: 'Workshop'
 
   delete: ->
