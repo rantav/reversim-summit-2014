@@ -45,7 +45,7 @@ class @User extends Minimongoid
   photoUrl: (height) ->
     uploaded = @uploadedImage()
     if uploaded
-      Cdn.cdnify("#{uploaded}/convert?w=#{height}&h=#{height}")
+      Cdn.cdnify("#{uploaded}/convert?w=#{height}&h=#{height}&fit=crop&align=faces")
     else
       @photoUrlFromService(height)
 
