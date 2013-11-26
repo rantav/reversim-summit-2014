@@ -1,3 +1,28 @@
+filters =
+  nProgressHook: ->
+    if @ready()
+      NProgress.done()
+    else
+      NProgress.start()
+      @stop()
+
+  resetScroll: ->
+    scrollTo = window.currentScroll || 0;
+    $('body').scrollTop(scrollTo);
+    $('body').css("min-height", 0);
+
+Router.before(filters.nProgressHook, {only: [
+  'wishe'
+  'wishes',
+  'proposal',
+  'proposals',
+  'speaker',
+  'speakers',
+  'about'
+]})
+
+Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers']});
+
 Router.map ->
   @route 'home', path: '/', controller: 'HomeController'
   @route 'about', path: '/about', controller: 'AboutController'
@@ -14,14 +39,9 @@ Router.map ->
   @route 'info', path: '/info', controller: 'InfoController'
 
 Router.configure
-  layout: 'layout'
-  loadingTemplate: 'loading'
-
-
-Deps.autorun ->
-  Router.current()
-  Deps.afterFlush ->
-    $(window).scrollTop(0)
+  layoutTemplate: 'layout'
+  yieldTemplates:
+    'nav': to: 'nav'
 
 Router.fullPath = (routeName, params) ->
   Meteor.absoluteUrl().slice(0, -1) + Router.path(routeName, params)
