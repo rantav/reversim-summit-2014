@@ -72,6 +72,19 @@ class @User extends Minimongoid
         picture = Cdn.cdnify('/img/user.png')
     picture
 
+  email: ->
+    return @profile.email if @profile.email
+    if @services
+      if @services.google
+        email = @services.google.email
+      else if @services.github
+        email = @services.github.email
+      else if @services.facebook
+        email = @services.facebook.email
+      else if @services.twitter
+        email = null # Twitter does not provide email
+    email
+
 @User._collection.allow
   update: (userId, doc, fields, modifier) ->
     user = User.find(userId)
