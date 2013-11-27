@@ -30,7 +30,8 @@ Template.wishes.photo = (userId) ->
   userId and User.find(userId).photoUrl(40)
 
 Template.wishes.photoSmall = (userId) ->
-  userId and User.find(userId).photoUrl(20)
+  u = User.find(userId)
+  u.photoUrl(20) if u
 
 Template.wishes.commentsCount = (wish) ->
   wish.comments.length

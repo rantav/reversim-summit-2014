@@ -48,3 +48,5 @@ Handlebars.registerHelper 'arrayify', (obj) ->
 Handlebars.registerHelper 'proposalTypes', ->
   Proposal.types()
 
+Handlebars.registerHelper 'pathWish', (obj) ->
+  Router.path('wish', {id: obj.hash.id, title: obj.hash.title})
