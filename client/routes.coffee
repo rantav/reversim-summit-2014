@@ -37,6 +37,7 @@ Router.map ->
   @route 'wish', path: '/wish/:id/:title?', controller: 'WishController'
   @route 's2013', path: '/s2013', controller: 'S2013Controller'
   @route 'info', path: '/info', controller: 'InfoController'
+  @route 'coc', path: '/coc', controller: 'CocController'
 
 Router.configure
   layoutTemplate: 'layout'
