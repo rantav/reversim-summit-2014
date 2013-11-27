@@ -4,6 +4,8 @@ Template.speakers.speakers = ->
 Template.speakers.photo = (speaker) ->
   speaker.photoUrl(120)
 
+Template.speakers.proposals = -> @proposals()
+
 statuses = ['submitted']
 Template.speakers.shouldDisplay = (speaker) ->
   speaker.hasProposalInStatus(statuses)
