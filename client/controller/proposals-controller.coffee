@@ -1,19 +1,13 @@
 class @ProposalsController extends RouteController
 
   waitOn: ->
-    subs = [subscriptionHandles.users]
-    if not subscriptionHandles.proposals
-      subscriptionHandles.proposals = Meteor.subscribe('proposals')
-      subscriptionHandles.proposals.stop = ->
-      subs.push(subscriptionHandles.proposals)
-    subs
+    limit = @params.limit || 10
+    Meteor.subscribe('proposals', {}, {limit: limit})
 
-  onAfterRun: ->
-    document.title = "Proposals | Reversim Summit 2014"
+  after: -> document.title = "Proposals | Reversim Summit 2014"
 
   tempalte: 'proposals'
-  renderTemplates:
-    'nav': to: 'nav'
 
   data: ->
     page: 'proposals'
+    limit: parseInt(@params.limit || 10)

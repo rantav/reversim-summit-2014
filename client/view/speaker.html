@@ -81,10 +81,10 @@
 {{#if hasProposals}}
   <div>
     <h2>Proposals:</h2>
-    {{#each speaker.proposals}}
+    {{#each proposals}}
       <dl>
         <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a> <span class='label label-{{type}}'>{{typeName}}</span></dt>
-        <dl>{{{marked abstract}}}</dl>
+        <dd>{{{marked abstract}}}</dd>
       </dl>
     {{/each}}
   </div>

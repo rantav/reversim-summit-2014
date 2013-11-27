@@ -1,13 +1,10 @@
 class @UsersController extends RouteController
 
-  waitOn: -> [subscriptionHandles['users']]
+  waitOn: -> Meteor.subscribe('users')
 
-  onAfterRun: ->
-    document.title = "Users | Reversim Summit 2014"
+  after: -> document.title = "Users | Reversim Summit 2014"
 
   tempalte: 'users'
-  renderTemplates:
-    'nav': to: 'nav'
 
   data: ->
     page: 'users'

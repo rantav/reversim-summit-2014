@@ -1,12 +1,3 @@
-wishPred = $or: [{deleted: $exists: false}, {deleted: false}]
-
-Meteor.publish "wishes", ->
-  Wishes.find(wishPred)
-
-Meteor.publish "wish", (id)->
-  check(id, String)
-  Wishes.find($and: [_id: id, wishPred])
-
 userFields =
   roles: 1
   profile: 1
@@ -15,38 +6,47 @@ userFields =
   'services.twitter.profile_image_url': 1
   'services.github.picture': 1 # This one's prepopulated at Accounts.onCreateUser since github by default does not add the picture (avatar) url
 
+notDeletedPred = {$or: [{deleted: $exists: false}, {deleted: false}]}
+
+Meteor.publish "wishes", (query, options) ->
+  options = {} if not options
+  query = {} if not query
+  wishes = Wishes.find(_.extend(query, notDeletedPred), options)
+  # This can be improved to add only the users that commented or voted or created on the relevant wishes
+  users = User.find({}, {fields: userFields})
+  [wishes, users]
+
+
+
 Meteor.publish "users", ->
-  User.find {},
-    fields: userFields
+  User.find {}, fields: userFields
 
 speakerPred = 'profile.submitted': true
-Meteor.publish "speakers", ->
-  User.find(speakerPred, fields: userFields)
-
-Meteor.publish "speaker", (id)->
-  check(id, String)
-  u = User.find($and: [_id: id, speakerPred], fields: userFields)
-  p = Proposal.find($and: [user_id: id, proposalPred])
-  [u, p]
+Meteor.publish "speakers", (query, options) ->
+  options = {} if not options
+  query = {} if not query
+  users = User.find(_.extend(query, speakerPred), _.extend(options, {fields: userFields}))
+  userIds = users.map((u)->u._id)
+  proposals = Proposal.find({user_id: {$in: userIds}})
+  [users, proposals]
 
 Meteor.publish "moderators", ->
   User.find {'roles.moderator': true},
     fields: userFields
 
-proposalPred = $or: [{deleted: $exists: false}, {deleted: false}]
-Meteor.publish "proposals", ->
-  Proposal.find(proposalPred)
-
-Meteor.publish "proposal", (id)->
-  check(id, String)
-  Proposal.find($and: [_id: id, proposalPred])
-
+Meteor.publish "proposals", (query, options) ->
+  options = {} if not options
+  query = {} if not query
+  proposals = Proposal.find(_.extend(query, notDeletedPred), options)
+  userIds = proposals.map((p) -> p.user_id)
+  users = User.find({_id: $in: userIds}, {fields: userFields})
+  [proposals, users]
 
 # publish the current size of the collections
 Meteor.publish 'counts', ->
   collections =
-    wishes: collection: Wishes, pred: wishPred
-    proposals: collection: Proposal._collection, pred: proposalPred
+    wishes: collection: Wishes, pred: notDeletedPred
+    proposals: collection: Proposal._collection, pred: notDeletedPred
     speakers: collection: User._collection, pred: speakerPred
   for name, data of collections
     ((name, data) =>

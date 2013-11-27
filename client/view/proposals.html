@@ -14,7 +14,7 @@
         </a>
         <div class="media-heading">
           <h4>
-            <a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a>
+            <a href='{{pathFor "proposal"}}'>{{title}}</a>
           </h4>
           <span class='label label-{{type}}'>{{typeName}}</span>
         </div>
@@ -24,4 +24,7 @@
     {{/each}}
   </div>
 </div>
+{{#if hasMore}}
+  <button class='btn btn-default btn-lg' id='load-more'>Load More</button>
+{{/if}}
 </template>
