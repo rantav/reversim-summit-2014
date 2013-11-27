@@ -8,13 +8,13 @@
       </a>
       <div class="media-body">
         <h4 class="media-heading">
-          <a href='{{pathFor "speaker" id=id name=name}}'>{{name}}</a>
+          <a href='{{pathFor "speaker"}}'>{{name}}</a>
         </h4>
         {{{marked bio}}}
         <h5>{{proposalCountStr .}}</h5>
         <dl>
           {{#each proposals}}
-            <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a> <span class='label label-{{type}}'>{{typeName}}</span></dt>
+            <dt><a href='{{pathFor "proposal"}}'>{{title}}</a> <span class='label label-{{type}}'>{{typeName}}</span></dt>
           {{/each}}
         </dl>
       </div>
