@@ -26,8 +26,6 @@ Template.propose.events
   'click .sign-in': ->
     Accounts._loginButtonsSession.set('dropdownVisible', true);
 
-Template.propose.hasBio = (speaker) ->
-  speaker.hasBio()
+Template.propose.hasBio = (speaker) -> speaker and speaker.hasBio()
 
-Template.propose.speaker = ->
-  User.current()
+Template.propose.speaker = -> User.current()

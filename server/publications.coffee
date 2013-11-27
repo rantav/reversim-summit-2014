@@ -18,8 +18,10 @@ Meteor.publish "wishes", (query, options) ->
 
 
 
-Meteor.publish "users", ->
-  User.find {}, fields: userFields
+Meteor.publish "users",(query, options) ->
+  options = {} if not options
+  query = {} if not query
+  User.find(query, _.extend(options, {fields: userFields}))
 
 speakerPred = 'profile.submitted': true
 Meteor.publish "speakers", (query, options) ->
