@@ -83,7 +83,7 @@
     <h2>Proposals:</h2>
     {{#each proposals}}
       <dl>
-        <dt><a href='{{pathFor "proposal" id=id title=title}}'>{{title}}</a> <span class='label label-{{type}}'>{{typeName}}</span></dt>
+        <dt><a href='{{pathFor "proposal"}}'>{{title}}</a> <span class='label label-{{type}}'>{{typeName}}</span></dt>
         <dd>{{{marked abstract}}}</dd>
       </dl>
     {{/each}}

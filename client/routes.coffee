@@ -28,7 +28,7 @@ Router.map ->
   @route 'about', path: '/about', controller: 'AboutController'
   @route 'propose', controller: 'ProposeController'
   @route 'wishes', controller: 'WishesController'
-  @route 'proposal', path: '/proposal/:id/:title?', controller: 'ProposalController'
+  @route 'proposal', path: '/proposal/:id/:title?/:nothing?', controller: 'ProposalController'
   @route 'proposals', path: '/proposals/:limit?', controller: 'ProposalsController'
   @route 'speaker', path: '/speaker/:id/:name?', controller: 'SpeakerController'
   @route 'speakers', controller: 'SpeakersController'
