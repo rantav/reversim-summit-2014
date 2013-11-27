@@ -15,10 +15,10 @@ class @User extends Minimongoid
   @allModerators: ->
     User.where('roles.moderator': true)
 
-  name: -> @profile.name
-  bio: -> @profile.bio
+  name: -> @profile.name if @profile
+  bio: -> @profile.bio if @profile
   hasBio: -> !!@profile.bio if @profile
-  trackRecord: -> @profile.trackRecord
+  trackRecord: -> @profile.trackRecord if @profile
 
   me: -> @id == Meteor.userId()
 
