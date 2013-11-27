@@ -21,6 +21,7 @@ Template.propose.events
       User.current().update('profile.submitted': true)
       Router.go('proposal', {id: p.id})
       alertify.success('Thank you!')
+      Meteor.call('sendSubmitEmail', p)
 
   'click .sign-in': ->
     Accounts._loginButtonsSession.set('dropdownVisible', true);
