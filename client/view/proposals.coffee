@@ -1,5 +1,4 @@
-Template.proposals.proposals = ->
-  Proposal.all(sort: createdAt: -1)
+Template.proposals.proposals = -> @proposals
 
 Template.proposals.photo = (user) ->
   user.photoUrl(120)
