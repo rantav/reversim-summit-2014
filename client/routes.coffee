@@ -12,12 +12,13 @@ filters =
     $('body').css("min-height", 0);
 
 Router.before(filters.nProgressHook, {only: [
-  'wishe'
+  'wish'
   'wishes',
   'proposal',
   'proposals',
   'speaker',
   'speakers',
+  'sponsors',
   'about'
 ]})
 
@@ -38,6 +39,7 @@ Router.map ->
   @route 's2013', path: '/s2013', controller: 'S2013Controller'
   @route 'info', path: '/info', controller: 'InfoController'
   @route 'coc', path: '/coc', controller: 'CocController'
+  @route 'sponsors', controller: 'SponsorsController'
 
 Router.configure
   layoutTemplate: 'layout'

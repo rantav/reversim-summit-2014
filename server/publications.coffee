@@ -16,8 +16,6 @@ Meteor.publish "wishes", (query, options) ->
   users = User.find({}, {fields: userFields})
   [wishes, users]
 
-
-
 Meteor.publish "users",(query, options) ->
   options = {} if not options
   query = {} if not query
@@ -43,6 +41,11 @@ Meteor.publish "proposals", (query, options) ->
   userIds = proposals.map((p) -> p.user_id)
   users = User.find({_id: $in: userIds}, {fields: userFields})
   [proposals, users]
+
+Meteor.publish "sponsors", (query, options) ->
+  options = {} if not options
+  query = {} if not query
+  sponsors = Sponsor.find(query, options)
 
 # publish the current size of the collections
 Meteor.publish 'counts', ->
