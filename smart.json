@@ -8,6 +8,7 @@
       "git": "https://github.com/rantav/meteor-marked",
       "version": "v0.2.9"
     },
-    "minimongoid": {}
+    "minimongoid": {},
+    "vector": {}
   }
 }

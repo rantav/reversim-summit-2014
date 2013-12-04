@@ -1,0 +1,39 @@
+<template name="accountListByName">
+  <h1>{{field.label}}</h1>
+  <ul class="list-unstyled vectorList">
+  {{#each data}}
+    <li>
+        <a href="{{settings.adminRoot}}/{{../collectionName}}/{{_id}}">{{profile.name}}</a>
+    </li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="accountName">
+  <label>{{field.label}}</label>
+  <p>{{plainValue.name}}</p>
+</template>
+
+<template name="accountRole">
+  <label>{{field.label}}</label>
+  <p>{{plainValue.role}}</p>
+</template>
+
+<template name="accountService">
+  <label>{{field.label}}</label>
+  {{#if plainValue.google}}
+    <p>Google</p>
+    <p>{{plainValue.google.email}}</p>
+  {{/if}}
+  {{#if plainValue.facebook}}
+    <p>Facebook</p>
+    <p>{{plainValue.facebook.email}}</p>
+  {{/if}}
+  {{#if plainValue.twitter}}
+    <p>Twitter</p>
+  {{/if}}
+  {{#if plainValue.github}}
+    <p>GitHub</p>
+    <p>{{plainValue.github.email}}</p>
+  {{/if}}
+</template>

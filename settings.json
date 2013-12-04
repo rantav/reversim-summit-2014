@@ -1,0 +1,58 @@
+{
+  "public":{
+    "vectorResources":{
+      "createDefaultUser": false,
+      "accounts": {
+        "collectionFields": [
+          {
+            "type": "accountListByName",
+            "label": "Manage users"
+          }
+        ],
+        "collectionActions": [
+          {
+            "type": "accountCreate",
+            "label": "Create account",
+            "options": ["administrator"]
+          },
+          {
+            "label": "Pagination",
+            "type": "pagination"
+          }
+        ],
+        "documentFields": [
+          {
+            "type": "accountEmails",
+            "label": "Email",
+            "key": "emails"
+          },
+          {
+            "type": "accountName",
+            "label": "Name",
+            "key": "profile"
+          },
+          {
+            "type": "accountService",
+            "label": "Service",
+            "key": "services"
+          },
+          {
+            "type": "accountRole",
+            "label": "Role",
+            "key": "profile"
+          }
+        ],
+        "documentActions": [
+          {
+            "type": "delete",
+            "label": "Delete user"
+          }
+        ]
+      },
+      "pages": {
+        "label": "Pages",
+        "roles": ["administrator"]
+      }
+    }
+  }
+}

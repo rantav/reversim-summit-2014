@@ -10,7 +10,8 @@
         "git": "https://github.com/rantav/meteor-marked",
         "branch": "master"
       },
-      "minimongoid": {}
+      "minimongoid": {},
+      "vector": {}
     },
     "packages": {
       "observatory": {
@@ -25,8 +26,8 @@
       },
       "bootstrap3-less": {
         "git": "https://github.com/eprochasson/bootstrap3-less",
-        "tag": "v0.1.4",
-        "commit": "23ec918f8377b15b22cba33e13b717214235c88a"
+        "tag": "v0.1.5",
+        "commit": "5074432c020ffc7a676a812e92104ce0fa96080f"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
@@ -42,6 +43,11 @@
         "git": "https://github.com/Exygy/minimongoid.git",
         "tag": "v0.8.3",
         "commit": "8a4849426f1775f9886f303067e50877696fae43"
+      },
+      "vector": {
+        "git": "https://github.com/handmadeadv/vector.git",
+        "tag": "v0.2.3",
+        "commit": "777353801f1a4fa6e4b1f85a91a72ab5a96b6f7d"
       },
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",
