@@ -11,7 +11,9 @@
         "branch": "master"
       },
       "minimongoid": {},
-      "vector": {}
+      "vector": {},
+      "migrations": {},
+      "pince": {}
     },
     "packages": {
       "observatory": {
@@ -48,6 +50,16 @@
         "git": "https://github.com/handmadeadv/vector.git",
         "tag": "v0.2.3",
         "commit": "777353801f1a4fa6e4b1f85a91a72ab5a96b6f7d"
+      },
+      "migrations": {
+        "git": "https://github.com/rantav/meteor-migrations.git",
+        "tag": "v0.0.2",
+        "commit": "4e75c06b8e94961567765c4dea20a007816ad274"
+      },
+      "pince": {
+        "git": "https://github.com/mad-eye/pince.git",
+        "tag": "v0.0.2",
+        "commit": "ac4c09d12b850ce09f2deefbcbfd13a6620ec7aa"
       },
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",
