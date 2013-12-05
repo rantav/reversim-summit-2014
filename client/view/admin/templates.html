@@ -37,3 +37,14 @@
     <p>{{plainValue.github.email}}</p>
   {{/if}}
 </template>
+
+<template name="sponsorsListByName">
+  <h1>{{field.label}}</h1>
+  <ul class="list-unstyled vectorList">
+  {{#each data}}
+    <li>
+        <a href="{{settings.adminRoot}}/{{../collectionName}}/{{_id}}">{{name}}</a>
+    </li>
+  {{/each}}
+  </ul>
+</template>

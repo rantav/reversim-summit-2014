@@ -72,7 +72,7 @@
         "roles": ["administrator"],
         "collectionFields": [
           {
-            "type": "list",
+            "type": "sponsorsListByName",
             "label": "Manage sponsors"
           }
         ],
