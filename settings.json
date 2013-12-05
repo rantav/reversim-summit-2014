@@ -94,6 +94,11 @@
             "type": "text"
           },
           {
+            "key": "logoLink",
+            "label": "Logo Link",
+            "type": "text"
+          },
+          {
             "key": "description",
             "label": "Description",
             "type": "textarea"

@@ -2,11 +2,11 @@
   <h1>Thank you, our sponsors</h1>
   {{#each sponsors}}
     <div class="media col-lg-11 sponsor-item">
-      <img class="media-object about-img img-thumbnail img-thumbnail-190" src="{{logo}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'/>
+      <h2>{{name}}</h2>
+      <a href='{{logoLink}}'>
+        <img class="media-object about-img img-thumbnail img-thumbnail-190" src="{{logo}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'/>
+      </a>
       <div class="media-body">
-        <div class="media-heading">
-          <h4>{{name}}</h4>
-        </div>
         <div class='lead'>
           {{{marked description}}}
         </div>
