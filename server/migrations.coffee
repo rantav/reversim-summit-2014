@@ -6,5 +6,6 @@ Meteor.startup ->
     return
 
   Meteor.Migrations.add 'make me admin on vector', ((log) ->
-    update = User._collection.update({'profile.name': 'Ran Tavory'}, {$set: {'profile.role': 'administrator'}})
+    update = User._collection.update({'profile.name': 'Ran Tavory'},
+      {$set: {'profile.role': 'administrator'}})
     log.info("Updated: #{update}"))
