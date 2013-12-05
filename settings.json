@@ -89,8 +89,18 @@
             "type": "text"
           },
           {
+            "key": "logoUrl",
+            "label": "Logo",
+            "type": "text"
+          },
+          {
             "key": "description",
             "label": "Description",
+            "type": "textarea"
+          },
+          {
+            "key": "descriptionHeb",
+            "label": "Description Hebrew",
             "type": "textarea"
           },
           {
