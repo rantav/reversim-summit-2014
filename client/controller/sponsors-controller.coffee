@@ -9,4 +9,4 @@ class @SponsorsController extends RouteController
 
   data: ->
     page: 'sponsors'
-    sponsors: Sponsor.all()
+    sponsors: _.shuffle(Sponsor.all())
