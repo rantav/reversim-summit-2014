@@ -1,5 +1,12 @@
 @import "packages/bootstrap3-less/bootstrap.lessimport";
 
+// Make all images responsive (http://stackoverflow.com/a/17933207/10272)
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 @media (min-width: @screen-sm) {
   // Background image - not for phones, only larger devices
   body {
@@ -84,8 +91,6 @@ img.img-thumbnail-120 {
   min-width: 130px;
 }
 img.img-thumbnail-190 {
-  height: 180px;
-  min-width: 180px;
 }
 img.about-img {
   margin-right: 1em;
