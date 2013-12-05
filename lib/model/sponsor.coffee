@@ -1,6 +1,6 @@
 class @Sponsor extends Minimongoid
 
-  @_collection: new Meteor.Collection "sponsors"
+  @_collection: Vector.collections.sponsors
 
 @Sponsor._collection.allow
   insert: (userId, doc) ->

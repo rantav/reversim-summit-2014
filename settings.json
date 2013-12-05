@@ -1,7 +1,11 @@
 {
+  "private": {
+    "vectorResources":{
+      "createDefaultUser": false
+    }
+  },
   "public":{
     "vectorResources":{
-      "createDefaultUser": false,
       "accounts": {
         "collectionFields": [
           {
@@ -49,9 +53,45 @@
           }
         ]
       },
-      "pages": {
-        "label": "Pages",
-        "roles": ["administrator"]
+      "sponsors": {
+        "label": "Sponsors",
+        "roles": ["administrator"],
+        "collectionFields": [
+          {
+            "type": "list",
+            "label": "Manage sponsors"
+          }
+        ],
+        "collectionActions": [
+          {
+            "label": "Create new",
+            "type": "create"
+          }
+        ],
+        "documentFields": [
+          {
+            "key": "name",
+            "label": "Name",
+            "type": "text"
+          },
+          {
+            "key": "description",
+            "label": "Description",
+            "type": "textarea"
+          },
+          {
+            "key": "more",
+            "label": "More",
+            "type": "textarea"
+          }
+        ],
+        "documentActions":
+        [
+          {
+            "type": "delete",
+            "label": "Delete sponsor"
+          }
+        ]
       }
     }
   }
