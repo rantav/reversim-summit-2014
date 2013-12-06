@@ -13,6 +13,10 @@
   <label>{{field.label}}</label>
   <p>{{plainValue.name}}</p>
 </template>
+<template name="accountNameEditable">
+  <label>{{field.label}}</label>
+  <p>{{plainValue.name}}</p>
+</template>
 
 <template name="accountRole">
   <label>{{field.label}}</label>
@@ -48,3 +52,13 @@
   {{/each}}
   </ul>
 </template>
+
+<template name="checkbox">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" {{ifChecked field.key}} id="collectionField_{{field.key}}">
+      {{field.label}}
+    </label>
+  </div>
+</template>
+

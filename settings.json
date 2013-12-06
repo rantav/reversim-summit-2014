@@ -20,7 +20,11 @@
           }
         ]
       },
+      "user": {
+        "roles": ["administrator"]
+      },
       "accounts": {
+        "roles": ["administrator"],
         "collectionFields": [
           {
             "type": "accountListByName",
@@ -29,9 +33,8 @@
         ],
         "collectionActions": [
           {
-            "type": "accountCreate",
-            "label": "Create account",
-            "options": ["administrator"]
+            "type": "create",
+            "label": "Create account"
           },
           {
             "label": "Pagination",
@@ -40,20 +43,31 @@
         ],
         "documentFields": [
           {
-            "type": "accountEmails",
-            "label": "Email",
-            "key": "emails"
+            "type": "text",
+            "label": "profile.email",
+            "key": "profile.email"
           },
           {
-            "type": "accountName",
+            "type": "text",
             "label": "Name",
-            "key": "profile"
+            "key": "profile.name"
+          },
+          {
+            "type": "text",
+            "label": "profile.uploadedImage",
+            "key": "profile.uploadedImage"
           },
           {
             "type": "accountService",
-            "label": "Service",
+            "label": "Login Service",
             "key": "services"
           },
+          {
+            "type": "checkbox",
+            "label": "Submitted",
+            "key": "profile.submitted"
+          },
+
           {
             "type": "accountRole",
             "label": "Role",

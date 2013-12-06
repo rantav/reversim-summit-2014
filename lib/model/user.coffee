@@ -1,6 +1,7 @@
 class @User extends Minimongoid
 
   @_collection: Meteor.users
+  # @_collection: Vector.collections.accounts
 
   @has_many: [
     {name: 'proposals'}
