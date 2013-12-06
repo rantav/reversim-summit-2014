@@ -43,6 +43,11 @@
         ],
         "documentFields": [
           {
+            "type": "plain",
+            "label": "ID",
+            "key": "_id"
+          },
+          {
             "type": "text",
             "label": "profile.email",
             "key": "profile.email"
@@ -158,14 +163,29 @@
         ],
         "documentFields": [
           {
+            "type": "plain",
+            "label": "ID",
+            "key": "_id"
+          },
+          {
             "key": "title",
             "label": "Title",
+            "type": "text"
+          },
+          {
+            "key": "type",
+            "label": "Type (full, ignite, ossil, workshop)",
             "type": "text"
           },
           {
             "key": "abstract",
             "label": "Abstract",
             "type": "textarea"
+          },
+          {
+            "key": "user_id",
+            "label": "Submitter ID",
+            "type": "text"
           }
         ],
         "documentActions":
