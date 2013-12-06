@@ -1,0 +1,7 @@
+<template name='sponsorStrip'>
+  {{#each sponsors}}
+    <a href='{{pathFor "sponsors"}}' class="sponsor-logo-title pull-left" title='name'>
+      <img class='img' src="{{staticImg logoSmallUrl}}">
+    </a>
+  {{/each}}
+</template>

@@ -11,8 +11,7 @@ Template.nav.proposals = -> count('proposals')
 
 Template.nav.speakers = -> count('speakers')
 
-Template.nav.users = ->
-  User.count()
+Template.nav.users = -> User.count()
 
 Template.nav.canSeeHidden = ->
   user = User.current()

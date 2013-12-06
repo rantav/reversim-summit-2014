@@ -94,6 +94,11 @@
             "type": "text"
           },
           {
+            "key": "logoSmallUrl",
+            "label": "Logo Small",
+            "type": "text"
+          },
+          {
             "key": "logoLink",
             "label": "Logo Link",
             "type": "text"
