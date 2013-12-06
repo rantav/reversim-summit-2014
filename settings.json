@@ -174,7 +174,12 @@
           },
           {
             "key": "type",
-            "label": "Type (full, ignite, ossil, workshop)",
+            "label": "Type (full, ignite, ossil, workshop, keynote)",
+            "type": "text"
+          },
+          {
+            "key": "status",
+            "label": "Status (submitted, accepted, rejected)",
             "type": "text"
           },
           {
