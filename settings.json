@@ -86,7 +86,7 @@
         "roles": ["administrator"],
         "collectionFields": [
           {
-            "type": "sponsorsListByName",
+            "type": "listByName",
             "label": "Manage sponsors"
           }
         ],
@@ -138,6 +138,41 @@
           {
             "type": "delete",
             "label": "Delete sponsor"
+          }
+        ]
+      },
+      "proposals": {
+        "label": "Proposals",
+        "roles": ["administrator"],
+        "collectionFields": [
+          {
+            "type": "list",
+            "label": "Manage proposals"
+          }
+        ],
+        "collectionActions": [
+          {
+            "label": "Create new",
+            "type": "create"
+          }
+        ],
+        "documentFields": [
+          {
+            "key": "title",
+            "label": "Title",
+            "type": "text"
+          },
+          {
+            "key": "abstract",
+            "label": "Abstract",
+            "type": "textarea"
+          }
+        ],
+        "documentActions":
+        [
+          {
+            "type": "delete",
+            "label": "Delete proposal"
           }
         ]
       }

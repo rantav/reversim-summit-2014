@@ -2,7 +2,8 @@ class @Proposal extends Minimongoid
 
   notDeleted = $or: [{deleted: $exists: false}, {deleted: false}]
 
-  @_collection: new Meteor.Collection "proposals"
+  # @_collection: new Meteor.Collection "proposals"
+  @_collection: Vector.collections.proposals
 
   @belongs_to: [
     {name: 'user'}
