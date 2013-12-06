@@ -9,7 +9,9 @@
       "version": "v0.2.9"
     },
     "minimongoid": {},
-    "vector": {},
+    "vector": {
+      "git": "https://github.com/rantav/vector"
+    },
     "migrations": {},
     "pince": {}
   }

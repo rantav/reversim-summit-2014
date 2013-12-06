@@ -11,7 +11,10 @@
         "branch": "master"
       },
       "minimongoid": {},
-      "vector": {},
+      "vector": {
+        "git": "https://github.com/rantav/vector",
+        "branch": "master"
+      },
       "migrations": {},
       "pince": {}
     },
@@ -47,9 +50,9 @@
         "commit": "8a4849426f1775f9886f303067e50877696fae43"
       },
       "vector": {
-        "git": "https://github.com/handmadeadv/vector.git",
-        "tag": "v0.2.3",
-        "commit": "777353801f1a4fa6e4b1f85a91a72ab5a96b6f7d"
+        "git": "https://github.com/rantav/vector",
+        "branch": "master",
+        "commit": "520d34681be8ab879ab1e9420f0b0fe68adf38d1"
       },
       "migrations": {
         "git": "https://github.com/rantav/meteor-migrations.git",
