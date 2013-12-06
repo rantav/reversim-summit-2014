@@ -1,7 +1,6 @@
 Template.proposals.proposals = -> @proposals
 
-Template.proposals.photo = (user) ->
-  user.photoUrl(120)
+Template.proposals.photo = (user) -> user.photoUrl(120) if user
 
 Template.proposals.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

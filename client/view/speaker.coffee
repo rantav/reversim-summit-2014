@@ -40,6 +40,11 @@ Template.speaker.uploadedImage = ->
   if img
     "#{img}/convert?h=120&w=120"
 
+Template.speaker.canEdit = -> canEdit.call(@)
+
+canEdit = ->
+  cur = User.current()
+  @speaker.me() or cur.admin()
 
 Template.speaker.photo = ->
   @speaker.photoUrl(120)
@@ -48,7 +53,7 @@ Template.speaker.photoFromService = ->
   @speaker.photoUrlFromService(120)
 
 Template.speaker.editMode = ->
-  @speaker.me() and ((not @speaker.hasBio()) or @speaker.editing())
+  canEdit.call(@) and ((not @speaker.hasBio()) or @speaker.editing())
 
 Template.speaker.twitterShareNotMeUrl = ->
     url = Router.fullPath('speaker', id: @speaker.id)
