@@ -5,7 +5,7 @@ Meteor.startup ->
     log.info("METEOR_MIGRATIONS_OFF is set, will not run migrations")
     return
 
-  Meteor.Migrations.add 'make me admin on vector', ((log) ->
-    update = User._collection.update({'profile.name': 'Ran Tavory'},
-      {$set: {'profile.role': 'administrator'}})
-    log.info("Updated: #{update}"))
+  # Meteor.Migrations.add 'make me admin on vector', ((log) ->
+  #   update = User._collection.update({'profile.name': 'Ran Tavory'},
+  #     {$set: {'profile.role': 'administrator'}})
+  #   log.info("Updated: #{update}"))
