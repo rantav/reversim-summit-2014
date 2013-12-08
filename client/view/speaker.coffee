@@ -44,7 +44,7 @@ Template.speaker.canEdit = -> canEdit.call(@)
 
 canEdit = ->
   cur = User.current()
-  @speaker.me() or cur.admin()
+  @speaker.me() or (cur and cur.admin())
 
 Template.speaker.photo = ->
   @speaker.photoUrl(120)
