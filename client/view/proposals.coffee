@@ -12,6 +12,12 @@ Template.proposals.hasMore = ->
   count = Counts.findOne('proposals')
   count and count.count > Proposal.count()
 
+Template.proposals.filterByTypeUrl = ->
+  Router.path('proposals') + "?filterType=#{@type}"
+
 Template.proposals.events
   'click #load-more': ->
-    Router.go('proposals', {limit: @limit + 10})
+    path = Router.path('proposals', {limit: @limit + 10})
+    if @filterType
+      path += "?filterType=#{@filterType}"
+    Router.go(path)
