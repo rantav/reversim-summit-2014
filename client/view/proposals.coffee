@@ -2,6 +2,12 @@ Template.proposals.proposals = -> @proposals
 
 Template.proposals.photo = (user) -> user.photoUrl(120) if user
 
+Template.proposals.canSeeNumLoaded = ->
+  u = User.current()
+  u and (u.admin() or u.moderator())
+
+Template.proposals.numLoaded = -> @proposals.length if @proposals
+
 Template.proposals.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()
 
