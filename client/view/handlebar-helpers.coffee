@@ -46,7 +46,11 @@ Handlebars.registerHelper 'arrayify', (obj) ->
   ({key: key, value: value} for key, value of obj)
 
 Handlebars.registerHelper 'proposalTypes', ->
-  Proposal.types()
+  u = User.current()
+  types = Proposal.types()
+  if not u or not u.admin()
+    delete types['keynote']
+  types
 
 Handlebars.registerHelper 'pathWish', (obj) ->
   Router.path('wish', {id: obj.hash.id, title: obj.hash.title})
