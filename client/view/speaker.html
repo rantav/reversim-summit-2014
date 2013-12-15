@@ -1,5 +1,13 @@
 <template name='speaker'>
 <div class='about-speaker'>
+  {{#if canSeeEmail}}
+    {{#if speaker.email}}
+      <div class='pull-right'>
+        <strong><a href='{{speaker.email}}'>{{speaker.email}}</a></strong> <small class='mute'>(email visible only to you and to moderators)</small>
+      </div>
+    {{/if}}
+  {{/if}}
+
   {{#if editMode}}
     <ul class='pick-image'>
       <li>
@@ -31,6 +39,7 @@
   {{else}}
     <h4 class='no-break'>{{speaker.name}}</h4>
   {{/if}}
+
 
   {{#if editMode}}
     <label for='bio'>Bio:</label>

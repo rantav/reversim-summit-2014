@@ -2,9 +2,12 @@ userFields =
   roles: 1
   profile: 1
   'services.google.picture': 1
+  'services.google.email': 1
   'services.facebook.id': 1
+  'services.facebook.email': 1
   'services.twitter.profile_image_url': 1
-  'services.github.picture': 1 # This one's prepopulated at Accounts.onCreateUser since github by default does not add the picture (avatar) url
+  'services.github.picture': 1
+  'services.github.email': 1
 
 notDeletedPred = {$or: [{deleted: $exists: false}, {deleted: false}]}
 

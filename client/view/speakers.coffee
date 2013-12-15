@@ -6,9 +6,13 @@ Template.speakers.photo = (speaker) ->
 
 Template.speakers.proposals = -> @proposals()
 
-statuses = ['submitted']
+statuses = ['submitted', 'accepted']
 Template.speakers.shouldDisplay = (speaker) ->
   speaker.hasProposalInStatus(statuses)
+
+Template.speakers.canSeeEmail = (speaker)->
+  cur = User.current()
+  (speaker and speaker.me()) or (cur and (cur.moderator() or cur.admin()))
 
 Template.speakers.proposalCountStr = (speaker) ->
   count = speaker.proposalsInStatus(statuses).length

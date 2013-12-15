@@ -7,9 +7,17 @@
         <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
       </a>
       <div class="media-body">
+        {{#if canSeeEmail .}}
+          {{#if email}}
+            <div class='pull-right'>
+              <strong><a href='{{email}}'>{{email}}</a></strong>
+            </div>
+          {{/if}}
+        {{/if}}
         <h4 class="media-heading">
           <a href='{{pathFor "speaker"}}'>{{name}}</a>
         </h4>
+
         {{{marked bio}}}
         <h5>{{proposalCountStr .}}</h5>
         <dl>

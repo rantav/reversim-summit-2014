@@ -69,6 +69,10 @@ Template.speaker.canSeeTrackRecord = ->
   cur = User.current()
   @speaker.me() or (cur and (cur.moderator() or cur.admin()))
 
+Template.speaker.canSeeEmail = ->
+  cur = User.current()
+  @speaker.me() or (cur and (cur.moderator() or cur.admin()))
+
 Template.speaker.hasProposals = -> @speaker.proposals().length > 0
 
 Template.speaker.proposals = -> @speaker.proposals()
