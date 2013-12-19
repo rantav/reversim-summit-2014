@@ -4,4 +4,4 @@ Template.proposalTags.events
     @setTags(t.trim() for t in n.find('input').value.split(','))
 
 Template.proposalTagsDisplay.filterByTagUrl = ->
-  'TODO'
+  Router.path('proposals') + "?filterTag=#{@}"
