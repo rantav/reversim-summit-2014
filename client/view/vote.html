@@ -11,9 +11,12 @@
   <dt>Until when is the voting open?</dt>
   <dd>Voting will close Jan 7</dd>
 </dl>
+{{#unless loggedIn}}
+  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>log in</a> to vote</p>
+{{/unless}}
 {{#each speakers}}
   {{#if shouldDisplay .}}
-    <div class="media col-lg-6 about-person">
+    <div class="media col-lg-12 about-person clearfix">
       <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
         <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
       </a>
@@ -23,7 +26,14 @@
         </h4>
         <dl>
           {{#each proposals}}
-            <dt><a href='{{pathFor "proposal"}}'>{{title}}</a></dt>
+            <dt>
+              <a href='{{pathFor "proposal"}}'>{{title}}</a>
+              {{#unless mine}}
+                <a href='javascript:void(0)' class='vote-up no-underline' data-voted='{{userVotedStr .}}' data-toggle="tooltip" title='{{wishVoteTooltip .}}'>
+                  <i class='icon-thumbs-up icon-1x'></i>
+                </a>
+              {{/unless}}
+            </dt>
             <dd>
               <span class='label label-{{type}}'>{{typeName}}</span>
               {{#each tags}}

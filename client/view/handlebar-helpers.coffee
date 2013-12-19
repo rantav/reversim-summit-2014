@@ -17,6 +17,10 @@ Handlebars.registerHelper 'userVotedWishStr', (wish)->
   u = Meteor.userId()
   if u and wish.votes[u] then 'true' else 'false'
 
+Handlebars.registerHelper 'userVotedStr', (item)->
+  u = Meteor.userId()
+  if u and item.votes[u] then 'true' else 'false'
+
 Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
   if wish
     url = Router.fullPath('wish', id: wish._id)
@@ -33,10 +37,10 @@ Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
 Handlebars.registerHelper 'staticImg', (path)->
   Cdn.cdnify(path)
 
-Handlebars.registerHelper 'wishVoteTooltip', (wish) ->
+Handlebars.registerHelper 'wishVoteTooltip', (item) ->
   u = Meteor.userId()
   if not u then return "Login to vote"
-  if wish.votes[u] then 'Unvote' else 'Vote'
+  if item.votes[u] then 'Unvote' else 'Vote'
 
 Handlebars.registerHelper 'marked', (text) ->
   if text then marked(text)
