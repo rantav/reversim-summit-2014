@@ -47,10 +47,20 @@ class @Proposal extends Minimongoid
   setTags: (tags) ->
     @update(tags: tags)
 
+  # vote/unvote
+  toggleVote: ->
+    u = Meteor.userId()
+    if not u
+      return
+    updateObj  = {}
+    schemaPath = "votes.#{u}"
+    updateObj[schemaPath] = not @votes[u]
+    Proposal._collection.update({_id: @id}, $set: updateObj)
+
   # Did the current user vote for this proposal?
   voted: ->
     u = Meteor.userId()
-    return u and @votes[u]
+    return u and @votes and @votes[u]
 
   voters: ->
     user for user, vote of @votes when vote

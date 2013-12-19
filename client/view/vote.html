@@ -31,14 +31,7 @@
               {{#if canSeeResults}}
                 <span class='badge pull-right'>{{voteCount}}</span>
               {{/if}}
-              {{#unless mine}}
-                <a href='javascript:void(0)' class='vote-up no-underline pull-right' data-voted='{{userVotedStr .}}' data-toggle="tooltip" title='{{wishVoteTooltip .}}'>
-                  <i class='icon-thumbs-up icon-1x'></i>
-                </a>
-              {{/unless}}
-              {{#if voted}}
-                <span class='label label-voted pull-right'>VOTED</span>
-              {{/if}}
+              {{> voteWidget}}
               <span class='label label-{{type}}'>{{typeName}}</span>
               {{#each tags}}
                 <span class='label label-success'>{{.}}</span>

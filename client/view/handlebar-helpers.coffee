@@ -19,7 +19,7 @@ Handlebars.registerHelper 'userVotedWishStr', (wish)->
 
 Handlebars.registerHelper 'userVotedStr', (item)->
   u = Meteor.userId()
-  if u and item.votes[u] then 'true' else 'false'
+  if u and item.votes and item.votes[u] then 'true' else 'false'
 
 Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
   if wish
@@ -40,7 +40,7 @@ Handlebars.registerHelper 'staticImg', (path)->
 Handlebars.registerHelper 'wishVoteTooltip', (item) ->
   u = Meteor.userId()
   if not u then return "Login to vote"
-  if item.votes[u] then 'Unvote' else 'Vote'
+  if item.votes and item.votes[u] then 'Unvote' else 'Vote'
 
 Handlebars.registerHelper 'marked', (text) ->
   if text then marked(text)
