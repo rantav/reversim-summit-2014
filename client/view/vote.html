@@ -20,7 +20,7 @@
       <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
         <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
       </a>
-      <div class="media-body">
+      <div class="media-body media-body-vote">
         <h4 class="media-heading">
           <a href='{{pathFor "speaker"}}'>{{name}}</a>
         </h4>
@@ -36,13 +36,11 @@
               {{#if voted}}
                 <span class='label label-voted pull-right'>VOTED</span>
               {{/if}}
-            </dt>
-            <dd>
               <span class='label label-{{type}}'>{{typeName}}</span>
               {{#each tags}}
                 <span class='label label-success'>{{.}}</span>
               {{/each}}
-            </dd>
+            </dt>
           {{/each}}
         </dl>
       </div>
