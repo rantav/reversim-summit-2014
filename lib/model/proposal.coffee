@@ -47,6 +47,11 @@ class @Proposal extends Minimongoid
   setTags: (tags) ->
     @update(tags: tags)
 
+  # Did the current user vote for this proposal?
+  voted: ->
+    u = Meteor.userId()
+    return u and @votes[u]
+
 @Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
