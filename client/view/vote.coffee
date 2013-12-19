@@ -10,6 +10,10 @@ Template.vote.photo = (speaker) ->
 
 Template.vote.proposals = -> @proposals()
 
+Template.vote.canSeeResults = ->
+  u = User.current()
+  u and (u.admin() or u.moderator())
+
 Template.vote.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()
 

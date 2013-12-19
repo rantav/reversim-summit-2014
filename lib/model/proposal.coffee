@@ -52,6 +52,12 @@ class @Proposal extends Minimongoid
     u = Meteor.userId()
     return u and @votes[u]
 
+  voters: ->
+    user for user, vote of @votes when vote
+
+  voteCount: ->
+    @voters().length
+
 @Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
