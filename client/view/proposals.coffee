@@ -21,6 +21,10 @@ Template.proposals.hasMore = ->
 Template.proposals.filterByTypeUrl = ->
   Router.path('proposals') + "?filterType=#{@type}"
 
+Template.proposals.canTag = ->
+  u = User.current()
+  u and (u.admin() or u.moderator())
+
 Template.proposals.events
   'click #load-more': ->
     path = Router.path('proposals', {limit: @limit + 10})

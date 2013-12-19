@@ -44,12 +44,20 @@ class @Proposal extends Minimongoid
   typeName: ->
     Proposal.types()[@type]
 
+  setTags: (tags) ->
+    @update(tags: tags)
+
 @Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
     userId and doc.user_id == userId
 
   update: (userId, doc, fields, modifier) ->
+    # Tags editable by moderator and admins
+    if fields.length == 1 and fields[0] == 'tags'
+      user = User.find(userId)
+      return user.admin() or user.moderator()
+
     # can only change your own documents
     if doc.user_id == userId then return true
 
@@ -69,6 +77,7 @@ class @Proposal extends Minimongoid
 @Proposal._collection.deny
   update: (userId, doc, fields, modifier) ->
     # owner can't vote for himself
-    doc.user_id == userId and 'votes' in fields
+    if doc.user_id == userId and 'votes' in fields
+      return false
 
   fetch: ['user_id']

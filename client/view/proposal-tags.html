@@ -1,0 +1,11 @@
+<template name='proposalTags'>
+  <form class="form-inline" role="form">
+    <input type='text' name='tags' class='form-control input-sm' placeholder='Tags' value='{{tags}}'/>
+  </form>
+</template>
+
+<template name='proposalTagsDisplay'>
+  {{#each tags}}
+    <a class='label label-success' href='{{filterByTagUrl}}'>{{.}}</a>
+  {{/each}}
+</template>

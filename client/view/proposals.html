@@ -20,8 +20,12 @@
             <a href='{{pathFor "proposal"}}'>{{title}}</a>
           </h4>
           <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
+          {{> proposalTagsDisplay}}
         </div>
         {{{marked abstract}}}
+        {{#if canTag}}
+          {{> proposalTags}}
+        {{/if}}
       </div>
     </div>
     {{/each}}
