@@ -8,3 +8,4 @@ class @SpeakersController extends RouteController
 
   data: ->
     page: 'speakers'
+    speakers: User.allSpeakers()

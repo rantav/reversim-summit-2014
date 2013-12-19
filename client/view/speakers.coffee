@@ -1,5 +1,4 @@
-Template.speakers.speakers = ->
-  User.allSpeakers()
+Template.speakers.speakers = -> @speakers
 
 Template.speakers.photo = (speaker) ->
   speaker.photoUrl(120)

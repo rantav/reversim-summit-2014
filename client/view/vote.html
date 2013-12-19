@@ -1,0 +1,27 @@
+<template name='vote'>
+{{#each speakers}}
+  {{#if shouldDisplay .}}
+    <div class="media col-lg-6 about-person">
+      <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
+        <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <a href='{{pathFor "speaker"}}'>{{name}}</a>
+        </h4>
+        <dl>
+          {{#each proposals}}
+            <dt><a href='{{pathFor "proposal"}}'>{{title}}</a></dt>
+            <dd>
+              <span class='label label-{{type}}'>{{typeName}}</span>
+              {{#each tags}}
+                <span class='label label-success'>{{.}}</span>
+              {{/each}}
+            </dd>
+          {{/each}}
+        </dl>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
+</template>
