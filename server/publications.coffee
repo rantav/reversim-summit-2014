@@ -9,6 +9,23 @@ userFields =
   'services.github.picture': 1
   'services.github.email': 1
 
+proposalFields = (userId)->
+  fields =
+    abstract: 1
+    createdAt: 1
+    editing: 1
+    status: 1
+    title: 1
+    type: 1
+    user_id: 1
+  if userId
+    user = User.find(userId)
+    if user and (user.admin() or user.moderator())
+      fields.votes = 1
+    else
+      fields["votes.#{userId}"] = 1
+  fields
+
 notDeletedPred = {$or: [{deleted: $exists: false}, {deleted: false}]}
 
 Meteor.publish "wishes", (query, options) ->
@@ -30,7 +47,7 @@ Meteor.publish "speakers", (query, options) ->
   query = {} if not query
   users = User.find(_.extend(query, speakerPred), _.extend(options, {fields: userFields}))
   userIds = users.map((u)->u._id)
-  proposals = Proposal.find({user_id: {$in: userIds}})
+  proposals = Proposal.find({user_id: {$in: userIds}}, {fields: proposalFields(@userId)})
   [users, proposals]
 
 Meteor.publish "moderators", ->
@@ -40,7 +57,7 @@ Meteor.publish "moderators", ->
 Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
-  proposals = Proposal.find(_.extend(query, notDeletedPred), options)
+  proposals = Proposal.find(_.extend(query, notDeletedPred), _.extend(options, {fields: proposalFields(@userId)}))
   userIds = proposals.map((p) -> p.user_id)
   users = User.find({_id: $in: userIds}, {fields: userFields})
   [proposals, users]
