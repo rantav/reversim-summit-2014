@@ -18,6 +18,7 @@ proposalFields = (userId)->
     title: 1
     type: 1
     user_id: 1
+    tags: 1
   if userId
     user = User.find(userId)
     if user and (user.admin() or user.moderator())

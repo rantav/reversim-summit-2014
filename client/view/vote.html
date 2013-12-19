@@ -32,9 +32,9 @@
                 <span class='badge pull-right'>{{voteCount}}</span>
               {{/if}}
               {{> voteWidget}}
-              <span class='label label-{{type}}'>{{typeName}}</span>
+              <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
               {{#each tags}}
-                <span class='label label-success'>{{.}}</span>
+                <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</span>
               {{/each}}
             </dt>
           {{/each}}

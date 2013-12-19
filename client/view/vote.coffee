@@ -9,6 +9,12 @@ Template.vote.photo = (speaker) ->
 
 Template.vote.proposals = -> @proposals()
 
+Template.vote.filterByTypeUrl = ->
+  Router.path('vote') + "?filterType=#{@type}"
+
+Template.vote.filterByTagUrl = ->
+  Router.path('vote') + "?filterTag=#{@}"
+
 Template.vote.canSeeResults = ->
   u = User.current()
   u and (u.admin() or u.moderator())

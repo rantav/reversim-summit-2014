@@ -1,6 +1,12 @@
 class @VoteController extends RouteController
 
-  waitOn: -> Meteor.subscribe('speakers')
+  waitOn: ->
+    q = {}
+    if filterType = @params.filterType
+      q.type = filterType
+    if filterTag = @params.filterTag
+      q.tags = filterTag
+    Meteor.subscribe('proposals', q)
 
   after: -> document.title = "Vote | Reversim Summit 2014"
 
@@ -9,3 +15,5 @@ class @VoteController extends RouteController
   data: ->
     page: 'vote'
     speakers: _.shuffle(User.allSpeakers())
+    filterType: @params.filterType
+    filterTag: @params.filterTag
