@@ -1,5 +1,8 @@
 <template name='proposal'>
 <h2>
+  {{#with proposal}}
+    {{> voteWidget}}
+  {{/with}}
   <span class='pre-header'>Title:</span>
   {{#if editMode}}
     <input value='{{proposal.title}}' class="edit-inline form-control" id='title-{{proposal.id}}'/>
