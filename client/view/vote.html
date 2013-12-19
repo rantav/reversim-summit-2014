@@ -1,4 +1,16 @@
 <template name='vote'>
+<h1>Vote</h1>
+<p>Please help us select content by casting your vote</p>
+<dl>
+  <dt>To how many sessions may I vote?</dt>
+  <dd>As many as you like. Voting means "I'm interested in this topic" or "I'd like to see this person speaking" you may vote for as many proposals you find interesting. The result will help us select the sessions and assign rooms according to their popularity so please vote responsively</dd>
+  <dt>Can I change my mind after voting?</dt>
+  <dd>Yes. Simply click the icon to unvote.</dd>
+  <dt>Who can see my vote?</dt>
+  <dd>Voting is anonymous and results will not be public. Only moderators will have access to the aggregate results</dd>
+  <dt>Until when is the voting open?</dt>
+  <dd>Voting will close Jan 7</dd>
+</dl>
 {{#each speakers}}
   {{#if shouldDisplay .}}
     <div class="media col-lg-6 about-person">
