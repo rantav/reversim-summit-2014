@@ -1,4 +1,3 @@
-# Template.vote.speakers = -> _.shuffle(@speakers)
 Template.vote.speakers = -> @speakers
 
 statuses = ['submitted']

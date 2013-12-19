@@ -8,4 +8,4 @@ class @VoteController extends RouteController
 
   data: ->
     page: 'vote'
-    speakers: User.allSpeakers()
+    speakers: _.shuffle(User.allSpeakers())
