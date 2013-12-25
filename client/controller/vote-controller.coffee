@@ -6,7 +6,7 @@ class @VoteController extends RouteController
       q.type = filterType
     if filterTag = @params.filterTag
       q.tags = filterTag
-    Meteor.subscribe('proposals', q)
+    Meteor.subscribe('proposals-min', q)
 
   after: -> document.title = "Vote | Reversim Summit 2014"
 

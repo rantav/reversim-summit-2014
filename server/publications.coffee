@@ -9,16 +9,17 @@ userFields =
   'services.github.picture': 1
   'services.github.email': 1
 
-proposalFields = (userId)->
+proposalFields = (userId, minimal)->
   fields =
-    abstract: 1
     createdAt: 1
-    editing: 1
     status: 1
     title: 1
     type: 1
     user_id: 1
     tags: 1
+  if not minimal
+    fields.abstract = 1
+    fields.editing = 1
   if userId
     user = User.find(userId)
     if user and (user.admin() or user.moderator())
@@ -54,6 +55,14 @@ Meteor.publish "speakers", (query, options) ->
 Meteor.publish "moderators", ->
   User.find {'roles.moderator': true},
     fields: userFields
+
+Meteor.publish "proposals-min", (query, options) ->
+  options = {} if not options
+  query = {} if not query
+  proposals = Proposal.find(_.extend(query, notDeletedPred), _.extend(options, {fields: proposalFields(@userId, true)}))
+  userIds = proposals.map((p) -> p.user_id)
+  users = User.find({_id: $in: userIds}, {fields: userFields})
+  [proposals, users]
 
 Meteor.publish "proposals", (query, options) ->
   options = {} if not options
