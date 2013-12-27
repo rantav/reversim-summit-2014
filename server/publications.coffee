@@ -49,7 +49,8 @@ Meteor.publish "speakers", (query, options) ->
   query = {} if not query
   users = User.find(_.extend(query, speakerPred), _.extend(options, {fields: userFields}))
   userIds = users.map((u)->u._id)
-  proposals = Proposal.find({user_id: {$in: userIds}}, {fields: proposalFields(@userId)})
+  proposals = Proposal.find(_.extend({user_id: {$in: userIds}}, notDeletedPred),
+                            {fields: proposalFields(@userId)})
   [users, proposals]
 
 Meteor.publish "moderators", ->
