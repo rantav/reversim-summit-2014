@@ -18,6 +18,11 @@
 {{else}}
   <h2><span class='pre-header'>Type:</span> {{proposal.typeName}}</h2>
 {{/if}}
+<h2><span class='pre-header'>Tags:</span>
+  {{#each proposal.tags}}
+    <span class='label label-success label-tag'>{{.}}</</span>
+  {{/each}}
+</h2>
 
 <h2><span class='pre-header'>Abstract:</span></h2>
 {{#if editMode}}
