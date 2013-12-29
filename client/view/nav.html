@@ -44,5 +44,10 @@
     </ul>
   </li>
   <li class="dropdown">{{loginButtons}}</li>
+  {{#if isSpeaker}}
+    {{#with user}}
+      <li><a href='{{pathFor "speaker"}}'><strong>My Speaker Page</strong></a></li>
+    {{/with}}
+  {{/if}}
 </ul>
 </template>

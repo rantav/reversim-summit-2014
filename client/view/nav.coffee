@@ -13,6 +13,12 @@ Template.nav.speakers = -> count('speakers')
 
 Template.nav.users = -> User.count()
 
+Template.nav.isSpeaker = ->
+  cur = User.current()
+  cur and cur.speaker()
+
+Template.nav.user = -> User.current()
+
 Template.nav.canSeeHidden = ->
   user = User.current()
   user and (user.admin() or user.moderator())
