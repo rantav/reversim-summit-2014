@@ -35,7 +35,7 @@ class @User extends Minimongoid
 
   admin: -> @hasRole('admin')
   moderator: -> @hasRole('moderator')
-  speaker: -> @profile.submitted and @proposals().length > 0
+  speaker: -> @profile and @profile.submitted and @proposals().length > 0
 
   hasRole: (role) -> @roles and @roles[role]
 
