@@ -9,3 +9,8 @@ Meteor.startup ->
   #   update = User._collection.update({'profile.name': 'Ran Tavory'},
   #     {$set: {'profile.role': 'administrator'}})
   #   log.info("Updated: #{update}"))
+  Meteor.Migrations.add('unedit all sessions', ((log) ->
+    update = Proposal._collection.update({'editing': true},
+      {$set: {'editing': false}},
+      {multi: true})
+    log.info("Updated: #{update}")))
