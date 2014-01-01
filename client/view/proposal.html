@@ -37,6 +37,12 @@
     <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
   </a>
 {{/each}}
+{{#if editMode}}
+  <div>
+    <label for='speakers'>Speakers (Be careful. type user IDs of additional speakers. Comma seperated):</label>
+    <input id='speakers' value='{{speakerIds}},' placeholder='speakers' class="edit-inline form-control"/>
+  </div>
+{{/if}}
 <hr/>
 <div class='actions-single'>
   {{#if canEdit}}

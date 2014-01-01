@@ -5,10 +5,6 @@ class @Proposal extends Minimongoid
   # @_collection: new Meteor.Collection "proposals"
   @_collection: Vector.collections.proposals
 
-  # @belongs_to: [
-  #   {name: 'user'}
-  # ]
-
   @has_and_belongs_to_many: [
     {name: 'speakers', class_name: 'User'}
   ]

@@ -1,6 +1,5 @@
 userFields =
   roles: 1
-  proposal_ids: 1
   profile: 1
   'services.google.picture': 1
   'services.google.email': 1
