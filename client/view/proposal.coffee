@@ -16,6 +16,7 @@ Template.proposal.events
     @proposal.update(editing: false, title: title, abstract: abstract, type: type)
 
 Template.proposal.proposal = -> @proposal
+Template.proposal.speakers = -> @proposal.speakers()
 
 canEdit = (proposal) ->
   Meteor.userId() and (proposal.mine() or User.current().admin())

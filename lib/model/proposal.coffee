@@ -5,8 +5,12 @@ class @Proposal extends Minimongoid
   # @_collection: new Meteor.Collection "proposals"
   @_collection: Vector.collections.proposals
 
-  @belongs_to: [
-    {name: 'user'}
+  # @belongs_to: [
+  #   {name: 'user'}
+  # ]
+
+  @has_and_belongs_to_many: [
+    {name: 'speakers', class_name: 'User'}
   ]
 
   @propose: (options) ->
@@ -15,7 +19,7 @@ class @Proposal extends Minimongoid
     Proposal.create(options)
 
   @before_create: (attr) ->
-    _.extend(attr, user_id: Meteor.userId(), votes: {}, comments: [], status: 'submitted')
+    _.extend(attr, speaker_ids: [Meteor.userId()], votes: {}, comments: [], status: 'submitted')
     attr
 
   @count: ->
@@ -39,7 +43,7 @@ class @Proposal extends Minimongoid
 
   # Does this proposal belong to the current user?
   mine: ->
-    @user_id == Meteor.userId()
+    Meteor.userId() in @speaker_ids
 
   typeName: ->
     Proposal.types()[@type]
@@ -71,7 +75,7 @@ class @Proposal extends Minimongoid
 @Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
-    userId and doc.user_id == userId
+    userId and doc.speaker_ids == [userId]
 
   update: (userId, doc, fields, modifier) ->
     # Tags editable by moderator and admins
@@ -80,7 +84,7 @@ class @Proposal extends Minimongoid
       return user.admin() or user.moderator()
 
     # can only change your own documents
-    if doc.user_id == userId then return true
+    if userId in doc.speaker_ids then return true
 
     # Admins can also modify documents
     if User.current().admin() then return true
@@ -93,12 +97,12 @@ class @Proposal extends Minimongoid
         modifier.$set.hasOwnProperty("votes.#{userId}"))
       return true
 
-  fetch: ['user_id']
+  fetch: ['speaker_ids']
 
 @Proposal._collection.deny
   update: (userId, doc, fields, modifier) ->
     # owner can't vote for himself
-    if doc.user_id == userId and 'votes' in fields
+    if userId in doc.speaker_ids and 'votes' in fields
       return false
 
-  fetch: ['user_id']
+  fetch: ['speaker_ids']

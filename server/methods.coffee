@@ -8,7 +8,7 @@ Meteor.methods
       text: "#{mind}\n\nThank you, #{name} <#{email}>"
 
   sendSubmitEmail: (p) ->
-    u = User.find(p.user_id)
+    u = User.find(p.speaker_ids[0])
     email = u.email()
     baseUrl = Meteor.absoluteUrl()
     proposalUrl = "#{baseUrl}proposal/#{p.id}"

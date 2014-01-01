@@ -32,11 +32,11 @@
   <p class='lead'>{{{marked proposal.abstract}}}</p>
 {{/if}}
 
-{{#with proposal.user}}
+{{#each speakers}}
   <a href='{{pathFor "speaker"}}'>
     <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
   </a>
-{{/with}}
+{{/each}}
 <hr/>
 <div class='actions-single'>
   {{#if canEdit}}
