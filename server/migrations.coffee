@@ -22,4 +22,4 @@ Meteor.startup ->
       Proposal._collection.update({_id: p._id}, {$set: {speaker_ids: [p.user_id]}})
       log.info("#{p._id}: #{p.user_id}")
     )
-  ), force: true)
+  ), force: false)

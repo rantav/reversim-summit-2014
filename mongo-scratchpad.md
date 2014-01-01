@@ -18,19 +18,24 @@ db.proposals.find().sort({createdAt: -1}).forEach(function(p) {
   abstract = p.abstract;
   abstract = abstract.split('"').join("'");
   abstract = abstract.split('\n').join(" ");
-  user = db.users.findOne({_id: p.user_id});
-  email = user.profile.email ||
+  users = db.users.find({_id: {$in: p.speaker_ids}});
+  emails = users.forEach(function(user){
+    return user.profile.email ||
           (user.services.google && user.services.google.email) ||
           (user.services.github && user.services.github.email) ||
           (user.services.facebook && user.services.facebook.email);
+
+  });
+  speakerPages = p.speaker_ids.map(function(id){return "http://summit2014.reversim.com/speaker/" + id});
+  speakerNames = users.map(function(u){return u.profile.name});
   print(["http://summit2014.reversim.com/proposal/" + p._id,
          p.status,
          p.title,
          p.type,
          p.tags,
-         user.profile.name,
-         email,
-         "http://summit2014.reversim.com/speaker/" + p.user_id,
+         speakerNames,
+         emails,
+         speakerPages,
          voteCount,
          '"' + abstract + '"'].join('\t'))
 })
