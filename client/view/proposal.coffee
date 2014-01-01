@@ -18,7 +18,6 @@ Template.proposal.events
       return
     if typeArr.length == 1
       type = typeArr[0].id
-    console.log(speakerIds)
     @proposal.update(editing: false, title: title, abstract: abstract, type: type, speaker_ids: speakerIds)
 
 Template.proposal.proposal = -> @proposal
