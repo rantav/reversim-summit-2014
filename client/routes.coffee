@@ -19,7 +19,8 @@ Router.before(filters.nProgressHook, {only: [
   'speaker',
   'speakers',
   'sponsors',
-  'about'
+  'about',
+  'vote'
 ]})
 
 Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers']});
