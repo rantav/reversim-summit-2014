@@ -14,8 +14,9 @@ class @VoteController extends RouteController
 
   data: ->
     speakers = User.allSpeakers()
-    user = User.current()
-    speakers = if user and (user.admin() or user.moderator()) then sort(speakers) else _.shuffle(speakers)
+    if speakers and speakers.length > 0
+      user = User.current()
+      speakers = if user and (user.admin() or user.moderator()) then sort(speakers) else _.shuffle(speakers)
     return {
       page: 'vote'
       speakers: speakers
