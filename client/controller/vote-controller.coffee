@@ -29,4 +29,4 @@ sort = (speakers) ->
     - sum(speaker.proposals().map((p) -> p.voteCount()))
   )
 
-sum = (arr) -> _.reduce(arr, (sum, num) -> sum + num)
+sum = (arr) -> if arr.length == 0 return 0 else return _.reduce(arr, (sum, num) -> sum + num)
