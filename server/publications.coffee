@@ -15,7 +15,7 @@ proposalFields = (userId, minimal)->
     status: 1
     title: 1
     type: 1
-    user_id: 1
+    speaker_ids: 1
     tags: 1
   if not minimal
     fields.abstract = 1
@@ -49,7 +49,7 @@ Meteor.publish "speakers", (query, options) ->
   query = {} if not query
   users = User.find(_.extend(query, speakerPred), _.extend(options, {fields: userFields}))
   userIds = users.map((u)->u._id)
-  proposals = Proposal.find(_.extend({user_id: {$in: userIds}}, notDeletedPred),
+  proposals = Proposal.find(_.extend({speaker_ids: {$in: userIds}}, notDeletedPred),
                             {fields: proposalFields(@userId)})
   [users, proposals]
 
@@ -61,7 +61,7 @@ Meteor.publish "proposals-min", (query, options) ->
   options = {} if not options
   query = {} if not query
   proposals = Proposal.find(_.extend(query, notDeletedPred), _.extend(options, {fields: proposalFields(@userId, true)}))
-  userIds = proposals.map((p) -> p.user_id)
+  userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields})
   [proposals, users]
 
@@ -69,7 +69,7 @@ Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
   proposals = Proposal.find(_.extend(query, notDeletedPred), _.extend(options, {fields: proposalFields(@userId)}))
-  userIds = proposals.map((p) -> p.user_id)
+  userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields})
   [proposals, users]
 

@@ -186,11 +186,6 @@
             "key": "abstract",
             "label": "Abstract",
             "type": "textarea"
-          },
-          {
-            "key": "user_id",
-            "label": "Submitter ID",
-            "type": "text"
           }
         ],
         "documentActions":

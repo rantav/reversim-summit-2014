@@ -7,15 +7,16 @@
     {{/if}}
     {{#each proposals}}
     <div class="media col-lg-5 proposal-item">
-      <a class="pull-left" href="{{pathFor 'speaker' id=user.id name=user.name}}">
-        <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo user}}" alt="{{user.name}}" title="{{user.name}}" data-toggle='tooltip' data-placement='right'>
-      </a>
-
-      <div class="media-body">
-        <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
-          <i class='icon-twitter'></i>
+      {{#each speakers .}}
+        <a class="pull-left" href="{{pathFor 'speaker'}}">
+          <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>
         </a>
+      {{/each}}
+      <div class="media-body">
         <div class="media-heading">
+          <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
+            <i class='icon-twitter'></i>
+          </a>
           {{> voteWidget}}
           <h4>
             <a href='{{pathFor "proposal"}}'>{{title}}</a>

@@ -9,10 +9,12 @@ Template.proposals.canSeeNumLoaded = ->
 Template.proposals.numLoaded = -> @proposals.length if @proposals
 
 Template.proposals.rendered = ->
-  $('[data-toggle="tooltip"]').tooltip()
+  $(@findAll('[data-toggle="tooltip"]')).tooltip()
 
 Template.proposals.destroyed = ->
   $('[data-toggle="tooltip"]').tooltip('destroy')
+
+Template.proposals.speakers = (proposal) -> proposal.speakers()
 
 Template.proposals.hasMore = ->
   count = Counts.findOne('proposals')
