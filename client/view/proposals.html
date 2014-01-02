@@ -13,10 +13,10 @@
         </a>
       {{/each}}
       <div class="media-body">
-        <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
-          <i class='icon-twitter'></i>
-        </a>
         <div class="media-heading">
+          <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
+            <i class='icon-twitter'></i>
+          </a>
           {{> voteWidget}}
           <h4>
             <a href='{{pathFor "proposal"}}'>{{title}}</a>
