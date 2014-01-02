@@ -62,11 +62,9 @@ class @Proposal extends Minimongoid
     u = Meteor.userId()
     return u and @votes and @votes[u]
 
-  voters: ->
-    user for user, vote of @votes when vote
+  voters: -> user for user, vote of @votes when vote
 
-  voteCount: ->
-    @voters().length
+  voteCount: -> @voters().length
 
 @Proposal._collection.allow
   insert: (userId, doc) ->
