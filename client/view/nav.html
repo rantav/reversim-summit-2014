@@ -1,11 +1,8 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
-  {{#if canSeeHidden}}
-    <li class="{{activeClass 'vote'}}">
-      <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
-    </li>
-  {{/if}}
-  <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
+  <li class="{{activeClass 'vote'}}">
+    <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
+  </li>
   <li class="{{activeClass 'proposals'}}">
     <a href="{{pathFor 'proposals'}}">Proposals
       {{#if hasCount 'proposals'}}
@@ -25,12 +22,14 @@
       <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
     </li>
   {{/if}}
-  <li class="{{activeClass 'wishes'}}"><a href="{{pathFor 'wishes'}}">
-    Wish List
-    {{#if hasCount 'wishes'}}
-      <small>({{wishes}})</small>
-    {{/if}}
-  </a></li>
+  <li class="{{activeClass 'wishes'}}">
+    <a href="{{pathFor 'wishes'}}">
+      Wish List
+      {{#if hasCount 'wishes'}}
+        <small>({{wishes}})</small>
+      {{/if}}
+    </a>
+  </li>
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void 0">
       More <span class="caret"></span>

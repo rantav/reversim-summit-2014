@@ -18,7 +18,8 @@ Template.proposal.events
 Template.proposal.proposal = -> @proposal
 
 canEdit = (proposal) ->
-  Meteor.userId() and (proposal.mine() or User.current().admin())
+  # Meteor.userId() and (proposal.mine() or User.current().admin())
+  Meteor.userId() and User.current().admin()
 
 Template.proposal.canEdit = -> canEdit(@proposal)
 

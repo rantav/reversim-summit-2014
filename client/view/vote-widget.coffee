@@ -7,8 +7,7 @@ Template.voteWidget.destroyed = ->
   catch e
 
 Template.voteWidget.votingEnabled = ->
-  u = User.current()
-  u and (u.admin() or u.moderator())
+  true
 
 Template.voteWidget.events
   'click .vote-up': ->
