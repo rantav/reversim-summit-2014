@@ -14,6 +14,20 @@
 {{#unless loggedIn}}
   <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>log in</a> to vote</p>
 {{/unless}}
+{{#if isAdmin}}
+  <p>Unique voters: <strong>{{votersCount}}</strong></p>
+  <p>Average votes per voters: <strong>{{votersAverage}}</strong></p>
+  <p>Top voters:
+    <dl>
+    {{#each topVoters}}
+      <dd>{{voter}} - {{votes}}</dd>
+    {{/each}}
+    </dl>
+    <strong>{{topVoters}}</strong>
+  </p>
+  <p>Total votes: <strong>{{totalVotes}}</strong></p>
+
+{{/if}}
 {{#each speakers}}
   {{#if shouldDisplay .}}
     <div class="media col-lg-12 about-person clearfix">

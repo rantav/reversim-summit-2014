@@ -40,3 +40,18 @@ db.proposals.find().sort({createdAt: -1}).forEach(function(p) {
          '"' + abstract + '"'].join('\t'))
 })
 ```
+
+
+Votes:
+
+```
+db.proposals.find().forEach(function(p){
+  voters = [];
+  for(v in p.votes){
+    if(p.votes[v]){
+      voters.push(v)
+    }
+  }
+  print(p._id + " - " + voters);
+})
+```

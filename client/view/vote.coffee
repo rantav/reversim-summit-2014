@@ -15,6 +15,40 @@ Template.vote.filterByTypeUrl = ->
 Template.vote.filterByTagUrl = ->
   Router.path('vote') + "?filterTag=#{@}"
 
+Template.vote.votersCount = ->
+  _.keys(countVotes(@speakers)).length
+
+Template.vote.votersAverage = ->
+  average(_.values(countVotes(@speakers)))
+
+Template.vote.totalVotes = -> sum(_.values(countVotes(@speakers)))
+
+Template.vote.topVoters = ->
+  arr = []
+  for voter, votes of countVotes(@speakers)
+    arr.push({voter: voter, votes: votes})
+  arr = _.sortBy(arr, (item) -> item.votes)
+  arr = arr.slice(0, 5)
+  arr
+
+# Counts the votes for each voter. Returns a map of voters -> count
+countVotes = (speakers) ->
+  voters = {}
+  for speaker in speakers
+    for proposal in speaker.proposals()
+      for voter, vote of proposal.votes
+        if vote
+          if voters[voter]
+            voters[voter] += 1
+          else
+            voters[voter] =  1
+  voters
+
+
+sum = (arr) -> _.reduce(arr, ((sum, num) -> sum + num), 0)
+average = (arr) -> if arr.length then sum(arr) / arr.length else 0
+
+
 Template.vote.canSeeResults = ->
   u = User.current()
   u and (u.admin() or u.moderator())
