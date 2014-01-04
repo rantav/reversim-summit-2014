@@ -23,12 +23,21 @@ Template.vote.votersAverage = ->
 
 Template.vote.totalVotes = -> sum(_.values(countVotes(@speakers)))
 
+Template.vote.name = (userId) ->
+  console.log(userId)
+  user = User.find(userId)
+  if user
+    return user.name()
+
 Template.vote.topVoters = ->
   arr = []
   for voter, votes of countVotes(@speakers)
     arr.push({voter: voter, votes: votes})
-  arr = _.sortBy(arr, (item) -> item.votes)
+  arr = _.sortBy(arr, (item) -> -item.votes)
   arr = arr.slice(0, 5)
+  for v in arr
+    user = User.find(v.voter)
+    if user then v.name = user.name()
   arr
 
 # Counts the votes for each voter. Returns a map of voters -> count

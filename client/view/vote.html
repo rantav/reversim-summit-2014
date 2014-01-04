@@ -20,10 +20,9 @@
   <p>Top voters:
     <dl>
     {{#each topVoters}}
-      <dd>{{voter}} - {{votes}}</dd>
+      <dd><a href='/user/{{voter}}'>{{voter}} {{name}}</a> - {{votes}}</dd>
     {{/each}}
     </dl>
-    <strong>{{topVoters}}</strong>
   </p>
   <p>Total votes: <strong>{{totalVotes}}</strong></p>
 
