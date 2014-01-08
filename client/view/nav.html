@@ -1,8 +1,5 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
-  <li class="{{activeClass 'vote'}}">
-    <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
-  </li>
   <li class="{{activeClass 'proposals'}}">
     <a href="{{pathFor 'proposals'}}">Proposals
       {{#if hasCount 'proposals'}}

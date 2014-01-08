@@ -1,19 +1,5 @@
 <template name='vote'>
-<h1>Vote</h1>
-<p>Please help us select content by casting your vote</p>
-<dl>
-  <dt>To how many sessions may I vote?</dt>
-  <dd>As many as you like. Voting means "I'm interested in this topic" or "I'd like to see this person speaking" you may vote for as many proposals you find interesting. The result will help us select the sessions and assign rooms according to their popularity so please vote responsively</dd>
-  <dt>Can I change my mind after voting?</dt>
-  <dd>Yes. Simply click the icon to unvote.</dd>
-  <dt>Who can see my vote?</dt>
-  <dd>Voting is anonymous and results <strong>will not</strong> be public. Only moderators will have access to the aggregate results</dd>
-  <dt>Until when is the voting open?</dt>
-  <dd><h3>Voting will close Jan 7</h3></dd>
-</dl>
-{{#unless loggedIn}}
-  <p class='lead'>Please <a href='javascript:void(0)' class='sign-in'>log in</a> to vote</p>
-{{/unless}}
+<h1>Voting is closed. Thank you!</h1>
 {{#if isAdmin}}
   <p>Unique voters: <strong>{{votersCount}}</strong></p>
   <p>Average votes per voters: <strong>{{votersAverage}}</strong></p>
@@ -25,35 +11,36 @@
     </dl>
   </p>
   <p>Total votes: <strong>{{totalVotes}}</strong></p>
-
 {{/if}}
-{{#each speakers}}
-  {{#if shouldDisplay .}}
-    <div class="media col-lg-12 about-person clearfix">
-      <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
-        <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
-      </a>
-      <div class="media-body media-body-vote">
-        <h4 class="media-heading">
-          <a href='{{pathFor "speaker"}}'>{{name}}</a>
-        </h4>
-        <dl>
-          {{#each proposals}}
-            <dt>
-              <a href='{{pathFor "proposal"}}'>{{title}}</a>
-              {{#if canSeeResults}}
-                <span class='badge pull-right'>{{voteCount}}</span>
-              {{/if}}
-              {{> voteWidget}}
-              <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
-              {{#each tags}}
-                <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</span>
-              {{/each}}
-            </dt>
-          {{/each}}
-        </dl>
+{{#if canSeeResults}}
+  {{#each speakers}}
+    {{#if shouldDisplay .}}
+      <div class="media col-lg-12 about-person clearfix">
+        <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
+          <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
+        </a>
+        <div class="media-body media-body-vote">
+          <h4 class="media-heading">
+            <a href='{{pathFor "speaker"}}'>{{name}}</a>
+          </h4>
+          <dl>
+            {{#each proposals}}
+              <dt>
+                <a href='{{pathFor "proposal"}}'>{{title}}</a>
+                {{#if canSeeResults}}
+                  <span class='badge pull-right'>{{voteCount}}</span>
+                {{/if}}
+                {{> voteWidget}}
+                <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
+                {{#each tags}}
+                  <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</span>
+                {{/each}}
+              </dt>
+            {{/each}}
+          </dl>
+        </div>
       </div>
-    </div>
-  {{/if}}
-{{/each}}
+    {{/if}}
+  {{/each}}
+{{/if}}
 </template>

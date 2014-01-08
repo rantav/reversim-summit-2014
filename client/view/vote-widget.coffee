@@ -6,8 +6,7 @@ Template.voteWidget.destroyed = ->
     $(@find('[data-toggle="tooltip"]')).tooltip('destroy')
   catch e
 
-Template.voteWidget.votingEnabled = ->
-  true
+Template.voteWidget.votingEnabled = -> false
 
 Template.voteWidget.events
   'click .vote-up': ->
