@@ -55,3 +55,16 @@ db.proposals.find().forEach(function(p){
   print(p._id + " - " + voters);
 })
 ```
+
+Vote counts:
+```
+db.proposals.find().sort({createdAt: -1}).forEach(function(p) {
+  votes = p.votes;
+  voteCount = 0;
+  for (v in votes) {
+    if (votes[v]) voteCount++;
+  }
+  print([p._id, voteCount].join('\t'))
+})
+
+```
