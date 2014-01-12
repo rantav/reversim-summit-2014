@@ -1,5 +1,46 @@
 <template name='agenda'>
-  <h1>Agenda</h1>
-  {{#each slots}}
-  {{/each}}
+  {{#if canSee}}
+    <h1>Agenda</h1>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th span=5>Day 1 (Feb 24)</th>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <th>Class 1</th>
+          <th>Class 2</th>
+          <th>Class 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each slots}}
+          <tr>
+            <td>{{.}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+  {{#if canEdit}}
+    <form class="form-inline" role="form" id='add-form'>
+      <div class="form-group">
+        <label class="sr-only"  for="time">Time</label>
+        <input class="form-control" id="time" placeholder="Time and Date">
+      </div>
+      <div class="form-group">
+        <label class="sr-only"  for="class1">Class 1</label>
+        <input class="form-control" id="class1" placeholder="Class 1">
+      </div>
+      <div class="form-group">
+        <label class="sr-only"  for="class2">Class 2</label>
+        <input class="form-control" id="class2" placeholder="Class 2">
+      </div>
+      <div class="form-group">
+        <label class="sr-only"  for="class3">Class 3</label>
+        <input class="form-control" id="class1" placeholder="Class 3">
+      </div>
+      <button type="submit" class="btn btn-default">Add</button>
+    </form>
+  {{/if}}
 </template>

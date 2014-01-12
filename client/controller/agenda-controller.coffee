@@ -8,3 +8,4 @@ class @AgendaController extends RouteController
 
   data: ->
     page: 'agenda'
+    items: AgendaItem.all()
