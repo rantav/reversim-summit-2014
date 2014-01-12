@@ -17,9 +17,21 @@
         {{#each day1}}
           <tr>
             <td>{{formatTime time}}</td>
-            <td>{{class1}}</td>
-            <td>{{class2}}</td>
-            <td>{{class3}}</td>
+            <td>
+              {{#with class1}}
+                {{> agendaSessionDisplay}}
+              {{/with}}
+            </td>
+            <td>
+              {{#with class2}}
+                {{> agendaSessionDisplay}}
+              {{/with}}
+            </td>
+            <td>
+              {{#with class3}}
+                {{> agendaSessionDisplay}}
+              {{/with}}
+            </td>
           </tr>
         {{/each}}
       </tbody>
@@ -32,9 +44,21 @@
         {{#each day2}}
           <tr>
             <td>{{formatTime time}}</td>
-            <td>{{class1}}</td>
-            <td>{{class2}}</td>
-            <td>{{class3}}</td>
+            <td>
+              {{#with class1}}
+                {{> agendaSessionDisplay}}
+              {{/with}}
+            </td>
+            <td>
+              {{#with class2}}
+                {{> agendaSessionDisplay}}
+              {{/with}}
+            </td>
+            <td>
+              {{#with class3}}
+                {{> agendaSessionDisplay}}
+              {{/with}}
+            </td>
           </tr>
         {{/each}}
       </tbody>
