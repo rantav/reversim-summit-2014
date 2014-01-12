@@ -4,7 +4,7 @@
     <table class='table'>
       <thead>
         <tr>
-          <th span=5>Day 1 (Feb 24)</th>
+          <th colspan='5' class='text-center'><h2>Day 1 (Feb 24)</h2></th>
         </tr>
         <tr>
           <th>Time</th>
@@ -14,9 +14,27 @@
         </tr>
       </thead>
       <tbody>
-        {{#each slots}}
+        {{#each day1}}
           <tr>
-            <td>{{.}}</td>
+            <td>{{formatTime time}}</td>
+            <td>{{class1}}</td>
+            <td>{{class2}}</td>
+            <td>{{class3}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+      <thead>
+        <tr>
+          <th colspan='5' class='text-center'><h2>Day 2 (Feb 25)</h2></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each day2}}
+          <tr>
+            <td>{{formatTime time}}</td>
+            <td>{{class1}}</td>
+            <td>{{class2}}</td>
+            <td>{{class3}}</td>
           </tr>
         {{/each}}
       </tbody>
@@ -26,7 +44,7 @@
     <form class="form-inline" role="form" id='add-form'>
       <div class="form-group">
         <label class="sr-only"  for="time">Time</label>
-        <input class="form-control" id="time" placeholder="Time and Date">
+        <input class="form-control" id="time" placeholder="Time and Date" value="02/24/14 09:00:00">
       </div>
       <div class="form-group">
         <label class="sr-only"  for="class1">Class 1</label>
@@ -38,7 +56,7 @@
       </div>
       <div class="form-group">
         <label class="sr-only"  for="class3">Class 3</label>
-        <input class="form-control" id="class1" placeholder="Class 3">
+        <input class="form-control" id="class3" placeholder="Class 3">
       </div>
       <button type="submit" class="btn btn-default">Add</button>
     </form>
