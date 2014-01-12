@@ -75,6 +75,11 @@ Meteor.publish "proposals", (query, options) ->
 
 Meteor.publish "agenda", ->
   items = AgendaItem.find()
+  proposalIds = _.uniq(_.compact(_.flatten(items.map((i) -> [i.class1, i.class2, i.class3]))))
+  proposals = Proposal.find({_id: $in: proposalIds}, {fields: proposalFields(@userId)})
+  userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
+  users = User.find({_id: $in: userIds}, {fields: userFields})
+  [items, proposals, users]
 
 Meteor.publish "sponsors", (query, options) ->
   options = {} if not options
