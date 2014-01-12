@@ -1,6 +1,21 @@
   <template name='agendaSessionDisplay'>
     {{#if isSession}}
-      {{session}}
+      {{#with session}}
+        <div class="media proposal-item">
+          {{#each speakers}}
+            <a class="pull-left" href="{{pathFor 'speaker'}}">
+              <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
+            </a>
+          {{/each}}
+          <div class="media-body">
+            <div class="media-heading">
+              <h4>
+                <a href='{{pathFor "proposal"}}'>{{title}}</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+      {{/with}}
     {{else}}
       {{.}}
     {{/if}}
