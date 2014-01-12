@@ -1,0 +1,39 @@
+<template name='agendaItem'>
+  <tr>
+    <td>
+      {{formatTime time}}
+    {{#if editing}}
+      <input class='form-control' value='{{time}}'/>
+    {{/if}}
+    </td>
+    <td>
+      {{#with class1}}
+        {{> agendaSessionDisplay}}
+      {{/with}}
+      {{#if editing}}
+        <input class='form-control' value='{{class1}}'/>
+      {{/if}}
+    </td>
+    <td>
+      {{#with class2}}
+        {{> agendaSessionDisplay}}
+      {{/with}}
+      {{#if editing}}
+        <input class='form-control' value='{{class2}}'/>
+      {{/if}}
+    </td>
+    <td>
+      {{#with class3}}
+        {{> agendaSessionDisplay}}
+      {{/with}}
+      {{#if editing}}
+        <input class='form-control' value='{{class3}}'/>
+      {{/if}}
+    </td>
+    {{#if editing}}
+      <td>
+        <button class='btn btn-danger btn-sm del'>Delete</button>
+      </td>
+    {{/if}}
+  </tr>
+</template>

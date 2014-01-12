@@ -15,24 +15,7 @@
       </thead>
       <tbody>
         {{#each day1}}
-          <tr>
-            <td>{{formatTime time}}</td>
-            <td>
-              {{#with class1}}
-                {{> agendaSessionDisplay}}
-              {{/with}}
-            </td>
-            <td>
-              {{#with class2}}
-                {{> agendaSessionDisplay}}
-              {{/with}}
-            </td>
-            <td>
-              {{#with class3}}
-                {{> agendaSessionDisplay}}
-              {{/with}}
-            </td>
-          </tr>
+          {{> agendaItem}}
         {{/each}}
       </tbody>
       <thead>
@@ -42,24 +25,7 @@
       </thead>
       <tbody>
         {{#each day2}}
-          <tr>
-            <td>{{formatTime time}}</td>
-            <td>
-              {{#with class1}}
-                {{> agendaSessionDisplay}}
-              {{/with}}
-            </td>
-            <td>
-              {{#with class2}}
-                {{> agendaSessionDisplay}}
-              {{/with}}
-            </td>
-            <td>
-              {{#with class3}}
-                {{> agendaSessionDisplay}}
-              {{/with}}
-            </td>
-          </tr>
+          {{> agendaItem}}
         {{/each}}
       </tbody>
     </table>
@@ -84,5 +50,7 @@
       </div>
       <button type="submit" class="btn btn-default">Add</button>
     </form>
+    <hr/>
+    <button class="btn btn-warning" id='edit'>Edit</button>
   {{/if}}
 </template>

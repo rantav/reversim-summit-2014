@@ -5,9 +5,6 @@ Template.agenda.day1 = ->
 Template.agenda.day2 = ->
   @items.filter((i) -> i.time > mid).sort((a, b) -> a.time >= b.time)
 
-Template.agenda.formatTime = (t) ->
-  moment(t).format('HH:mm');
-
 Template.agenda.canSee = ->
   u = User.current()
   u and (u.admin() or u.moderator())
@@ -29,3 +26,6 @@ Template.agenda.events
       console.error('bad time string')
       return
     AgendaItem.create({time: time, class1: class1, class2: class2, class3: class3})
+
+  'click #edit': ->
+    Session.set('editingAgenda', not Session.get('editingAgenda'))
