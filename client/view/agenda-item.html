@@ -4,9 +4,13 @@
       {{formatTime time}}
     {{#if editing}}
       <input class='form-control' value='{{time}}'/>
+      <input class='form-control' value='{{icon}}'/>
     {{/if}}
     </td>
-    <td>
+    <td colspan='{{class1Colspan}}'>
+      {{#if icon}}
+        <i class="fa {{icon}} fa-3x pull-right"></i>
+      {{/if}}
       {{#with class1}}
         {{> agendaSessionDisplay}}
       {{/with}}
@@ -14,22 +18,26 @@
         <input class='form-control' value='{{class1}}'/>
       {{/if}}
     </td>
-    <td>
-      {{#with class2}}
-        {{> agendaSessionDisplay}}
-      {{/with}}
-      {{#if editing}}
-        <input class='form-control' value='{{class2}}'/>
-      {{/if}}
-    </td>
-    <td>
-      {{#with class3}}
-        {{> agendaSessionDisplay}}
-      {{/with}}
-      {{#if editing}}
-        <input class='form-control' value='{{class3}}'/>
-      {{/if}}
-    </td>
+    {{#if class2}}
+      <td>
+        {{#with class2}}
+          {{> agendaSessionDisplay}}
+        {{/with}}
+        {{#if editing}}
+          <input class='form-control' value='{{class2}}'/>
+        {{/if}}
+      </td>
+    {{/if}}
+    {{#if class3}}
+      <td>
+        {{#with class3}}
+          {{> agendaSessionDisplay}}
+        {{/with}}
+        {{#if editing}}
+          <input class='form-control' value='{{class3}}'/>
+        {{/if}}
+      </td>
+    {{/if}}
     {{#if editing}}
       <td>
         <button class='btn btn-danger btn-sm del'>Delete</button>

@@ -20,12 +20,13 @@ Template.agenda.events
     class1 = context.find('#class1').value
     class2 = context.find('#class2').value
     class3 = context.find('#class3').value
+    icon = context.find('#icon').value
     if not time then return
     time = new Date(time)
     if not time
       console.error('bad time string')
       return
-    AgendaItem.create({time: time, class1: class1, class2: class2, class3: class3})
+    AgendaItem.create({time: time, class1: class1, class2: class2, class3: class3, icon: icon})
 
   'click #edit': ->
     Session.set('editingAgenda', not Session.get('editingAgenda'))

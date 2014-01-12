@@ -1,7 +1,7 @@
   <template name='agendaSessionDisplay'>
     {{#if isSession}}
       {{#with session}}
-        <div class="media proposal-item">
+        <div class="media">
           {{#each speakers}}
             <a class="pull-left" href="{{pathFor 'speaker'}}">
               <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
@@ -9,9 +9,7 @@
           {{/each}}
           <div class="media-body">
             <div class="media-heading">
-              <h4>
-                <a href='{{pathFor "proposal"}}'>{{title}}</a>
-              </h4>
+              <a href='{{pathFor "proposal"}}'>{{title}}</a>
             </div>
           </div>
         </div>

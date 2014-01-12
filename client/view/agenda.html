@@ -1,7 +1,7 @@
 <template name='agenda'>
   {{#if canSee}}
     <h1>Agenda</h1>
-    <table class='table table-hover'>
+    <table class='table table-bordered'>
       <thead>
         <tr>
           <th colspan='5' class='text-center'><h2>Day 1 (Feb 24)</h2></th>
@@ -47,6 +47,10 @@
       <div class="form-group">
         <label class="sr-only"  for="class3">Class 3</label>
         <input class="form-control" id="class3" placeholder="Class 3">
+      </div>
+      <div class="form-group">
+        <label class="sr-only"  for="class3">icon</label>
+        <input class="form-control" id="icon" placeholder="fa-key">
       </div>
       <button type="submit" class="btn btn-default">Add</button>
     </form>
