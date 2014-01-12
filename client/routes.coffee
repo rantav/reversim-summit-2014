@@ -20,7 +20,8 @@ Router.before(filters.nProgressHook, {only: [
   'speakers',
   'sponsors',
   'about',
-  'vote'
+  'vote',
+  'agenda'
 ]})
 
 Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers']});
@@ -30,6 +31,7 @@ Router.map ->
   @route 'about', path: '/about', controller: 'AboutController'
   @route 'propose', controller: 'ProposeController'
   @route 'wishes', controller: 'WishesController'
+  @route 'agenda', path: '/agenda', controller: 'AgendaController'
   @route 'proposal', path: '/proposal/:id/:title(*)?', controller: 'ProposalController'
   @route 'proposal', path: '/proposal/:id', controller: 'ProposalController'
   @route 'proposals', path: '/proposals/:limit?', controller: 'ProposalsController'

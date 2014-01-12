@@ -73,6 +73,9 @@ Meteor.publish "proposals", (query, options) ->
   users = User.find({_id: $in: userIds}, {fields: userFields})
   [proposals, users]
 
+Meteor.publish "agenda", ->
+  items = AgendaItem.find()
+
 Meteor.publish "sponsors", (query, options) ->
   options = {} if not options
   query = {} if not query
