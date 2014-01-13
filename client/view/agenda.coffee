@@ -1,9 +1,9 @@
 mid = new Date('02/25/14 00:00:00')
 Template.agenda.day1 = ->
-  @items.filter((i) -> i.time < mid).sort((a, b) -> a.time.getTime() > b.time.getTime())
+  _.sortBy(@items.filter((i) -> i.time < mid), (i) -> i.time)
 
 Template.agenda.day2 = ->
-  @items.filter((i) -> i.time > mid).sort((a, b) -> a.time.getTime() > b.time.getTime())
+  _.sortBy(@items.filter((i) -> i.time > mid), (i) -> i.time)
 
 Template.agenda.canSee = ->
   u = User.current()
