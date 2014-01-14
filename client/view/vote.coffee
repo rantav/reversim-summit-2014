@@ -1,6 +1,6 @@
 Template.vote.speakers = -> @speakers
 
-statuses = ['submitted']
+statuses = ['submitted', 'accepted', 'rejected']
 Template.vote.shouldDisplay = (speaker) ->
   speaker.hasProposalInStatus(statuses)
 
@@ -64,4 +64,10 @@ Template.vote.canSeeResults = ->
 
 Template.vote.events
   'click .sign-in': ->
-    Accounts._loginButtonsSession.set('dropdownVisible', true);
+    Accounts._loginButtonsSession.set('dropdownVisible', true)
+
+  'click .accept': ->
+    @update({status: 'accepted'})
+
+  'click .reject': ->
+    @update({status: 'rejected'})

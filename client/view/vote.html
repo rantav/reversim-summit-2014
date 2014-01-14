@@ -30,6 +30,13 @@
                 {{#if canSeeResults}}
                   <span class='badge pull-right'>{{voteCount}}</span>
                 {{/if}}
+                {{#if isAdmin}}
+                  <div class='pull-right'>
+                    Status: {{status}}
+                    <button class='btn btn-danger reject'>reject</button>
+                    <button class='btn btn-success accept'>accept</button>
+                  </div>
+                {{/if}}
                 {{> voteWidget}}
                 <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
                 {{#each tags}}
