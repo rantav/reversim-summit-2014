@@ -6,18 +6,10 @@
     </li>
   {{/if}}
   <li class="{{activeClass 'proposals'}}">
-    <a href="{{pathFor 'proposals'}}">Proposals
-      {{#if hasCount 'proposals'}}
-        <small>({{proposals}})</small>
-      {{/if}}
-    </a>
+    <a href="{{pathFor 'proposals'}}">Proposals</a>
   </li>
   <li class="{{activeClass 'speakers'}}">
-    <a href="{{pathFor 'speakers'}}">Speakers
-      {{#if hasCount 'speakers'}}
-        <small>({{speakers}})</small>
-      {{/if}}
-    </a>
+    <a href="{{pathFor 'speakers'}}">Speakers</a>
   </li>
   {{#if canSeeHidden}}
     <li class="{{activeClass 'users'}}">
