@@ -1,5 +1,5 @@
 Template.agendaItem.formatTime = (t) ->
-  moment(t).format('HH:mm')
+  moment(t).tz('Asia/Jerusalem').format('HH:mm')
 
 Template.agendaItem.editing = ->
   Session.get('editingAgenda')
