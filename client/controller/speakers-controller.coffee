@@ -1,6 +1,6 @@
 class @SpeakersController extends RouteController
 
-  waitOn: -> Meteor.subscribe('speakers')
+  waitOn: -> Meteor.subscribe('proposals')
 
   after: -> document.title = "Speakers | Reversim Summit 2014"
 
