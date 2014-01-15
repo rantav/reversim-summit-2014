@@ -24,7 +24,7 @@ Router.before(filters.nProgressHook, {only: [
   'agenda'
 ]})
 
-Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers']});
+Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers', 'vote']});
 
 Router.map ->
   @route 'home', path: '/', controller: 'HomeController'
