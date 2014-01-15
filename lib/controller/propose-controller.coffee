@@ -1,4 +1,4 @@
-class @ProposeController extends RouteController
+class @ProposeController extends FastRender.RouteController
   waitOn: -> Meteor.subscribe('users', {_id: Meteor.userId()})
   template: 'propose'
 

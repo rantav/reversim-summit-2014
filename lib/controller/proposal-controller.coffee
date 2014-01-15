@@ -1,4 +1,4 @@
-class @ProposalController extends RouteController
+class @ProposalController extends FastRender.RouteController
 
   waitOn: ->
     Meteor.subscribe('proposals', {_id: @params.id})

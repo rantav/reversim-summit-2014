@@ -1,4 +1,4 @@
-class @SponsorsController extends RouteController
+class @SponsorsController extends FastRender.RouteController
 
   waitOn: ->
     Meteor.subscribe('sponsors')

@@ -1,4 +1,4 @@
-class @AboutController extends RouteController
+class @AboutController extends FastRender.RouteController
 
   after: -> document.title = "About Reversim Summit 2014"
 

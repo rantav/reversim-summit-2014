@@ -1,4 +1,4 @@
-class @WishesController extends RouteController
+class @WishesController extends FastRender.RouteController
 
   waitOn: -> Meteor.subscribe('wishes')
 

@@ -1,4 +1,4 @@
-class @VoteController extends RouteController
+class @VoteController extends FastRender.RouteController
 
   waitOn: ->
     q = {}

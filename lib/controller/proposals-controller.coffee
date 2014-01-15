@@ -1,5 +1,5 @@
 sort = createdAt: -1
-class @ProposalsController extends RouteController
+class @ProposalsController extends FastRender.RouteController
 
   waitOn: ->
     limit = @params.limit || 10

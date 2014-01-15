@@ -1,4 +1,4 @@
-class @SpeakersController extends RouteController
+class @SpeakersController extends FastRender.RouteController
 
   waitOn: -> Meteor.subscribe('proposals')
 

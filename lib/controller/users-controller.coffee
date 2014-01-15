@@ -1,4 +1,4 @@
-class @UsersController extends RouteController
+class @UsersController extends FastRender.RouteController
 
   waitOn: -> Meteor.subscribe('users')
 

@@ -1,4 +1,4 @@
-class @AgendaController extends RouteController
+class @AgendaController extends FastRender.RouteController
 
   after: -> document.title = "Agenda | Reversim Summit 2014"
 

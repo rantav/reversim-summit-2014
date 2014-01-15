@@ -1,4 +1,4 @@
-class @HomeController extends RouteController
+class @HomeController extends FastRender.RouteController
   tempalte: 'home'
 
   after: -> document.title = "Reversim Summit 2014"

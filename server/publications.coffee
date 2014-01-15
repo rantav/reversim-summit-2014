@@ -90,34 +90,34 @@ Meteor.publish "sponsors", (query, options) ->
   sponsors = Sponsor.find(query, options)
 
 # publish the current size of the collections
-Meteor.publish 'counts', ->
-  collections =
-    wishes: collection: Wishes, pred: notDeletedPred
-    proposals: collection: Proposal._collection, pred: notDeletedPred
-    speakers: collection: User._collection, pred: speakerPred
-  for name, data of collections
-    ((name, data) =>
-      count = 0
-      initializing = true
-      handle = data.collection.find(data.pred).observeChanges
-        added: (id) =>
-          count++
-          if not initializing
-            @changed("counts", name, {count: count})
-        removed: (id) =>
-          count--
-          @changed("counts", name, {count: count})
+# Meteor.publish 'counts', ->
+#   collections =
+#     wishes: collection: Wishes, pred: notDeletedPred
+#     proposals: collection: Proposal._collection, pred: notDeletedPred
+#     speakers: collection: User._collection, pred: speakerPred
+#   for name, data of collections
+#     ((name, data) =>
+#       count = 0
+#       initializing = true
+#       handle = data.collection.find(data.pred).observeChanges
+#         added: (id) =>
+#           count++
+#           if not initializing
+#             @changed("counts", name, {count: count})
+#         removed: (id) =>
+#           count--
+#           @changed("counts", name, {count: count})
 
-      # Observe only returns after the initial added callbacks have run.
-      # Now return an initial value and mark the subscription as ready.
-      initializing = false;
-      @added("counts", name, {count: count})
+#       # Observe only returns after the initial added callbacks have run.
+#       # Now return an initial value and mark the subscription as ready.
+#       initializing = false;
+#       @added("counts", name, {count: count})
 
-      # Stop observing the cursor when client unsubs.
-      # Stopping a subscription automatically takes
-      # care of sending the client any removed messages.
-      @onStop ->
-        handle.stop()
-    )(name, data)
-  @ready()
+#       # Stop observing the cursor when client unsubs.
+#       # Stopping a subscription automatically takes
+#       # care of sending the client any removed messages.
+#       @onStop ->
+#         handle.stop()
+#     )(name, data)
+#   @ready()
 
