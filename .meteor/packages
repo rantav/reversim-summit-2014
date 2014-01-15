@@ -21,3 +21,4 @@ email
 migrations
 vector
 iron-router
+fast-render
