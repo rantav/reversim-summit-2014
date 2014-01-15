@@ -16,9 +16,9 @@ Template.proposals.destroyed = ->
 
 Template.proposals.speakers = (proposal) -> proposal.speakers()
 
-Template.proposals.hasMore = ->
-  count = Counts.findOne('proposals')
-  count and count.count > Proposal.count()
+Template.proposals.hasMore = -> true
+  # count = Counts.findOne('proposals')
+  # count and count.count > Proposal.count()
 
 Template.proposals.filterByTypeUrl = ->
   Router.path('proposals') + "?filterType=#{@type}"
