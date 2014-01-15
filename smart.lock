@@ -22,9 +22,6 @@
       "migrations": {
         "version": "0.0.2"
       },
-      "pince": {
-        "version": "0.0.5"
-      },
       "fast-render": {
         "version": "0.1.7"
       }
@@ -59,11 +56,6 @@
         "git": "https://github.com/rantav/meteor-migrations.git",
         "tag": "v0.0.2",
         "commit": "4e75c06b8e94961567765c4dea20a007816ad274"
-      },
-      "pince": {
-        "git": "https://github.com/mad-eye/pince.git",
-        "tag": "v0.0.5",
-        "commit": "4524ecc0bdf043c49dc62e91bbd8a99c661081ed"
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
