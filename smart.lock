@@ -23,7 +23,7 @@
         "version": "0.0.2"
       },
       "fast-render": {
-        "version": "0.1.7"
+        "version": "0.1.9"
       }
     },
     "packages": {
@@ -59,8 +59,8 @@
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.7",
-        "commit": "4bc146c8e8b879cbb0a7059f38793839da015fa4"
+        "tag": "v0.1.9",
+        "commit": "c40411e86df17ce5e3f4fb59b13f33ace025ceae"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
