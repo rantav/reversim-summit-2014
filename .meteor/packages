@@ -12,7 +12,6 @@ accounts-facebook
 accounts-ui
 less
 coffeescript
-iron-router
 bootstrap3-less
 spin
 spiderable
@@ -22,3 +21,4 @@ email
 migrations
 pince
 vector
+iron-router

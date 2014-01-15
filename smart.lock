@@ -2,42 +2,43 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "observatory": {},
-      "iron-router": {},
-      "bootstrap3-less": {},
-      "spin": {},
+      "bootstrap3-less": {
+        "version": "0.1.8"
+      },
+      "spin": {
+        "version": "0.2.2"
+      },
       "marked": {
         "git": "https://github.com/rantav/meteor-marked",
         "branch": "master"
       },
-      "minimongoid": {},
+      "minimongoid": {
+        "version": "0.8.3"
+      },
       "vector": {
         "git": "https://github.com/rantav/vector",
         "branch": "master"
       },
-      "migrations": {},
-      "pince": {}
+      "migrations": {
+        "version": "0.0.2"
+      },
+      "pince": {
+        "version": "0.0.5"
+      },
+      "fast-render": {
+        "version": "0.1.7"
+      }
     },
     "packages": {
-      "observatory": {
-        "git": "https://github.com/jhoxray/observatory.git",
-        "tag": "v0.3.21",
-        "commit": "3d6b436af0a70b784d0f9ec4709907c77bd4fd63"
-      },
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.1",
-        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
-      },
       "bootstrap3-less": {
         "git": "https://github.com/eprochasson/bootstrap3-less",
-        "tag": "v0.1.5",
-        "commit": "5074432c020ffc7a676a812e92104ce0fa96080f"
+        "tag": "v0.1.8",
+        "commit": "48b6db4435d9f01a1fcfe694a180b38e8e38835b"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
-        "tag": "v0.2.0",
-        "commit": "fd3a2871a69442848b4b4e74f5e1ae28fa4a95a4"
+        "tag": "v0.2.2",
+        "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
       },
       "marked": {
         "git": "https://github.com/rantav/meteor-marked",
@@ -52,7 +53,7 @@
       "vector": {
         "git": "https://github.com/rantav/vector",
         "branch": "master",
-        "commit": "520d34681be8ab879ab1e9420f0b0fe68adf38d1"
+        "commit": "270c1610f8b13deacbe6b0d2a42423a6f4d8fee9"
       },
       "migrations": {
         "git": "https://github.com/rantav/meteor-migrations.git",
@@ -61,23 +62,23 @@
       },
       "pince": {
         "git": "https://github.com/mad-eye/pince.git",
-        "tag": "v0.0.2",
-        "commit": "ac4c09d12b850ce09f2deefbcbfd13a6620ec7aa"
+        "tag": "v0.0.5",
+        "commit": "4524ecc0bdf043c49dc62e91bbd8a99c661081ed"
       },
-      "observatory-apollo": {
-        "git": "https://github.com/superstringsoftware/observatory-apollo.git",
-        "tag": "v0.3.2",
-        "commit": "f704848187a4da2bd179864ae80a1f73a3fd22a6"
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.1.7",
+        "commit": "4bc146c8e8b879cbb0a7059f38793839da015fa4"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
         "tag": "v2.3.3",
         "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
       },
-      "observatory-galileo": {
-        "git": "https://github.com/superstringsoftware/observatory-galileo.git",
-        "branch": "master",
-        "commit": "f21b80e6502d38a7ce66206374b706f2cbd0228d"
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.1",
+        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
       }
     }
   }
