@@ -1,13 +1,24 @@
-userFields =
-  roles: 1
-  profile: 1
-  'services.google.picture': 1
-  'services.google.email': 1
-  'services.facebook.id': 1
-  'services.facebook.email': 1
-  'services.twitter.profile_image_url': 1
-  'services.github.picture': 1
-  'services.github.email': 1
+userFields = (fields) ->
+  baseline =
+    roles: 1
+    'profile.editing': 1
+    'profile.name': 1
+    'profile.role': 1
+    'profile.submitted': 1
+    'services.google.picture': 1
+    'services.google.email': 1
+    'services.facebook.id': 1
+    'services.facebook.email': 1
+    'services.twitter.profile_image_url': 1
+    'services.github.picture': 1
+    'services.github.email': 1
+  _.extend(baseline, fields)
+
+
+
+# removeBio = (userFields()) ->
+#   cloned = _.extend({}, userFields())
+#   _.extend(cloned, {'profile.bio': 0})
 
 proposalFields = (userId, minimal)->
   fields =
@@ -35,19 +46,20 @@ Meteor.publish "wishes", (query, options) ->
   query = {} if not query
   wishes = Wishes.find(_.extend(query, notDeletedPred), options)
   # This can be improved to add only the users that commented or voted or created on the relevant wishes
-  users = User.find({}, {fields: userFields})
+  users = User.find({}, {fields: userFields()})
   [wishes, users]
 
 Meteor.publish "users",(query, options) ->
   options = {} if not options
   query = {} if not query
-  User.find(query, _.extend(options, {fields: userFields}))
+  User.find(query, _.extend(options, {fields: userFields()}))
 
 speakerPred = 'profile.submitted': true
 Meteor.publish "speakers", (query, options) ->
   options = {} if not options
   query = {} if not query
-  users = User.find(_.extend(query, speakerPred), _.extend(options, {fields: userFields}))
+  users = User.find(_.extend(query, speakerPred), _.extend(options,
+    {fields: userFields('profile.bio': 1, 'profile.trackRecord': 1)}))
   userIds = users.map((u)->u._id)
   proposals = Proposal.find(_.extend({speaker_ids: {$in: userIds}}, notDeletedPred),
                             {fields: proposalFields(@userId)})
@@ -55,14 +67,14 @@ Meteor.publish "speakers", (query, options) ->
 
 Meteor.publish "moderators", ->
   User.find {'roles.moderator': true},
-    fields: userFields
+    fields: userFields('profile.bio': 1)
 
 Meteor.publish "proposals-min", (query, options) ->
   options = {} if not options
   query = {} if not query
   proposals = Proposal.find(_.extend(query, notDeletedPred), _.extend(options, {fields: proposalFields(@userId, true)}))
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
-  users = User.find({_id: $in: userIds}, {fields: userFields})
+  users = User.find({_id: $in: userIds}, {fields: userFields()})
   [proposals, users]
 
 Meteor.publish "proposals", (query, options) ->
@@ -70,7 +82,7 @@ Meteor.publish "proposals", (query, options) ->
   query = {} if not query
   proposals = Proposal.find(query, _.extend(options, {fields: proposalFields(@userId)}))
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
-  users = User.find({_id: $in: userIds}, {fields: userFields})
+  users = User.find({_id: $in: userIds}, {fields: userFields()})
   [proposals, users]
 
 Meteor.publish "agenda", ->
@@ -78,7 +90,7 @@ Meteor.publish "agenda", ->
   proposalIds = _.uniq(_.compact(_.flatten(items.map((i) -> [i.class1, i.class2, i.class3]))))
   proposals = Proposal.find({_id: $in: proposalIds}, {fields: proposalFields(@userId, true)})
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
-  users = User.find({_id: $in: userIds}, {fields: userFields})
+  users = User.find({_id: $in: userIds}, {fields: userFields()})
   [items, proposals, users]
 
 Meteor.publish "sponsors", (query, options) ->
