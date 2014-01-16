@@ -5,9 +5,9 @@ Template.agenda.day1 = ->
 Template.agenda.day2 = ->
   _.sortBy(@items.filter((i) -> i.time > mid), (i) -> i.time)
 
-Template.agenda.canSee = ->
-  u = User.current()
-  u and (u.admin() or u.moderator())
+Template.agenda.canSee = -> true
+  # u = User.current()
+  # u and (u.admin() or u.moderator())
 
 Template.agenda.canEdit = ->
   u = User.current()

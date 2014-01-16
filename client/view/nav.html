@@ -1,10 +1,8 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
-  {{#if canSeeHidden}}
-    <li class="{{activeClass 'agenda'}}">
-      <a href="{{pathFor 'agenda'}}"><strong>Agenda</strong></a>
-    </li>
-  {{/if}}
+  <li class="{{activeClass 'agenda'}}">
+    <a href="{{pathFor 'agenda'}}"><strong>Agenda</strong></a>
+  </li>
   <li class="{{activeClass 'proposals'}}">
     <a href="{{pathFor 'proposals'}}">Proposals</a>
   </li>
