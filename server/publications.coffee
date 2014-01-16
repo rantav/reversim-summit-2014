@@ -3,6 +3,7 @@ userFields = (fields) ->
     roles: 1
     'profile.editing': 1
     'profile.name': 1
+    'profile.uploadedImage': 1
     'profile.role': 1
     'profile.submitted': 1
     'services.google.picture': 1
