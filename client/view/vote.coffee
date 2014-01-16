@@ -1,6 +1,6 @@
 Template.vote.speakers = -> @speakers
 
-statuses = ['submitted', 'accepted', 'rejected']
+statuses = ['submitted', 'accepted', 'maybe next time']
 Template.vote.shouldDisplay = (speaker) ->
   speaker.hasProposalInStatus(statuses)
 
@@ -70,4 +70,4 @@ Template.vote.events
     @update({status: 'accepted'})
 
   'click .reject': ->
-    @update({status: 'rejected'})
+    @update({status: 'maybe next time'})

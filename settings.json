@@ -179,7 +179,7 @@
           },
           {
             "key": "status",
-            "label": "Status (submitted, accepted, rejected)",
+            "label": "Status (submitted, accepted, maybe next time)",
             "type": "text"
           },
           {
