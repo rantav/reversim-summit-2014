@@ -28,8 +28,8 @@ Template.proposal.speakers = -> @proposal.speakers()
 Template.proposal.speakerIds = -> @proposal.speakers().map((s) -> s.id)
 
 canEdit = (proposal) ->
-  # Meteor.userId() and (proposal.mine() or User.current().admin())
-  Meteor.userId() and User.current().admin()
+  Meteor.userId() and (proposal.mine() or User.current().admin())
+  # Meteor.userId() and User.current().admin()
 
 Template.proposal.canEdit = -> canEdit(@proposal)
 
