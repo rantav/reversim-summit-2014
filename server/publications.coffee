@@ -15,12 +15,6 @@ userFields = (fields) ->
     'services.github.email': 1
   _.extend(baseline, fields)
 
-
-
-# removeBio = (userFields()) ->
-#   cloned = _.extend({}, userFields())
-#   _.extend(cloned, {'profile.bio': 0})
-
 proposalFields = (userId, minimal)->
   fields =
     createdAt: 1
@@ -81,6 +75,8 @@ Meteor.publish "proposals-min", (query, options) ->
 Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
+  if not query.id
+    query = _.extend(query, {status: 'accepted'})
   proposals = Proposal.find(query, _.extend(options, {fields: proposalFields(@userId)}))
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields()})
