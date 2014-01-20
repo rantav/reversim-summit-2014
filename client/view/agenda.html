@@ -1,6 +1,16 @@
 <template name='agenda'>
   {{#if canSee}}
     <h1>Agenda</h1>
+    <div>
+      <p>We have a google calendar:
+        <a target="_blank" href="https://www.google.com/calendar/feeds/7hvvqhfn34nc1ptchdsthud80o%40group.calendar.google.com/public/basic">
+          <img src="https://www.google.com/calendar/images/xml.gif" style='display:inline'>
+        </a>
+        <a target="_blank" href="https://www.google.com/calendar/ical/7hvvqhfn34nc1ptchdsthud80o%40group.calendar.google.com/public/basic.ics">
+          <img src="https://www.google.com/calendar/images/ical.gif" style='display:inline'>
+        </a>
+      </p>
+    </div>
     <table class='table table-bordered agenda'>
       <thead>
         <tr>
