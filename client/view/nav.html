@@ -1,5 +1,8 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
+  <li class="{{activeClass 'register'}}">
+    <a href="{{pathFor 'register'}}"><strong>Register</strong></a>
+  </li>
   <li class="{{activeClass 'agenda'}}">
     <a href="{{pathFor 'agenda'}}"><strong>Agenda</strong></a>
   </li>

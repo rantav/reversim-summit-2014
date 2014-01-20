@@ -29,6 +29,7 @@ Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers', 'v
 Router.map ->
   @route 'home', path: '/', controller: 'HomeController'
   @route 'about', path: '/about', controller: 'AboutController'
+  @route 'register', path: '/register', controller: 'RegisterController'
   @route 'propose', controller: 'ProposeController'
   @route 'wishes', controller: 'WishesController'
   @route 'agenda', path: '/agenda', controller: 'AgendaController'
