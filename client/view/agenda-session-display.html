@@ -1,20 +1,24 @@
   <template name='agendaSessionDisplay'>
-    {{#if isSessions}}
-      {{#each sessions}}
-        <div class="media clearfix">
-          {{#each speakers}}
-            <a class="pull-left" href="{{pathFor 'speaker'}}">
-              <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
-            </a>
-          {{/each}}
-          <div class="media-body">
-            <div class="media-heading">
-              <a href='{{pathFor "proposal"}}'>{{title}}</a>
+    {{#each splits}}
+      {{#if isSession}}
+        {{#with session}}
+          <div class="media clearfix">
+            {{#each speakers}}
+              <a class="pull-left" href="{{pathFor 'speaker'}}">
+                <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
+              </a>
+            {{/each}}
+            <div class="media-body">
+              <div class="media-heading">
+                <a href='{{pathFor "proposal"}}'>{{title}}</a>
+              </div>
             </div>
           </div>
+        {{/with}}
+      {{else}}
+        <div class='clearfix'>
+          {{.}}
         </div>
-      {{/each}}
-    {{else}}
-      {{.}}
-    {{/if}}
+      {{/if}}
+    {{/each}}
   </template>
