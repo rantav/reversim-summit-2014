@@ -82,9 +82,15 @@ Meteor.publish "proposals", (query, options) ->
   users = User.find({_id: $in: userIds}, {fields: userFields()})
   [proposals, users]
 
+split = (str) ->
+  if str then str.split(',') else null
+
 Meteor.publish "agenda", ->
   items = AgendaItem.find()
-  proposalIds = _.uniq(_.compact(_.flatten(items.map((i) -> [i.class1, i.class2, i.class3]))))
+  proposalIds = _.uniq(_.compact(_.flatten(items.map((i) ->
+    [split(i.class1),
+     split(i.class2),
+     split(i.class3)]))))
   proposals = Proposal.find({_id: $in: proposalIds}, {fields: proposalFields(@userId, true)})
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields()})

@@ -1,8 +1,12 @@
-Template.agendaSessionDisplay.isSession = ->
-  Proposal.find(String(@))
+Template.agendaSessionDisplay.isSessions = ->
+  s = String(@)
+  sessions = s.split(',')
+  !!Proposal.find(sessions[0])
 
-Template.agendaSessionDisplay.session = ->
-  p = Proposal.find(String(@))
+Template.agendaSessionDisplay.sessions = ->
+  s = String(@)
+  sessions = s.split(',')
+  Proposal.where(_id: $in: sessions)
 
 Template.agendaSessionDisplay.speakers = ->
   @speakers()

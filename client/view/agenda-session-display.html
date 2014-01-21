@@ -1,7 +1,7 @@
   <template name='agendaSessionDisplay'>
-    {{#if isSession}}
-      {{#with session}}
-        <div class="media">
+    {{#if isSessions}}
+      {{#each sessions}}
+        <div class="media clearfix">
           {{#each speakers}}
             <a class="pull-left" href="{{pathFor 'speaker'}}">
               <img src='{{photo .}}' class='img-thumbnail img-thumbnail-40' data-toggle="tooltip" title="{{name}}"/>
@@ -13,7 +13,7 @@
             </div>
           </div>
         </div>
-      {{/with}}
+      {{/each}}
     {{else}}
       {{.}}
     {{/if}}
