@@ -1,4 +1,4 @@
-mid = new Date('02/25/14 00:00:00')
+mid = new Date('02/25/2014 00:00:00')
 Template.agenda.day1 = ->
   _.sortBy(@items.filter((i) -> i.time < mid), (i) -> i.time)
 
