@@ -24,6 +24,9 @@
       },
       "fast-render": {
         "version": "0.1.12"
+      },
+      "apm": {
+        "version": "0.1.4"
       }
     },
     "packages": {
@@ -61,6 +64,11 @@
         "git": "https://github.com/arunoda/meteor-fast-render.git",
         "tag": "v0.1.12",
         "commit": "b190f1592401f4084ce54b8f713b134e35a4e0db"
+      },
+      "apm": {
+        "git": "https://github.com/arunoda/meteor-apm-client.git",
+        "tag": "v0.1.4",
+        "commit": "ed2d7e2d9e1288c6664d286c8c13589c1d3731b5"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
