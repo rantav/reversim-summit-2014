@@ -18,6 +18,9 @@
       {{else}}
         <div class='clearfix'>
           {{.}}
+          {{#if hallOfShame}}
+            <img src='{{staticImg "/img/hall_shame.png"}}' class='img-circle pull-right'>
+          {{/if}}
         </div>
       {{/if}}
     {{/each}}

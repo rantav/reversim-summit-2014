@@ -13,6 +13,9 @@ Template.agendaSessionDisplay.speakers = ->
 Template.agendaSessionDisplay.photo = (user) ->
   user.photoUrl(40) if user
 
+Template.agendaSessionDisplay.hallOfShame = ->
+  @toString() == 'The Hall of Shame'
+
 Template.agendaSessionDisplay.rendered = ->
   $(@findAll('[data-toggle="tooltip"]')).tooltip()
 
