@@ -35,6 +35,11 @@
         "tag": "v0.1.8",
         "commit": "48b6db4435d9f01a1fcfe694a180b38e8e38835b"
       },
+      "spin": {
+        "git": "https://github.com/SachaG/meteor-spin.git",
+        "tag": "v0.2.2",
+        "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
       "marked": {
         "git": "https://github.com/rantav/meteor-marked",
         "branch": "master",

@@ -46,6 +46,7 @@ Router.map ->
   @route 'info', path: '/info', controller: 'InfoController'
   @route 'coc', path: '/coc', controller: 'CocController'
   @route 'sponsors', controller: 'SponsorsController'
+  @route 'community', path: '/community', controller: 'CommunityController'
 
 Router.configure
   layoutTemplate: 'layout'
