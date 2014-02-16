@@ -26,7 +26,7 @@
         "version": "0.1.12"
       },
       "apm": {
-        "version": "0.1.10"
+        "version": "0.1.11"
       }
     },
     "packages": {
@@ -67,8 +67,8 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v0.1.10",
-        "commit": "bd0bc23127c6843a4a9c4bcbb3f8b8c2bb691270"
+        "tag": "v0.1.11",
+        "commit": "6b331e1760c632ef8455883c42f7e8c478fe0e88"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",
