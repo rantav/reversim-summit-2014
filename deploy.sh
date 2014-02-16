@@ -6,5 +6,5 @@ git ci version -m "[deploy] Bump version"
 v="$(cat version)"
 echo deploying new version: $v
 git tag -a v$v -m "Deployment from $now, v$v"
-mrt deploy summit2014.reversim.com --settings settings.json
+meteor deploy summit2014.reversim.com --settings settings.json
 git push --tags
