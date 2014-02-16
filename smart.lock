@@ -2,32 +2,20 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "bootstrap3-less": {
-        "version": "0.1.8"
-      },
-      "spin": {
-        "version": "0.2.2"
-      },
+      "bootstrap3-less": {},
+      "spin": {},
       "marked": {
         "git": "https://github.com/rantav/meteor-marked",
         "branch": "master"
       },
-      "minimongoid": {
-        "version": "0.8.3"
-      },
+      "minimongoid": {},
       "vector": {
         "git": "https://github.com/rantav/vector",
         "branch": "master"
       },
-      "migrations": {
-        "version": "0.0.2"
-      },
-      "fast-render": {
-        "version": "0.1.12"
-      },
-      "apm": {
-        "version": "0.1.11"
-      }
+      "migrations": {},
+      "fast-render": {},
+      "apm": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -62,8 +50,8 @@
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.12",
-        "commit": "b190f1592401f4084ce54b8f713b134e35a4e0db"
+        "tag": "v0.1.15",
+        "commit": "baf79a3e5863acc3abfe2d0d62fb23b21fe880de"
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
