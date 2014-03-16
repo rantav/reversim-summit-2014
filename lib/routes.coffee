@@ -21,7 +21,8 @@ Router.before(filters.nProgressHook, {only: [
   'sponsors',
   'about',
   'vote',
-  'agenda'
+  'agenda',
+  'infographics'
 ]})
 
 Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers', 'vote']});
@@ -30,6 +31,7 @@ Router.map ->
   @route 'home', path: '/', action: -> @redirect('agenda')
   # @route 'home', path: '/', controller: 'HomeController'
   @route 'about', path: '/about', controller: 'AboutController'
+  @route 'infographics', path: '/infographics', controller: 'InfographicsController'
   @route 'register', path: '/register', controller: 'RegisterController'
   @route 'propose', controller: 'ProposeController'
   @route 'wishes', controller: 'WishesController'
