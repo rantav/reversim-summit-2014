@@ -1,7 +1,10 @@
 <template name='nav'>
 <ul class="nav nav-tabs pull-left">
+  <li class="{{activeClass 'home'}}">
+    <a href="{{pathFor 'home'}}">Home</a>
+  </li>
   <li class="{{activeClass 'agenda'}}">
-    <a href="{{pathFor 'agenda'}}"><strong>Agenda</strong></a>
+    <a href="{{pathFor 'agenda'}}">Agenda</a>
   </li>
   <li class="{{activeClass 'proposals'}}">
     <a href="{{pathFor 'proposals'}}">Proposals</a>
